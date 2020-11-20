@@ -7,7 +7,7 @@ Frontend for todo app Medo Dodo.
 To install locally:
 
 **clone repo:**
-git clone [repo url] <dirname>
+git clone [repo url] dirname
 
 **get into react folder:**
 cd dirname/medo-dodo
