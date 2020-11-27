@@ -1,13 +1,10 @@
 import "./App.css";
+import TextInputField from "./TextInputField";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload. Terhi was here.
-        </p>
-      </header>
+      <TextInputField />
     </div>
   );
 }
