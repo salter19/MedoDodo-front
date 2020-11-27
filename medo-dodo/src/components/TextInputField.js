@@ -1,3 +1,4 @@
+import "./TextInputField.css";
 import React from "react";
 
 // TextInput is build using class component.
@@ -7,11 +8,11 @@ class TextInputField extends React.Component {
 
   onInputChange = (event) => {
     this.setState({ term: event.target.value });
-    console.log(this.state.term);
   };
 
   onFormSubmit = (event) => {
     event.preventDefault();
+    this.props.onSubmit(this.state.term);
   };
 
   render() {
