@@ -20,7 +20,7 @@ class TextInputField extends React.Component {
       <div className="text-input-field">
         <form className="form" onSubmit={this.onFormSubmit}>
           <div className="field">
-            <label className="label">{this.props.name}</label>
+            <label className="label">{this.props.labelName}</label>
             <input
               type="text"
               className="text-input"
