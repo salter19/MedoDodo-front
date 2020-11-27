@@ -1,5 +1,6 @@
 import "./TextInputField.css";
 import React from "react";
+import Label from "./Label";
 
 // TextInput is build using class component.
 // In the future might refactor it into function component. TS
@@ -20,15 +21,22 @@ class TextInputField extends React.Component {
       <div className="text-input-field">
         <form className="form" onSubmit={this.onFormSubmit}>
           <div className="field">
-            <label className="label">{this.props.labelName}</label>
-            <input
-              type={this.props.type}
-              className="text-input"
-              placeholder={this.state.placeholder}
-              onChange={this.onInputChange}
-              onClick={(e) => this.setState({ term: "", placeholder: "" })}
-              value={this.state.term}
-            />
+            <div className="top-label">
+              <Label
+                labelName={this.props.labelName}
+                textcolor={this.props.labelTextColor}
+              />
+            </div>
+            <div className={this.props.inputType}>
+              <input
+                type={this.props.type}
+                className="text-input"
+                placeholder={this.state.placeholder}
+                onChange={this.onInputChange}
+                onClick={(e) => this.setState({ term: "", placeholder: "" })}
+                value={this.state.term}
+              />
+            </div>
           </div>
         </form>
       </div>
