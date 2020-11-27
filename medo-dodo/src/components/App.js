@@ -9,7 +9,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <TextInputField onSubmit={this.onTextFieldSubmit} />
+        <TextInputField
+          onSubmit={this.onTextFieldSubmit}
+          name="Give us a task: "
+        />
       </div>
     );
   }
