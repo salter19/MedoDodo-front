@@ -3,10 +3,19 @@
 }
 
 .label {
-  color: rgb(115, 194, 115);
+  color: black;
   font-weight: bold;
 }
 
 .text-input {
   font-family: Arial, Helvetica, sans-serif;
+  border-width: 2px;
+  border-radius: 2px;
+  padding: 2px;
+  background-color: #f6f6f6;
+  /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+::placeholder {
+  color: grey;
 }

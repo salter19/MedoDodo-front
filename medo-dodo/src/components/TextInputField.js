@@ -4,7 +4,7 @@ import React from "react";
 // TextInput is build using class component.
 // In the future might refactor it into function component. TS
 class TextInputField extends React.Component {
-  state = { term: this.props.defaultmsg };
+  state = { term: "", placeholder: this.props.placeholder };
 
   onInputChange = (event) => {
     this.setState({ term: event.target.value });
@@ -22,10 +22,11 @@ class TextInputField extends React.Component {
           <div className="field">
             <label className="label">{this.props.labelName}</label>
             <input
-              type="text"
+              type={this.props.type}
               className="text-input"
+              placeholder={this.state.placeholder}
               onChange={this.onInputChange}
-              onClick={(e) => this.setState({ term: "" })}
+              onClick={(e) => this.setState({ term: "", placeholder: "" })}
               value={this.state.term}
             />
           </div>
