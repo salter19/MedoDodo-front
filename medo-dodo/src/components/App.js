@@ -11,6 +11,7 @@ class App extends React.Component {
       <div className="App">
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
+          defaultmsg="What to do, Dodo?"
           labelName="Give us a task: "
         />
       </div>

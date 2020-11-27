@@ -4,7 +4,7 @@ import React from "react";
 // TextInput is build using class component.
 // In the future might refactor it into function component. TS
 class TextInputField extends React.Component {
-  state = { term: "What to do, dodo?" };
+  state = { term: this.props.defaultmsg };
 
   onInputChange = (event) => {
     this.setState({ term: event.target.value });

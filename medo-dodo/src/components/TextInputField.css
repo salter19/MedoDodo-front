@@ -3,6 +3,10 @@
 }
 
 .label {
-  color: forestgreen;
+  color: rgb(115, 194, 115);
   font-weight: bold;
+}
+
+.text-input {
+  font-family: Arial, Helvetica, sans-serif;
 }
