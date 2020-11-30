@@ -18,15 +18,14 @@ class TextInputField extends React.Component {
 
   render() {
     return (
-      <div className="text-input-field">
-        <form className="form" onSubmit={this.onFormSubmit}>
+      <div className="ui segment">
+        <form className="ui form" onSubmit={this.onFormSubmit}>
           <div className="field">
-            <div className="top-label">
-              <Label
-                labelName={this.props.labelName}
-                textcolor={this.props.labelTextColor}
-              />
-            </div>
+            <Label
+              labelName={this.props.labelName}
+              textcolor={this.props.labelTextColor}
+              labelAlign={this.props.labelAlign}
+            />
             <div className={this.props.inputType}>
               <input
                 type={this.props.type}

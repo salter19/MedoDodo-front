@@ -1,8 +1,22 @@
+.label {
+  text-align: left;
+  font-weight: 600;
+}
+
 .black {
   color: black;
-  font-weight: 800;
+}
+
+.grey {
+  color: grey;
 }
 
 .red {
   color: red;
+}
+
+.center {
+  margin-left: 25%;
+  margin-top: 10px;
+  margin-bottom: -40px;
 }

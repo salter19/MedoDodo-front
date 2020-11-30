@@ -1,37 +1,36 @@
 import "./App.css";
 import React from "react";
 import TextInputField from "./TextInputField";
-import PriorityTag from "./PriorityTag";
+import DueTime from "./DueTimeInput";
+import PriorityTagList from "./PriorityTagList";
 
 class App extends React.Component {
+  state = {
+    priorities: ["high", "medium", "low"],
+  };
+
   onTextFieldSubmit(term) {
-    console.log(term);
+    console.log(term + ".");
   }
   render() {
     return (
-      <div className="App">
+      <div className="App ui container">
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
           type="text"
           placeholder="What to do, Dodo?"
           labelName="Give us a next task: "
-          labelTextColor="red"
-          inputType="one-per-row"
+          inputType="align-left"
         />
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
-          type="date"
-          placeholder="dd/mm/yyyy"
-          labelName="Give us a due date: "
-          inputType="multi-per-row"
+          type="text"
+          placeholder="Elaborate..."
+          labelName="Description: "
+          inputType="align-left"
         />
-        <TextInputField
-          onSubmit={this.onTextFieldSubmit}
-          type="time"
-          placeholder="hh:mm"
-          inputType="multi-per-row"
-        />
-        <PriorityTag />
+        <PriorityTagList tags={this.state.priorities} labelAlign="center" />
+        <DueTime labelName="Due date and time:" labelAlign="center" />
       </div>
     );
   }
