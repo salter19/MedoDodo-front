@@ -3,6 +3,7 @@ import React from "react";
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
+import DropDown from "./DropDown";
 
 class App extends React.Component {
   state = {
@@ -31,6 +32,7 @@ class App extends React.Component {
         />
         <PriorityTagList tags={this.state.priorities} labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
+        <DropDown labelName="Category" labelAlign="center" />
       </div>
     );
   }
