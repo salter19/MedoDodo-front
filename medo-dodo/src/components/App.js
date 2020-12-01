@@ -6,6 +6,7 @@ import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 import Footer from "./Footer";
+import TasksWeekly from "./TasksWeekly";
 
 class App extends React.Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class App extends React.Component {
           onClickNext={this.handleNextWeek}
           onClickLast={this.handleLastWeek}
         />
+        <TasksWeekly showingWeek={this.state.showingWeek} />
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
           type="text"
