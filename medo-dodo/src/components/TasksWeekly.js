@@ -24,7 +24,6 @@ export default class TasksWeekly extends React.Component {
 
   componentDidMount() {
     this.readTasks();
-    this.setState({ currentDate: new Date().toString });
   }
 
   componentDidUpdate(prevProps, prevState) {
