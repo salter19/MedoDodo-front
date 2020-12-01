@@ -80,11 +80,7 @@ class App extends React.Component {
         <TextInputField onSubmit={this.onTextFieldSubmit} />
         <Footer
           key={2}
-          weekNumber={this.state.currentWeek}
           page={this.state.pages[0]}
-          showingWeek={this.state.showingWeek}
-          date={this.state.currentDate}
-          onClickNext={this.handleNextWeek}
           onClickLast={this.handleLastWeek}
         />
       </div>
