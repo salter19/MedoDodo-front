@@ -5,22 +5,28 @@ export default class Head extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: this.props.page,
       showArrowButtons: false,
+      headerMessages: [
+        "Week " + this.props.showingWeek,
+        "Categories",
+        "Add new task",
+        "Modify task",
+      ],
       headerMessage: "Header message",
-      currentWeek: this.props.weekNumber,
-      showingWeek: this.props.weekNumber,
     };
   }
 
-  componentDidMount() {
+  defineHeaderMessage() {
     if (this.props.page === "weekly") {
       this.setState({
         showArrowButtons: true,
-        headerMessage: "Week " + this.state.showingWeek.toString(),
+        headerMessage: "Week " + this.props.showingWeek,
       });
     } else if (this.props.page === "categories") {
-      this.setState({ showArrowButtons: false, headerMessage: "Categories" });
+      this.setState({
+        showArrowButtons: false,
+        headerMessage: this.state.headerMessages[1],
+      });
     } else {
       this.setState({
         showArrowButtons: false,
@@ -29,12 +35,24 @@ export default class Head extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.defineHeaderMessage();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.showingWeek !== this.props.showingWeek) {
+      console.log("something happened" + JSON.stringify(prevProps));
+      this.defineHeaderMessage();
+      console.log("header changed to " + this.state.headerMessage);
+    }
+  }
+
   render() {
     return (
       <div className="box">
         {this.showButtonsAndMessage()}
-        <p>Showing arrows: {this.state.showArrowButtons.toString()}</p>
-        <p>Current week number is: {this.state.currentWeek}</p>
+        <p>Showing buttons: {this.state.showArrowButtons.toString()}</p>
+        <p>Current week number is: {this.props.weekNumber}</p>
       </div>
     );
   }
@@ -45,7 +63,7 @@ export default class Head extends React.Component {
       " " +
       date.getDate() +
       " / " +
-      date.getMonth() +
+      (date.getMonth() + 1) +
       " / " +
       date.getFullYear();
     return formatted;
@@ -76,15 +94,19 @@ export default class Head extends React.Component {
     return this.state.showArrowButtons ? (
       <div className="container">
         <div className="leftButton">
-          <button>
+          <button onClick={this.props.onClickLast}>
             Last
             <br />
             Week
           </button>
         </div>
-        {this.getMessage()}
+        <div className="headerMessage">
+          <h1>Week {this.props.showingWeek}</h1>
+          <br />
+          Today is: {this.getFormattedDate(this.props.date)}
+        </div>
         <div className="rightButton">
-          <button>
+          <button onClick={this.props.onClickNext}>
             Next
             <br />
             Week
@@ -92,11 +114,11 @@ export default class Head extends React.Component {
         </div>
       </div>
     ) : (
-      <div>{this.getMessage()}</div>
+      this.getHeader()
     );
   }
 
-  getMessage() {
+  getHeader() {
     return (
       <div className="headerMessage">
         <h1>{this.state.headerMessage}</h1>

@@ -12,10 +12,13 @@ class App extends React.Component {
     this.state = {
       currentDate: new Date(),
       currentWeek: 49,
+      showingWeek: 49,
       pages: ["weekly", "categories", "addTask", "modifyTask"],
       currentPage: "weekly",
       priorities: ["high", "medium", "low"],
     };
+    this.handleNextWeek = this.handleNextWeek.bind(this);
+    this.handleLastWeek = this.handleLastWeek.bind(this);
   }
 
   componentDidMount() {
@@ -25,13 +28,36 @@ class App extends React.Component {
   onTextFieldSubmit(term) {
     console.log(term + ".");
   }
+  handleNextWeek() {
+    if (this.state.showingWeek === 53) {
+      this.setState({ showingWeek: 1 });
+      console.log(this.state.showingWeek);
+    } else {
+      this.setState({ showingWeek: this.state.showingWeek + 1 });
+      console.log(this.state.showingWeek);
+    }
+  }
+  handleLastWeek() {
+    if (this.state.showingWeek === 1) {
+      this.setState({ showingWeek: 53 });
+      console.log(this.state.showingWeek);
+    } else {
+      this.setState({ showingWeek: this.state.showingWeek - 1 });
+      console.log(this.state.showingWeek);
+    }
+  }
+
   render() {
     return (
       <div className="App ui container">
         <Header
+          key={1}
           weekNumber={this.state.currentWeek}
           page={this.state.pages[0]}
+          showingWeek={this.state.showingWeek}
           date={this.state.currentDate}
+          onClickNext={this.handleNextWeek}
+          onClickLast={this.handleLastWeek}
         />
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
