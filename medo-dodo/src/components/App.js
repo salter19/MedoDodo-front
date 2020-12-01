@@ -5,6 +5,7 @@ import Header from "./Header.js";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
+import Footer from "./Footer";
 
 class App extends React.Component {
   constructor(props) {
@@ -77,6 +78,15 @@ class App extends React.Component {
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
         <TextInputField onSubmit={this.onTextFieldSubmit} />
+        <Footer
+          key={2}
+          weekNumber={this.state.currentWeek}
+          page={this.state.pages[0]}
+          showingWeek={this.state.showingWeek}
+          date={this.state.currentDate}
+          onClickNext={this.handleNextWeek}
+          onClickLast={this.handleLastWeek}
+        />
       </div>
     );
   }
