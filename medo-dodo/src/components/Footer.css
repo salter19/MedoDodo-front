@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: rgb(61, 58, 58);
+  color: white;
+  padding: 10px 0px;
+  font-size: 1.3em;
+  border: 2px solid black;
+}
+
+.footerbutton {
+  background-color: rgb(117, 218, 248);
+  color: rgb(0, 0, 0);
+  font-size: 1.3em;
+  padding: 15px;
+  width: 200px;
+  height: 150px;
+  margin: 30px;
+}
+
+button:hover {
+  font-weight: bold;
+}
