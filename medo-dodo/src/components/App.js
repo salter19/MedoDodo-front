@@ -7,6 +7,7 @@ import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 import Footer from "./Footer";
 import TasksWeekly from "./TasksWeekly";
+import TaskCard from "./TaskCard";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,6 +63,9 @@ class App extends React.Component {
           onClickLast={this.handleLastWeek}
         />
         <TasksWeekly showingWeek={this.state.showingWeek} />
+        <br />
+        <TaskCard id="2" levelTitle="medium" />
+        <br />
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
           type="text"

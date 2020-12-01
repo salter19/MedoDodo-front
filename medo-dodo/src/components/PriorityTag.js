@@ -10,7 +10,7 @@ class PriorityTag extends React.Component {
 
   render() {
     return (
-      <div key={this.state.level} className="priority-tag">
+      <div key={this.state.title} className="priority-tag">
         <div className={this.state.title}>
           <div className={this.state.level}>{this.state.level}</div>
         </div>
