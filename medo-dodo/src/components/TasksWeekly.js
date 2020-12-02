@@ -28,7 +28,7 @@ export default class TasksWeekly extends React.Component {
 
   createCards = () => {
     const tmp = this.state.tasks.map((e) => {
-      return <TaskCard key={e.id} id={e.id} levelTitle="low" />;
+      return <TaskCard key={e.id} id={e.id} levelTitle="medium" />;
     });
     this.setState({ taskCards: tmp });
   };
