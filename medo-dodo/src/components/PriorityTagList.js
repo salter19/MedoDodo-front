@@ -1,3 +1,4 @@
+import "./PriorityTagList.css";
 import React from "react";
 import Label from "./Label";
 import PriorityTag from "./PriorityTag";
@@ -11,7 +12,7 @@ class PriorityTagList extends React.Component {
     let title = "";
     const priorityTags = this.props.tags.map((tag) => {
       title = this.setTitle(tag);
-      return <PriorityTag level={tag} title={title} />;
+      return <PriorityTag level={title} title={tag} />;
     });
     this.setState({ values: priorityTags });
   }
@@ -39,7 +40,9 @@ class PriorityTagList extends React.Component {
               <form className="ui form">
                 <div className="fields">
                   <div className="field">
-                    <div className="ui row">{this.state.values}</div>
+                    <div className="ui row flex container">
+                      {this.state.values}
+                    </div>
                   </div>
                 </div>
               </form>
