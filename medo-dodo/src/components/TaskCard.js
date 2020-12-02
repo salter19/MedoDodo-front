@@ -6,7 +6,6 @@ const TaskCard = ({ id, levelTitle }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [checkbox, setCheckbox] = useState(0);
-  const [priorityType, setPriorityType] = useState("");
 
   useEffect(() => {
     const task = async () => {
@@ -14,23 +13,10 @@ const TaskCard = ({ id, levelTitle }) => {
 
       setTitle(data[0].title);
       setDueDate(data[0].due_date);
-
-      // does not work, why?
-      if (levelTitle === "low") {
-        //console.log("ui green button");
-        setPriorityType("ui green button");
-      } else if (levelTitle === "medium") {
-        //console.log("ui yellow button");
-        setPriorityType("ui yellow button");
-      } else {
-        //console.log("ui red button");
-        setPriorityType("ui red button");
-      }
-
-      console.log(priorityType);
     };
+
     task();
-  }, []);
+  }, [id, levelTitle]);
 
   const setDone = () => {
     setCheckbox(1);
@@ -48,20 +34,7 @@ const TaskCard = ({ id, levelTitle }) => {
         <div className="date">{dueDate}</div>
 
         <div className="priority">
-          <div
-            className="tag"
-            style={{
-              backgroundColor: "blue",
-              color: "white",
-              width: "20%",
-              display: "inline-block",
-              padding: "2px",
-              marginTop: "10px",
-            }}
-          >
-            priority tag will be here
-          </div>
-          <PriorityTag />
+          <PriorityTag level="ui yellow button" title={levelTitle} />
         </div>
       </div>
     </div>
