@@ -20,7 +20,7 @@ export default class Footer extends React.Component {
             <br />
             CATEGORIES
           </button>
-          <button className="footerbutton" onClick={this.props.onClickLast}>
+          <button className="footerbutton" onClick={this.props.onClickAdd}>
             ADD NEW
             <br />
             TASK
