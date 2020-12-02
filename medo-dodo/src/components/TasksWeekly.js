@@ -1,25 +1,36 @@
 import React from "react";
-import "./TasksWeekly.css";
 import axios from "axios";
+import TaskCard from "./TaskCard";
+import "./TasksWeekly.css";
 
 export default class TasksWeekly extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: "http://localhost:8080/tasks/week/",
+      backendAddress: "http://localhost:8080/tasks/",
       tasks: [],
+      taskCards: [],
     };
   }
 
   readTasks = () => {
-    axios.get(this.state.backendAddress + this.props.showingWeek).then(
+    axios.get(this.state.backendAddress).then(
       (response) => {
         this.setState({ tasks: response.data });
+
+        this.createCards();
       },
       (error) => {
         alert("Problem with getting data! " + error);
       }
     );
+  };
+
+  createCards = () => {
+    const tmp = this.state.tasks.map((e) => {
+      return <TaskCard key={e.id} id={e.id} levelTitle="low" />;
+    });
+    this.setState({ taskCards: tmp });
   };
 
   componentDidMount() {
@@ -30,6 +41,7 @@ export default class TasksWeekly extends React.Component {
     if (prevProps.showingWeek !== this.props.showingWeek) {
       console.log("showing different week now");
       this.readTasks();
+      this.createCards();
     }
   }
 
@@ -43,8 +55,8 @@ export default class TasksWeekly extends React.Component {
     });
     return (
       <div className="tasklist">
-        <h1>Here we have tasks of Week {this.props.showingWeek}</h1>
-        <ul>{tasks}</ul>
+        <h1>Here we have tasks dued:</h1>
+        <ul>{this.state.taskCards}</ul>
       </div>
     );
   }
