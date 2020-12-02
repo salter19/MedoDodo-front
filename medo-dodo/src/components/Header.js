@@ -14,6 +14,7 @@ export default class Head extends React.Component {
       ],
       headerMessage: "Header message",
     };
+    console.log(this.props.page);
   }
 
   defineHeaderMessage() {
@@ -26,6 +27,11 @@ export default class Head extends React.Component {
       this.setState({
         showArrowButtons: false,
         headerMessage: this.state.headerMessages[1],
+      });
+    } else if (this.props.page === "addTask") {
+      this.setState({
+        showArrowButtons: false,
+        headerMessage: this.state.headerMessages[2],
       });
     } else {
       this.setState({

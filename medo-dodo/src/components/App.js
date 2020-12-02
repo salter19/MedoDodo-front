@@ -3,9 +3,6 @@ import React from "react";
 /*
 import TextInputField from "./TextInputField";
 import Header from "./Header.js";
-import DueTime from "./DueTimeInput";
-import PriorityTagList from "./PriorityTagList";
-import DropDown from "./DropDown";
 import Footer from "./Footer";
 import TasksWeekly from "./TasksWeekly";
 import TaskCard from "./TaskCard";
@@ -22,16 +19,11 @@ class App extends React.Component {
       showingWeek: 49,
       pages: ["weekly", "categories", "addTask", "modifyTask"],
       currentPage: "weekly",
-      priorities: ["high", "medium", "low"],
     };
   }
 
   componentDidMount() {
     console.log(this.state.currentDate);
-  }
-
-  onTextFieldSubmit(term) {
-    console.log(term + ".");
   }
 
   changeViewToAdd = () => {
@@ -77,7 +69,13 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === "addTask") {
-      <AddNewTaskView />;
+      return (
+        <AddNewTaskView
+          pages={this.state.pages}
+          page={this.state.currentPage}
+          onSave={this.changeViewToWeekly}
+        />
+      );
     } else {
       return (
         <div>
@@ -124,24 +122,6 @@ class App extends React.Component {
         <br />
         <TaskCard id="2" levelTitle="medium" />
         <br />
-        <TextInputField
-          onSubmit={this.onTextFieldSubmit}
-          type="text"
-          placeholder="What to do, Dodo?"
-          labelName="Give us a next task: "
-          inputType="align-left"
-        />
-        <TextInputField
-          onSubmit={this.onTextFieldSubmit}
-          type="text"
-          placeholder="Elaborate..."
-          labelName="Description: "
-          inputType="align-left"
-        />
-        <PriorityTagList tags={this.state.priorities} labelAlign="center" />
-        <DueTime labelName="Due date and time:" labelAlign="center" />
-        <DropDown labelName="Category" labelAlign="center" />
-        <TextInputField onSubmit={this.onTextFieldSubmit} />
         <Footer
           key={2}
           page={this.state.pages[0]}
