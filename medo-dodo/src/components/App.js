@@ -11,6 +11,7 @@ import TasksWeekly from "./TasksWeekly";
 import TaskCard from "./TaskCard";
 */
 import WeeklyView from "./WeeklyView";
+import AddNewTaskView from "./AddNewTaskView";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class App extends React.Component {
   }
 
   changeViewToAdd = () => {
-    this.setState({ currentPage: this.state.pages[1] });
+    this.setState({ currentPage: this.state.pages[2] });
     console.log("Currently we are on page " + this.state.currentPage);
   };
 
@@ -75,6 +76,8 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
         />
       );
+    } else if (this.state.currentPage === "addTask") {
+      <AddNewTaskView />;
     } else {
       return (
         <div>
