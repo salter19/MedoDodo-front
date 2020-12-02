@@ -1,0 +1,32 @@
+import React from "react";
+import "./Footer.css";
+
+export default class Footer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps, prevState) {}
+
+  render() {
+    return (
+      <div className="box">
+        <div className="footerCenter">
+          <button className="footerbutton" onClick={this.props.onClickLast}>
+            GO TO
+            <br />
+            CATEGORIES
+          </button>
+          <button className="footerbutton" onClick={this.props.onClickAdd}>
+            ADD NEW
+            <br />
+            TASK
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
