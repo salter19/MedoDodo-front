@@ -7,7 +7,7 @@ export default class TasksWeekly extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: "http://localhost:8080/tasks/",
+      backendAddress: "https://dodo-fly-or-fly-not.herokuapp.com/tasks/",
       tasks: [],
       taskCards: [],
     };

@@ -17,7 +17,9 @@ const TaskCard = ({ id, levelTitle }) => {
 
   useEffect(() => {
     const task = async () => {
-      const { data } = await axios.get(`http://localhost:8080/tasks/${id}`);
+      const { data } = await axios.get(
+        `https://dodo-fly-or-fly-not.herokuapp.com/tasks/${id}`
+      );
 
       const date = getFormattedDate(data[0].due_date);
       setTitle(data[0].title);
