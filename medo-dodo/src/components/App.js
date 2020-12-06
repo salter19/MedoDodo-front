@@ -1,11 +1,8 @@
 import "./App.css";
 import React from "react";
 /*
-import TextInputField from "./TextInputField";
 import Header from "./Header.js";
 import Footer from "./Footer";
-import TasksWeekly from "./TasksWeekly";
-import TaskCard from "./TaskCard";
 */
 import WeeklyView from "./WeeklyView";
 import AddNewTaskView from "./AddNewTaskView";
@@ -71,6 +68,7 @@ class App extends React.Component {
     } else if (this.state.currentPage === "addTask") {
       return (
         <AddNewTaskView
+          title={this.state.currentPage}
           pages={this.state.pages}
           page={this.state.currentPage}
           onSave={this.changeViewToWeekly}
@@ -98,36 +96,6 @@ class App extends React.Component {
     return (
       <div className="App ui container">
         {view}
-        {/*}
-        <WeeklyView
-          currentWeek={this.state.currentWeek}
-          page={this.state.pages[0]}
-          showingWeek={this.state.showingWeek}
-          currentDate={this.state.currentDate}
-          onClickNext={this.handleNextWeek}
-          onClickLast={this.handleLastWeek}
-        />
-    */}
-        {/*
-        <Header
-          key={1}
-          weekNumber={this.state.currentWeek}
-          page={this.state.pages[0]}
-          showingWeek={this.state.showingWeek}
-          date={this.state.currentDate}
-          onClickNext={this.handleNextWeek}
-          onClickLast={this.handleLastWeek}
-        />
-        <TasksWeekly showingWeek={this.state.showingWeek} />
-        <br />
-        <TaskCard id="2" levelTitle="medium" />
-        <br />
-        <Footer
-          key={2}
-          page={this.state.pages[0]}
-          onClickLast={this.handleLastWeek}
-        />
-        */}
       </div>
     );
   }
