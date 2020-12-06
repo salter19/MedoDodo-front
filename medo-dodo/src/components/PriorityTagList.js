@@ -11,7 +11,7 @@ class PriorityTagList extends React.Component {
   }
   componentDidMount() {
     const priorityTags = priority_levels.map((tag) => {
-      return <PriorityTag key={tag} level={tag} />;
+      return <PriorityTag key={tag} priority={tag} />;
     });
     this.setState({ values: priorityTags });
   }
