@@ -1,3 +1,4 @@
+import "./AddNewTaskView.css";
 import React from "react";
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
@@ -5,7 +6,6 @@ import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 import SaveButton from "./SaveButton";
 import Head from "./Head";
-import "./AddNewTaskView.css";
 
 class AddNewTaskView extends React.Component {
   state = {
