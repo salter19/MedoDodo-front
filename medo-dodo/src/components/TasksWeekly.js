@@ -1,7 +1,8 @@
+import "./TasksWeekly.css";
 import React from "react";
 import axios from "axios";
 import TaskCard from "./TaskCard";
-import "./TasksWeekly.css";
+
 
 export default class TasksWeekly extends React.Component {
   constructor(props) {
