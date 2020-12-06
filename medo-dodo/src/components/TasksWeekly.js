@@ -4,8 +4,6 @@ import TaskCard from "./TaskCard";
 import Servers from './Servers'
 import TasksGetter from "./TasksGetter";
 
-
-
 export default class TasksWeekly extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +14,7 @@ export default class TasksWeekly extends React.Component {
     };
   }
 
-  readTasks = () => {
+  readTasks = async() => {
     try {
       const tasksOfTheWeek = await TasksGetter.byWeek(this.props.showingWeek)
       this.setState({tasks: tasksOfTheWeek})
