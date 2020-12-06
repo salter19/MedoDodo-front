@@ -11,7 +11,7 @@ const getFormattedDate = (date) => {
   return formatted;
 };
 
-const TaskCard = ({ id, levelTitle }) => {
+const TaskCard = ({ id, priority, levelTitle }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [checkbox, setCheckbox] = useState(0);
