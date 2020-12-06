@@ -16,16 +16,6 @@ class PriorityTagList extends React.Component {
     this.setState({ values: priorityTags });
   }
 
-  setTitle = (tag) => {
-    if (tag === "high") {
-      return "ui red button";
-    } else if (tag === "medium") {
-      return "ui yellow button";
-    } else {
-      return "ui green button";
-    }
-  };
-
   render() {
     return (
       <div className="priority-tag-list">
