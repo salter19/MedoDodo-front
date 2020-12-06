@@ -1,5 +1,6 @@
 import React from "react";
 import priority_levels from './prioritylevels'
+
 class PriorityTag extends React.Component {
   state = { tagColor: "", title: "" };
 
