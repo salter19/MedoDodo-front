@@ -21,7 +21,7 @@ export default class TasksWeekly extends React.Component {
       this.createCards()
       
     } catch (error) {
-      alert("Problem with getting data! " + error);
+      alert("Problem with getting data!\nDid you remember to change to local in backend config?" + error);
     }
   };
 
