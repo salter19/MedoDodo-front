@@ -1,5 +1,5 @@
-import React from "react";
 import "./WeeklyView.css";
+import React from "react";
 import Header from "./Header";
 import TasksWeekly from "./TasksWeekly";
 import Footer from "./Footer";
