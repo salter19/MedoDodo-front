@@ -18,16 +18,14 @@ export default class TasksWeekly extends React.Component {
   }
 
   readTasks = () => {
-    axios.get(this.state.backendAddress).then(
-      (response) => {
-        this.setState({ tasks: response.data });
-
-        this.createCards();
-      },
-      (error) => {
-        alert("Problem with getting data! " + error);
-      }
-    );
+    try {
+      const tasksOfTheWeek = await TasksGetter.byWeek(this.props.showingWeek)
+      this.setState({tasks: tasksOfTheWeek})
+      this.createCards()
+      
+    } catch (error) {
+      alert("Problem with getting data! " + error);
+    }
   };
 
   createCards = () => {
