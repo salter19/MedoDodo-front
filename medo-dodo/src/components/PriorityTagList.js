@@ -2,6 +2,7 @@ import "./PriorityTagList.css";
 import React from "react";
 import Label from "./Label";
 import PriorityTag from "./PriorityTag";
+import priority_levels from './prioritylevels'
 
 class PriorityTagList extends React.Component {
   constructor(props) {
@@ -9,10 +10,8 @@ class PriorityTagList extends React.Component {
     this.state = { values: [] };
   }
   componentDidMount() {
-    let title = "";
-    const priorityTags = this.props.tags.map((tag) => {
-      title = this.setTitle(tag);
-      return <PriorityTag level={title} title={tag} />;
+    const priorityTags = priority_levels.map((tag) => {
+      return <PriorityTag key={tag} level={tag} />;
     });
     this.setState({ values: priorityTags });
   }
