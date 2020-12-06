@@ -18,9 +18,7 @@ const TaskCard = ({ id, priority, levelTitle }) => {
 
   useEffect(() => {
     const task = async () => {
-      const { data } = await axios.get(
-        `https://dodo-fly-or-fly-not.herokuapp.com/tasks/${id}`
-      );
+      const { data } = await axios.get(`${Servers.local}${id}`);
 
       const date = getFormattedDate(data[0].due_date);
       setTitle(data[0].title);
@@ -46,7 +44,7 @@ const TaskCard = ({ id, priority, levelTitle }) => {
         <div className="date">{dueDate}</div>
 
         <div className="priority">
-          <PriorityTag level="ui yellow button" title={levelTitle} />
+          <PriorityTag priority={priority} />
         </div>
       </div>
     </div>
