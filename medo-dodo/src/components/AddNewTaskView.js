@@ -41,7 +41,7 @@ class AddNewTaskView extends React.Component {
           placeholder="Elaborate..."
           labelName="Description: "
         />
-        <PriorityTagList tags={this.state.priorities} labelAlign="center" />
+        <PriorityTagList labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
 
