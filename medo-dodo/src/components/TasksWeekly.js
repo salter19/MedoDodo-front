@@ -2,13 +2,16 @@ import "./TasksWeekly.css";
 import React from "react";
 import axios from "axios";
 import TaskCard from "./TaskCard";
+import Servers from './Servers'
+import TasksGetter from "./TasksGetter";
+
 
 
 export default class TasksWeekly extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: "https://dodo-fly-or-fly-not.herokuapp.com/tasks/",
+      backendAddress: Servers.local,
       tasks: [],
       taskCards: [],
     };
