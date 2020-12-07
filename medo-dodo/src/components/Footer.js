@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
     return (
       <div className="box">
         <div className="footerCenter">
-          <button className="footerbutton" onClick={this.props.onClickLast}>
+          <button className="footerbutton" onClick={this.props.onClickCats}>
             GO TO
             <br />
             CATEGORIES

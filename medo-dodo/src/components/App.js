@@ -29,6 +29,11 @@ class App extends React.Component {
     console.log("Currently we are on page " + this.state.currentPage);
   };
 
+  changeViewToCats = () => {
+    this.setState({ currentPage: this.state.pages[1] });
+    console.log("cats was clicked!s")
+  }
+
   changeViewToWeekly = () => {
     this.setState({ currentPage: this.state.pages[0] });
     console.log("Currently we are on page " + this.state.currentPage);
@@ -64,6 +69,7 @@ class App extends React.Component {
           onClickNext={this.handleNextWeek}
           onClickLast={this.handleLastWeek}
           onClickAdd={this.changeViewToAdd}
+          onClickCats={this.changeViewToCats}
         />
       );
     } else if (this.state.currentPage === this.state.pages[2]) {
@@ -77,7 +83,11 @@ class App extends React.Component {
       );
     } else if (this.state.currentPage === this.state.pages[1]) {
       return (
-        <CatecoryView />
+        <CatecoryView 
+          title={this.state.currentPage}
+          pages={this.state.pages}
+          page={this.state.currentPage}
+        />
       )
     } else {
       return (
