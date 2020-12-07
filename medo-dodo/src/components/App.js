@@ -6,6 +6,7 @@ import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
 import AddNewTaskView from "./AddNewTaskView";
+import CatecoryView from './CategoryView'
 
 class App extends React.Component {
   constructor(props) {
@@ -75,7 +76,9 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === this.state.pages[1]) {
-
+      return (
+        <CatecoryView />
+      )
     } else {
       return (
         <div>
