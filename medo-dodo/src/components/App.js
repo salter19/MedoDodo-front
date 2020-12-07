@@ -65,7 +65,7 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
         />
       );
-    } else if (this.state.currentPage === "addTask") {
+    } else if (this.state.currentPage === this.state.pages[2]) {
       return (
         <AddNewTaskView
           title={this.state.currentPage}
