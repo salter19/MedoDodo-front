@@ -1,4 +1,4 @@
-import "./WeeklyView.css";
+import "./styles/WeeklyView.css";
 import React from "react";
 import Header from "./Header";
 import TasksWeekly from "./TasksWeekly";

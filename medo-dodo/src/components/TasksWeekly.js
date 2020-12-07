@@ -1,4 +1,4 @@
-import "./TasksWeekly.css";
+import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
 import Servers from './Servers'

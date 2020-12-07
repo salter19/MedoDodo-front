@@ -1,5 +1,5 @@
+import "./styles/Header.css";
 import React from "react";
-import "./Header.css";
 
 export default class Head extends React.Component {
   constructor(props) {

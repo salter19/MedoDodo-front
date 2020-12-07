@@ -1,4 +1,4 @@
-import "./Label.css";
+import "./styles/Label.css";
 import React from "react";
 
 class Label extends React.Component {

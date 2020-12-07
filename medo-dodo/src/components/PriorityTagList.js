@@ -1,4 +1,4 @@
-import "./PriorityTagList.css";
+import "./styles/PriorityTagList.css";
 import React from "react";
 import Label from "./Label";
 import PriorityTag from "./PriorityTag";

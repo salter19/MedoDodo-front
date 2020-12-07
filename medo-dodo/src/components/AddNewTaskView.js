@@ -1,4 +1,4 @@
-import "./AddNewTaskView.css";
+import "./styles/AddNewTaskView.css";
 import React from "react";
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";

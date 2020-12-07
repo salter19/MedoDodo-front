@@ -1,5 +1,5 @@
+import "./styles/SaveButton.css";
 import React from "react";
-import "./SaveButton.css";
 
 class SaveButton extends React.Component {
   changePage = () => {
