@@ -74,6 +74,8 @@ class App extends React.Component {
           onSave={this.changeViewToWeekly}
         />
       );
+    } else if (this.state.currentPage === this.state.pages[1]) {
+
     } else {
       return (
         <div>
