@@ -1,4 +1,5 @@
 import React from 'react'
+import CatecoryIcon from './CategoryIcon'
 
 class CategoryView extends React.Component {
     render() {

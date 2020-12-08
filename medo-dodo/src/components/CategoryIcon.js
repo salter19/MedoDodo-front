@@ -6,4 +6,4 @@ const CategoryIcon = () => {
     )
 }
 
-export default CategoryIcons
+export default CategoryIcon
