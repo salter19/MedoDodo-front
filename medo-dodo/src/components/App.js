@@ -76,7 +76,6 @@ class App extends React.Component {
       return (
         <AddNewTaskView
           title={this.state.currentPage}
-          pages={this.state.pages}
           page={this.state.currentPage}
           onSave={this.changeViewToWeekly}
         />
