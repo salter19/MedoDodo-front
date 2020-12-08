@@ -1,5 +1,7 @@
 import "./styles/Footer.css";
 import React from "react";
+import Button from './Button'
+import buttontypes from './buttontypes'
 
 export default class Footer extends React.Component {
   constructor(props) {
@@ -15,11 +17,7 @@ export default class Footer extends React.Component {
     return (
       <div className="box">
         <div className="footerCenter">
-          <button className="footerbutton" onClick={this.props.onClickCats}>
-            GO TO
-            <br />
-            CATEGORIES
-          </button>
+          <Button buttontype={buttontypes.categories} onClick={this.props.onClickCats} />
           <button className="footerbutton" onClick={this.props.onClickAdd}>
             ADD NEW
             <br />

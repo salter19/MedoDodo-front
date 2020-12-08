@@ -1,6 +1,7 @@
 import "./styles/Button.css";
 import React from "react";
 import buttontypes from './buttontypes'
+import pagetypes from './pagetypes'
 
 class Button extends React.Component {
   state = { buttontype: '' }
@@ -9,9 +10,12 @@ class Button extends React.Component {
     this.setState({ buttontype: this.props.buttontype })
   }
   changePage = () => {
-    this.props.page === buttontypes.addTask
+    this.props.page === pagetypes.addTask
       ? this.props.onSave()
       : console.log(`where are we? ${this.props.page}`);
+    
+    //this.props.page === pagetypes.categories
+      //? this.props.
   };
 
   render() {
