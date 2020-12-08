@@ -38,10 +38,7 @@ class AddNewTaskView extends React.Component {
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
 
-        <Footer 
-          page={this.props.page}
-          onSave={this.props.onSave} 
-        />
+        <Footer page={this.props.page} onSave={this.props.onSave} />
       </div>
     );
   }
