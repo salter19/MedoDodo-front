@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
     return (
       <div className="box">
         <div className="footerCenter">
-          <Button buttontype={buttontypes.categories} page={}/>
+          <Button buttontype={buttontypes.categories} page={pagetypes.categories}/>
           <button className="footerbutton" onClick={this.props.onClickAdd}>
             ADD NEW
             <br />
