@@ -14,6 +14,7 @@ export default class Head extends React.Component {
         "Modify task",
       ],
       headerMessage: "Header message",
+      currentWeekMsg: '',
     };
     console.log(this.props.page);
   }
@@ -23,6 +24,7 @@ export default class Head extends React.Component {
       this.setState({
         showArrowButtons: true,
         headerMessage: "Week " + this.props.showingWeek,
+        currentWeekMsg: `Current week number is: ${this.props.weekNumber}`,
       });
     } else if (this.props.page === pagetypes.categories) {
       this.setState({
@@ -58,8 +60,7 @@ export default class Head extends React.Component {
     return (
       <div className="box">
         {this.showButtonsAndMessage()}
-        <p>Showing buttons: {this.state.showArrowButtons.toString()}</p>
-        <p>Current week number is: {this.props.weekNumber}</p>
+        <p>{this.state.currentWeekMsg}</p>
       </div>
     );
   }
