@@ -8,6 +8,7 @@ import WeeklyView from "./WeeklyView";
 import AddNewTaskView from "./AddNewTaskView";
 import CategoryView from './CategoryView'
 import pagetypes from './pagetypes'
+import Head from "./Head";
 
 class App extends React.Component {
   constructor(props) {
