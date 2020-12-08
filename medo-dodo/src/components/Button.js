@@ -11,13 +11,20 @@ class Button extends React.Component {
   changePage = () => {
     this.props.page === pagetypes.addTask
       ? this.props.onSave()
-      : console.log(`${this.state.errormsg} ${this.props.page}`);
+      : this.errorHandler();
     
     this.props.page === pagetypes.categories
       ? this.props.onClickCats()
-       : console.log(`${this.state.errormsg} ${this.props.page}`)
+       : this.errorHandler();
  
+    this.props.page === pagetypes.weekly
+      ? this.props.onClickWeeks()
+      : this.errorHandler();
   };
+
+  errorHandler = () => {
+    console.log(`${this.state.errormsg} ${this.props.page}`)
+  }
 
   render() {
     return (

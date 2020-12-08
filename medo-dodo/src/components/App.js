@@ -88,7 +88,7 @@ class App extends React.Component {
           page={this.state.currentPage}
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
-          onClickToWeekly={this.changeViewToWeekly}
+          onClickWeeks={this.changeViewToWeekly}
         />
       )
     } else {

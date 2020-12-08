@@ -7,20 +7,35 @@ import pagetypes from './pagetypes'
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { buttons:'' }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({ buttons: this.setButtons() })
+  }
 
+  setButtons = () => {
+    if (this.props.page === pagetypes.weekly) {
+      return (
+      <div className="flex container">
+        <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickLeft} />
+        <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
+      </div>)
+    } else if (this.props.page === pagetypes.categories) {
+      return (
+        <div className="flex container">
+          <Button buttontype={buttontypes.weekly} page={pagetypes.weekly} onClickWeeks={this.props.onClickLeft} />
+          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
+        </div>) 
+    }
+    
+  }
   componentDidUpdate(prevProps, prevState) {}
 
   render() {
     return (
       <div className="box">
-        <div className="footerCenter flex container">
-          <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickRight} />
-          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickLeft} />
-        </div>
+        {this.state.buttons}
       </div>
     );
   }

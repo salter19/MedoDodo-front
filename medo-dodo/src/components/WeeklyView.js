@@ -34,8 +34,8 @@ export default class WeeklyView extends React.Component {
         <Footer 
           key={2} 
           page={this.props.page}
-          onClickLeft={this.props.onClickAdd} 
-          onClickRight={this.props.onClickCats}
+          onClickRight={this.props.onClickAdd} 
+          onClickLeft={this.props.onClickCats}
         />
       </div>
     );
