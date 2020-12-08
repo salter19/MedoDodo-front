@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   changeViewToWeekly = () => {
-    this.setState({ currentPage: this.state.pages[0] });
+    this.setState({ currentPage: pagetypes.weekly });
     console.log("Currently we are on page " + this.state.currentPage);
   };
 
