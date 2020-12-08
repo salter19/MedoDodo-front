@@ -1,5 +1,6 @@
 import "./styles/Header.css";
 import React from "react";
+import pagetypes from './pagetypes'
 
 export default class Head extends React.Component {
   constructor(props) {
@@ -18,17 +19,17 @@ export default class Head extends React.Component {
   }
 
   defineHeaderMessage() {
-    if (this.props.page === "weekly") {
+    if (this.props.page === pagetypes.weekly) {
       this.setState({
         showArrowButtons: true,
         headerMessage: "Week " + this.props.showingWeek,
       });
-    } else if (this.props.page === "categories") {
+    } else if (this.props.page === pagetypes.categories) {
       this.setState({
         showArrowButtons: false,
         headerMessage: this.state.headerMessages[1],
       });
-    } else if (this.props.page === "addTask") {
+    } else if (this.props.page === pagetypes.addTask) {
       this.setState({
         showArrowButtons: false,
         headerMessage: this.state.headerMessages[2],
