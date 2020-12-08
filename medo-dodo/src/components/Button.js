@@ -14,9 +14,11 @@ class Button extends React.Component {
       ? this.props.onSave()
       : console.log(`where are we? ${this.props.page}`);
     
-    this.props.page === pagetypes.categories
-      ? console.log(`we are finally at ${this.props.page}`)
-      : console.log(`Still no idea where we are: ${this.props.page}`)
+    if (this.props.page === pagetypes.categories) {
+      this.props.onClickCats()
+    } else {
+      console.log(`Where are we, asks button? ${this.props.page}`)
+    }
   };
 
   render() {
