@@ -18,8 +18,8 @@ export default class Footer extends React.Component {
     return (
       <div className="box">
         <div className="footerCenter flex container">
-          <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickCats} />
-          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickAdd} />
+          <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickRight} />
+          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickLeft} />
         </div>
       </div>
     );
