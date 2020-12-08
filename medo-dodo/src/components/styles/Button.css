@@ -17,7 +17,7 @@ button:hover {
   color: white;
 }
 
-.categories, .addTask, .weeks {
+.categories, .addTask, .weekly {
   border-color: white;
   border-radius: 4px;
   width: 200px;
