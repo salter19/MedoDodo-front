@@ -64,7 +64,7 @@ class App extends React.Component {
       return (
         <WeeklyView
           currentWeek={this.state.currentWeek}
-          page={this.state.pages[0]}
+          page={this.state.currentPage}
           showingWeek={this.state.showingWeek}
           currentDate={this.state.currentDate}
           onClickNext={this.handleNextWeek}
