@@ -5,3 +5,5 @@ const CategoryIcon = () => {
         <div className="category-icon"> hello, i am an icon for a category</div>
     )
 }
+
+export default CategoryIcons
