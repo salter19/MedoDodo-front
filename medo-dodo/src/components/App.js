@@ -82,7 +82,7 @@ class App extends React.Component {
           onSave={this.changeViewToWeekly}
         />
       );
-    } else if (this.state.currentPage === this.state.pages[1]) {
+    } else if (this.state.currentPage === pagetypes.categories) {
       return (
         <CatecoryView 
           title={this.state.currentPage}
