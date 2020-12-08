@@ -9,7 +9,6 @@ import Head from "./Head";
 
 class AddNewTaskView extends React.Component {
   state = {
-    priorities: ["high", "medium", "low"],
     pages: [],
   };
 
