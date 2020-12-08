@@ -16,7 +16,7 @@ class App extends React.Component {
       currentDate: new Date(),
       currentWeek: 49,
       showingWeek: 49,
-      currentPage: "weekly",
+      currentPage: pagetypes.weekly,
     };
   }
 
