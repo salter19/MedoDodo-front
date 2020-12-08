@@ -73,7 +73,7 @@ class App extends React.Component {
           onClickCats={this.changeViewToCats}
         />
       );
-    } else if (this.state.currentPage === this.state.pages[2]) {
+    } else if (this.state.currentPage === pagetypes.addTask) {
       return (
         <AddNewTaskView
           title={this.state.currentPage}
