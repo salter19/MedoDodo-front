@@ -31,7 +31,7 @@ class App extends React.Component {
 
   changeViewToCats = () => {
     this.setState({ currentPage: pagetypes.categories });
-    console.log("cats was clicked!s")
+    console.log("cats was clicked! " + this.state.currentPage)
   }
 
   changeViewToWeekly = () => {
