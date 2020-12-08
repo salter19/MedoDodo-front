@@ -9,4 +9,9 @@ const byWeek = async(value) => {
     return result.data;
 }
 
+const byCategory = async(value) => {
+    const result = await axios.get(`${address}${options[1]}${value}`)
+    return result.data;
+}
+
 export default {byWeek}
