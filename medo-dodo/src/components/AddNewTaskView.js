@@ -7,6 +7,7 @@ import DropDown from "./DropDown";
 import Button from "./Button";
 import buttontypes from './buttontypes'
 import Head from "./Header";
+import Footer from './Footer'
 
 class AddNewTaskView extends React.Component {
 
@@ -37,9 +38,10 @@ class AddNewTaskView extends React.Component {
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
 
-        <div className="ui segment">
-          <Button buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
-        </div>
+        <Footer 
+          page={this.props.page}
+          onSave={this.props.onSave} 
+        />
       </div>
     );
   }

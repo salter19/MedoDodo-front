@@ -11,7 +11,6 @@ class CategoryView extends React.Component {
                 CAT view
                 <CatecoryIcon />
                 <Footer 
-                    key={2} 
                     page={this.props.page}
                     onClickRight={this.props.onClickAdd} 
                     onClickLeft={this.props.onClickWeeks}
