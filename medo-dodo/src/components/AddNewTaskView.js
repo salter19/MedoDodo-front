@@ -4,8 +4,6 @@ import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
-import Button from "./Button";
-import buttontypes from './buttontypes'
 import Head from "./Header";
 import Footer from './Footer'
 
