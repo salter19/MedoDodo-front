@@ -6,7 +6,7 @@ import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
 import AddNewTaskView from "./AddNewTaskView";
-import CatecoryView from './CategoryView'
+import CategoryView from './CategoryView'
 import pagetypes from './pagetypes'
 
 class App extends React.Component {
@@ -84,7 +84,7 @@ class App extends React.Component {
       );
     } else if (this.state.currentPage === pagetypes.categories) {
       return (
-        <CatecoryView 
+        <CategoryView 
           title={this.state.currentPage}
           pages={this.state.pages}
           page={this.state.currentPage}
