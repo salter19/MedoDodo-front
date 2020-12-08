@@ -2,6 +2,7 @@ import "./styles/Footer.css";
 import React from "react";
 import Button from './Button'
 import buttontypes from './buttontypes'
+import pagetypes from './pagetypes'
 
 export default class Footer extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class Footer extends React.Component {
     return (
       <div className="box">
         <div className="footerCenter">
-          <Button buttontype={buttontypes.categories} onClick={this.props.onClickCats} />
+          <Button buttontype={buttontypes.categories} page={}/>
           <button className="footerbutton" onClick={this.props.onClickAdd}>
             ADD NEW
             <br />

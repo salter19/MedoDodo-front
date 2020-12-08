@@ -81,6 +81,7 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
+      console.log("at categories (app)")
       return (
         <CategoryView 
           title={this.state.currentPage}

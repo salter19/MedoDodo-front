@@ -10,12 +10,14 @@ class Button extends React.Component {
     this.setState({ buttontype: this.props.buttontype })
   }
   changePage = () => {
+    console.log(`We are now at Button and in page: ${this.props.page}`)
     this.props.page === pagetypes.addTask
       ? this.props.onSave()
       : console.log(`where are we? ${this.props.page}`);
     
-    //this.props.page === pagetypes.categories
-      //? this.props.
+    this.props.page === pagetypes.categories
+      ? console.log(`we are finally at ${this.props.page}`)
+      : console.log(`Still no idea where we are: ${this.props.page}`)
   };
 
   render() {
