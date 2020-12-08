@@ -1,9 +1,15 @@
 import "./styles/SaveButton.css";
 import React from "react";
+import pagetypes from './pagetypes'
 
 class SaveButton extends React.Component {
+  state = { buttontype: '' }
+  
+  componentDidMount() {
+    this.setState({ buttontype: this.props.buttontype })
+  }
   changePage = () => {
-    this.props.page === "addTask"
+    this.props.page === pagetypes.addTask
       ? this.props.onSave()
       : console.log(`where are we? ${this.props.page}`);
   };
