@@ -14,4 +14,4 @@ const byCategory = async(value) => {
     return result.data;
 }
 
-export default {byWeek}
+export default {byWeek, byCategory}
