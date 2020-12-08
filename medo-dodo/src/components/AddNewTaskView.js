@@ -6,7 +6,7 @@ import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 import SaveButton from "./SaveButton";
 import Head from "./Head";
-import pagetypes from './pagetypes'
+import buttontypes from './buttontypes'
 
 class AddNewTaskView extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class AddNewTaskView extends React.Component {
         <DropDown labelName="Category" labelAlign="center" />
 
         <div className="ui segment">
-          <SaveButton buttontype={} page={this.props.page} onSave={this.props.onSave} />
+          <SaveButton buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
         </div>
       </div>
     );
