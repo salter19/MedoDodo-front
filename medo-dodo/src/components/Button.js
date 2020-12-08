@@ -1,8 +1,8 @@
-import "./styles/SaveButton.css";
+import "./styles/Button.css";
 import React from "react";
 import buttontypes from './buttontypes'
 
-class SaveButton extends React.Component {
+class Button extends React.Component {
   state = { buttontype: '' }
 
   componentDidMount() {
@@ -16,11 +16,11 @@ class SaveButton extends React.Component {
 
   render() {
     return (
-      <button className="save-button" onClick={this.changePage}>
-        Save
+      <button className={this.state.buttontype} onClick={this.changePage}>
+        {this.state.buttontype}
       </button>
     );
   }
 }
 
-export default SaveButton;
+export default Button;

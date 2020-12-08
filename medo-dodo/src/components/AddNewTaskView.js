@@ -4,7 +4,7 @@ import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
-import SaveButton from "./SaveButton";
+import Button from "./Button";
 import Head from "./Head";
 import buttontypes from './buttontypes'
 
@@ -46,7 +46,7 @@ class AddNewTaskView extends React.Component {
         <DropDown labelName="Category" labelAlign="center" />
 
         <div className="ui segment">
-          <SaveButton buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
+          <Button buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
         </div>
       </div>
     );
