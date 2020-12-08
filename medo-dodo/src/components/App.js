@@ -84,7 +84,6 @@ class App extends React.Component {
       return (
         <CategoryView 
           title={this.state.currentPage}
-          pages={this.state.pages}
           page={this.state.currentPage}
           onClickAdd={this.changeViewToAdd}
           onClickToWeekly={this.changeViewToWeekly}
