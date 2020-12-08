@@ -78,6 +78,7 @@ class App extends React.Component {
         <AddNewTaskView
           title={this.state.currentPage}
           page={this.state.currentPage}
+          date={this.state.currentDate}
           onSave={this.changeViewToWeekly}
         />
       );
