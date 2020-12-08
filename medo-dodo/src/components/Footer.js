@@ -17,13 +17,9 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className="box">
-        <div className="footerCenter">
-          <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickCats}/>
-          <button className="footerbutton" onClick={this.props.onClickAdd}>
-            ADD NEW
-            <br />
-            TASK
-          </button>
+        <div className="footerCenter flex container">
+          <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickCats} />
+          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickAdd} />
         </div>
       </div>
     );

@@ -23,9 +23,12 @@ class Button extends React.Component {
 
   render() {
     return (
-      <button className={this.state.buttontype} onClick={this.changePage}>
+      <div className="button">
+        <button className={this.state.buttontype} onClick={this.changePage}>
         {this.state.buttontype}
-      </button>
+        </button>
+    </div>
+      
     );
   }
 }
