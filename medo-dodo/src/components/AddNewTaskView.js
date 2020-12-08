@@ -9,16 +9,9 @@ import Head from "./Head";
 import buttontypes from './buttontypes'
 
 class AddNewTaskView extends React.Component {
-  state = {
-    pages: [],
-  };
 
   onTextFieldSubmit(term) {
     console.log(term);
-  }
-
-  componentDidMount() {
-    this.setState({ pages: this.props.pages });
   }
 
   render() {
