@@ -26,12 +26,12 @@ class App extends React.Component {
   }
 
   changeViewToAdd = () => {
-    this.setState({ currentPage: this.state.pages[2] });
+    this.setState({ currentPage: pagetypes.addTask });
     console.log("Currently we are on page " + this.state.currentPage);
   };
 
   changeViewToCats = () => {
-    this.setState({ currentPage: this.state.pages[1] });
+    this.setState({ currentPage: pagetypes.categories });
     console.log("cats was clicked!s")
   }
 
