@@ -60,7 +60,7 @@ class App extends React.Component {
   };
 
   checkView() {
-    if (this.state.currentPage === "weekly") {
+    if (this.state.currentPage === pagetypes.weekly) {
       return (
         <WeeklyView
           currentWeek={this.state.currentWeek}
