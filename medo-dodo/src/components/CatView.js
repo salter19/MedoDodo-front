@@ -1,5 +1,6 @@
 import React from 'react'
 import ViewBase from './ViewBase'
+import TasksByCat from './TasksByCat'
 
 class CatView extends React.Component {
     state = { view:'' }
