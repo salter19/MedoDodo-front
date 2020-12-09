@@ -13,7 +13,7 @@ class TasksByCat extends React.Component {
 
   readTasks = async() => {
     try {
-      const tasksOfTheCat = await TasksGetter.byCategory(1)
+      const tasksOfTheCat = await TasksGetter.byCategory("my_tasks")
       this.setState({tasks: tasksOfTheCat})
       this.createCards()
       

@@ -31,7 +31,7 @@ class CatView extends React.Component {
                     onClickRight={this.props.onClickAdd} 
                     onClickLeft={this.props.onClickCats}
                     catTitle="meow-1"
-                    view={this.state.view}
+                    view={<TasksByCat />}
                 />
             </div>
         )
