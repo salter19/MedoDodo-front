@@ -27,7 +27,7 @@ export default class Footer extends React.Component {
           <MyButton buttontype={buttontypes.weekly} page={pagetypes.weekly} onClickWeeks={this.props.onClickLeft} />
           <MyButton buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
         </div>) 
-    } else if (this.props.page === pagetypes.addTask) {
+    } else if (this.props.page === pagetypes.addTask || this.props.page === pagetypes.modifyTask ) {
       return (
         <MyButton buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
       )

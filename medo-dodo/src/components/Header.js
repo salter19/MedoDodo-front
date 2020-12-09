@@ -36,6 +36,11 @@ export default class Head extends React.Component {
         showArrowButtons: false,
         headerMessage: this.state.headerMessages[2],
       });
+    } else if (this.props.page === pagetypes.modifyTask) {
+      this.setState({
+        showArrowButtons: false,
+        headerMessage: this.state.headerMessages[3],
+      });
     } else {
       this.setState({
         showArrowButtons: false,
