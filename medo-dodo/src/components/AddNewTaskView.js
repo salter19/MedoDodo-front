@@ -5,15 +5,13 @@ import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
-import Head from "./Header";
-import Footer from './Footer'
 
 class AddNewTaskView extends React.Component {
 
   onTextFieldSubmit(term) {
     console.log(term);
   }
-  
+
   view = () => {
     return (
       <div className="content">   
