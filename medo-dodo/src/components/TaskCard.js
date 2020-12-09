@@ -60,7 +60,6 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
 
             <div class="right floated column">
               <MyButton buttontype={buttontypes.modify} page={pagetypes.modifyTask} onSave={onClickTask}/>
-              <MyButton buttontype={buttontypes.delete}/>
             </div>
           </div>
         </div>
