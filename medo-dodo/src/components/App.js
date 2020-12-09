@@ -79,6 +79,8 @@ class App extends React.Component {
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
+          placeholder={'What to do, Dodo?'}
+          description={'Elaborate...'}
           onSave={this.changeViewToWeekly}
         />
       );

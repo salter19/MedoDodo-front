@@ -18,13 +18,13 @@ class AddNewTaskView extends React.Component {
         <TextInputField
         onSubmit={this.onTextFieldSubmit}
         type="text"
-        placeholder="What to do, Dodo?"
+        placeholder={this.props.placeholder}
         labelName="Task"
         />
         <TextInputField
           onSubmit={this.onTextFieldSubmit}
           type="text"
-          placeholder="Elaborate..."
+          placeholder={this.props.description}
           labelName="Description: "
         />
         <PriorityTagList labelAlign="center" />
