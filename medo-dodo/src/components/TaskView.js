@@ -37,7 +37,7 @@ class AddNewTaskView extends React.Component {
   render() {
    
     return (
-      <div className="add-new-task-view">
+      <div className="task-view">
         <ViewBase          
           page={this.props.page}
           date={this.props.date}
