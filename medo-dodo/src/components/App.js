@@ -75,6 +75,7 @@ class App extends React.Component {
           onClickLast={this.handleLastWeek}
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
+          onClickTask={this.changeViewToModify}
         />
       );
     } else if (this.state.currentPage === pagetypes.addTask) {
@@ -106,6 +107,7 @@ class App extends React.Component {
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
           onClickWeeks={this.changeViewToWeekly}
+          onClickTask={this.changeViewToModify}
         />
       )
     } else {
