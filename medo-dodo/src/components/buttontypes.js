@@ -6,5 +6,6 @@ export default {
     addTask: pagetypes.addTask, 
     save:'save',
     modify: pagetypes.modifyTask,
-    delete: 'delete'
+    delete: 'delete',
+    category:'category'
 };
