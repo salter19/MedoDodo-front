@@ -28,7 +28,7 @@ class MyButton extends React.Component {
   };
 
   errorHandler = () => {
-    console.log(`${this.state.errormsg} ${this.props.page}`)
+    //console.log(`${this.state.errormsg} ${this.props.page}`)
   }
 
   render() {

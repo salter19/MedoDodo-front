@@ -12,6 +12,7 @@ export default class Head extends React.Component {
         "Categories",
         "Add new task",
         "Modify task",
+        this.props.catTitle
       ],
       headerMessage: "Header message",
       currentWeekMsg: '',
@@ -30,6 +31,11 @@ export default class Head extends React.Component {
       this.setState({
         showArrowButtons: false,
         headerMessage: this.state.headerMessages[1],
+      });
+    } else if (this.props.page === pagetypes.category) {
+      this.setState({
+        showArrowButtons: false,
+        headerMessage: this.state.headerMessages[4],
       });
     } else if (this.props.page === pagetypes.addTask) {
       this.setState({

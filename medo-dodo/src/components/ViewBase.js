@@ -6,7 +6,7 @@ class ViewBase extends React.Component {
     render() {
         return (
             <div className="view-base">
-                <Head date={this.props.date} page={this.props.page}/>
+                <Head date={this.props.date} page={this.props.page} catTitle={this.props.catTitle} />
                 {this.props.view}
                 <Footer 
                     page={this.props.page}

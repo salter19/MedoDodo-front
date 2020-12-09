@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
 import CategoryView from './CategoryView'
+import CatView from './CatView'
 import pagetypes from './pagetypes'
 
 class App extends React.Component {
@@ -36,12 +37,10 @@ class App extends React.Component {
 
   changeViewToCats = () => {
     this.setState({ currentPage: pagetypes.categories });
-    console.log("cats was clicked! " + this.state.currentPage)
   }
 
   changeViewToCat = () => {
     this.setState({ currentPage: pagetypes.category });
-    console.log("cats was clicked! " + this.state.currentPage)
   }
 
   changeViewToWeekly = () => {
@@ -112,6 +111,17 @@ class App extends React.Component {
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
           onClickWeeks={this.changeViewToWeekly}
+          onClickTask={this.changeViewToModify}
+          onClickCat={this.changeViewToCat}
+        />
+      )
+    } else if (this.state.currentPage === pagetypes.category) {
+      return (
+        <CatView 
+          page={this.state.currentPage}
+          date={this.state.currentDate}
+          onClickAdd={this.changeViewToAdd}
+          onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
         />
