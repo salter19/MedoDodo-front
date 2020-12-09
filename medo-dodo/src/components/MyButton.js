@@ -1,4 +1,4 @@
-import "./styles/Button.css";
+import "./styles/MyButton.css";
 import React from "react";
 import pagetypes from './pagetypes'
 
