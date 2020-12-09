@@ -39,6 +39,11 @@ class App extends React.Component {
     console.log("cats was clicked! " + this.state.currentPage)
   }
 
+  changeViewToCat = () => {
+    this.setState({ currentPage: pagetypes.category });
+    console.log("cats was clicked! " + this.state.currentPage)
+  }
+
   changeViewToWeekly = () => {
     this.setState({ currentPage: pagetypes.weekly });
     console.log("Currently we are on page " + this.state.currentPage);
@@ -108,6 +113,7 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
           onClickWeeks={this.changeViewToWeekly}
           onClickTask={this.changeViewToModify}
+          onClickCat={this.changeViewToCat}
         />
       )
     } else {

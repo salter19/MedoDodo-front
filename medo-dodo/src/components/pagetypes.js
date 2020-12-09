@@ -3,5 +3,6 @@ export default {
     weekly:'weekly', 
     addTask:'addTask', 
     modifyTask:'modifyTask',
-    task: 'task'
+    task: 'task',
+    category: 'category'
 };

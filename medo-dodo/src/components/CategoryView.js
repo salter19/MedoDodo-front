@@ -1,7 +1,5 @@
 import React from 'react'
 import CatecoryIcon from './CategoryIcon'
-import Head from './Header'
-import Footer from './Footer'
 import ViewBase from './ViewBase'
 
 class CategoryView extends React.Component {
@@ -14,7 +12,8 @@ class CategoryView extends React.Component {
                     page={this.props.page}
                     onClickRight={this.props.onClickAdd} 
                     onClickLeft={this.props.onClickWeeks}
-                    view={<CatecoryIcon />}
+                    
+                    view={<CatecoryIcon onClickCat={this.props.onClickCat} />}
                 />
                 
             </div>

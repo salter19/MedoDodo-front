@@ -1,6 +1,7 @@
 import "./styles/MyButton.css";
 import React from "react";
 import pagetypes from './pagetypes'
+import buttontypes from './buttontypes'
 
 class MyButton extends React.Component {
   state = { buttontype: '', errormsg: 'Where are we, asks button?'}
@@ -20,6 +21,10 @@ class MyButton extends React.Component {
     this.props.page === pagetypes.weekly
       ? this.props.onClickWeeks()
       : this.errorHandler();
+
+    this.state.buttontype === buttontypes.category
+      ? this.props.onClickCat()
+      : this.errorHandler()
   };
 
   errorHandler = () => {

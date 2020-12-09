@@ -7,5 +7,5 @@ export default {
     save:'save',
     modify: pagetypes.modifyTask,
     delete: 'delete',
-    category:'category'
+    category: pagetypes.category
 };
