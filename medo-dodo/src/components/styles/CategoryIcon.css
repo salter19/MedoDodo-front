@@ -1,9 +1,14 @@
 .category-icon {
     background-color: lightcyan;
+    margin: 3%;
 }
 
 .blue.box {
     margin: 2px;
     border-color: blue;
     background-color: cornflowerblue;
+}
+
+blue.box.modify {
+    border-radius: 14px;
 }

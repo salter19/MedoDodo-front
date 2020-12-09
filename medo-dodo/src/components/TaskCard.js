@@ -42,9 +42,9 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
       <div className="ui segment">
         
         <div className="ui two column centered grid">
-          <div class="six column centered row">
+          <div className="six column centered row">
 
-            <div class="column">
+            <div className="column">
 
               <div className="ui checkbox">
                 <input className="box" type="checkbox" onClick={setDone} />
@@ -58,7 +58,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
               </div>
             </div>
 
-            <div class="right floated column">
+            <div className="right floated column">
               <MyButton buttontype={buttontypes.modify} page={pagetypes.modifyTask} onSave={onClickTask}/>
             </div>
           </div>

@@ -45,13 +45,6 @@ export default class TasksWeekly extends React.Component {
   }
 
   render() {
-    const tasks = this.state.tasks.map((task) => {
-      return (
-        <li key={task.id}>
-          {task.id} {task.title} {task.due_date}
-        </li>
-      );
-    });
     return (
       <div className="tasklist">
         <h1>Here we have tasks dued:</h1>
