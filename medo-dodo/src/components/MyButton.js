@@ -2,14 +2,14 @@ import "./styles/Button.css";
 import React from "react";
 import pagetypes from './pagetypes'
 
-class Button extends React.Component {
-  state = { buttontype: '', errormsg: 'Where are we, asks button?' }
+class MyButton extends React.Component {
+  state = { buttontype: '', errormsg: 'Where are we, asks button?'}
 
   componentDidMount() {
     this.setState({ buttontype: this.props.buttontype })
   }
   changePage = () => {
-    this.props.page === pagetypes.addTask
+    this.props.page === pagetypes.addTask || this.props.page === pagetypes.modifyTask
       ? this.props.onSave()
       : this.errorHandler();
     
@@ -30,7 +30,7 @@ class Button extends React.Component {
     return (
       <div className="button">
         <button className={this.state.buttontype} onClick={this.changePage}>
-        {this.state.buttontype}
+          {this.state.buttontype}
         </button>
     </div>
       
@@ -38,4 +38,4 @@ class Button extends React.Component {
   }
 }
 
-export default Button;
+export default MyButton;

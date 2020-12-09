@@ -6,7 +6,7 @@ import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 
-class AddNewTaskView extends React.Component {
+class TaskView extends React.Component {
 
   onTextFieldSubmit(term) {
     console.log(term);
@@ -50,4 +50,4 @@ class AddNewTaskView extends React.Component {
   }
 }
 
-export default AddNewTaskView;
+export default TaskView;

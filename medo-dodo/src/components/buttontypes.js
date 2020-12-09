@@ -5,5 +5,6 @@ export default {
     weekly: pagetypes.weekly, 
     addTask: pagetypes.addTask, 
     save:'save',
-    taskCard: 'taskCard'
+    modify: pagetypes.modifyTask,
+    delete: 'delete'
 };

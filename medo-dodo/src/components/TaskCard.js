@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PriorityTag from "./PriorityTag";
 import Servers from './Servers'
-import Button from './Button'
+import MyButton from './MyButton'
 import buttontypes from './buttontypes'
 import pagetypes from './pagetypes'
 
@@ -37,25 +37,34 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
     // this will eventually lead to changing appearance of task card
   };
 
-  const view = () => {
-    return (
-      <div className="ui segment">
-      <div className="ui checkbox">
-        <input className="box" type="checkbox" onClick={setDone} />
-        <label>{title}</label>
-      </div>
-      <div className="date">{dueDate}</div>
-
-      <div className="priority">
-        <PriorityTag priority={priority} />
-      </div>
-    </div>
-    )
-  }
-
   return (
     <div className="task-card">
-      <Button buttontype={buttontypes.taskCard} page={} view={view()}/>
+      <div className="ui segment">
+        
+        <div className="ui two column centered grid">
+          <div class="six column centered row">
+
+            <div class="column">
+
+              <div className="ui checkbox">
+                <input className="box" type="checkbox" onClick={setDone} />
+                <label><h3>{title}</h3></label>
+              </div>
+
+              <div className="date">{dueDate}</div>
+
+              <div className="priority">
+                <PriorityTag priority={priority} />
+              </div>
+            </div>
+
+            <div class="right floated column">
+              <MyButton buttontype={buttontypes.modify} page={pagetypes.modifyTask} onSave={onClickTask}/>
+              <MyButton buttontype={buttontypes.delete}/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

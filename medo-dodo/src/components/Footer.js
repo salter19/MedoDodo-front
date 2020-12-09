@@ -1,6 +1,6 @@
 import "./styles/Footer.css";
 import React from "react";
-import Button from './Button'
+import MyButton from './MyButton'
 import buttontypes from './buttontypes'
 import pagetypes from './pagetypes'
 
@@ -18,18 +18,18 @@ export default class Footer extends React.Component {
     if (this.props.page === pagetypes.weekly) {
       return (
       <div className="flex container">
-        <Button buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickLeft} />
-        <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
+        <MyButton buttontype={buttontypes.categories} page={pagetypes.categories} onClickCats={this.props.onClickLeft} />
+        <MyButton buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
       </div>)
     } else if (this.props.page === pagetypes.categories) {
       return (
         <div className="flex container">
-          <Button buttontype={buttontypes.weekly} page={pagetypes.weekly} onClickWeeks={this.props.onClickLeft} />
-          <Button buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
+          <MyButton buttontype={buttontypes.weekly} page={pagetypes.weekly} onClickWeeks={this.props.onClickLeft} />
+          <MyButton buttontype={buttontypes.addTask} page={pagetypes.addTask} onSave={this.props.onClickRight} />
         </div>) 
     } else if (this.props.page === pagetypes.addTask) {
       return (
-        <Button buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
+        <MyButton buttontype={buttontypes.save} page={this.props.page} onSave={this.props.onSave} />
       )
     }
     
