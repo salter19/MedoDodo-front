@@ -1,9 +1,23 @@
+import './styles/CategoryIcon.css'
 import React from 'react'
+import MyButton from './MyButton'
 
-const CategoryIcon = () => {
-    return (
-        <div className="category-icon"> hello, i am an icon for a category</div>
-    )
+class CategoryIcon extends React.Component {
+
+    render () {
+        return (
+            <div className="category-icon">
+                <div className="ui card">
+                    <div className="blue box">
+    
+                        <MyButton />
+                    </div>
+    
+                </div>
+            </div>
+        )
+    }
+    
 }
 
 export default CategoryIcon
