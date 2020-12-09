@@ -4,6 +4,7 @@ import PriorityTag from "./PriorityTag";
 import Servers from './Servers'
 import Button from './Button'
 import buttontypes from './buttontypes'
+import pagetypes from './pagetypes'
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
@@ -54,7 +55,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
 
   return (
     <div className="task-card">
-      <Button buttontype=/>
+      <Button buttontype={buttontypes.taskCard} page={} view={view()}/>
     </div>
   );
 };
