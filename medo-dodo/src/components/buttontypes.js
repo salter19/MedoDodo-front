@@ -4,5 +4,6 @@ export default {
     categories: pagetypes.categories, 
     weekly: pagetypes.weekly, 
     addTask: pagetypes.addTask, 
-    save:'save'
+    save:'save',
+    taskCard: 'taskCard'
 };

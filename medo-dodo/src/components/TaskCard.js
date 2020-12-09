@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PriorityTag from "./PriorityTag";
 import Servers from './Servers'
+import Button from './Button'
+import buttontypes from './buttontypes'
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
@@ -34,19 +36,25 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
     // this will eventually lead to changing appearance of task card
   };
 
+  const view = () => {
+    return (
+      <div className="ui segment">
+      <div className="ui checkbox">
+        <input className="box" type="checkbox" onClick={setDone} />
+        <label>{title}</label>
+      </div>
+      <div className="date">{dueDate}</div>
+
+      <div className="priority">
+        <PriorityTag priority={priority} />
+      </div>
+    </div>
+    )
+  }
+
   return (
     <div className="task-card">
-      <div className="ui segment">
-        <div className="ui checkbox">
-          <input className="box" type="checkbox" onClick={setDone} />
-          <label>{title}</label>
-        </div>
-        <div className="date">{dueDate}</div>
-
-        <div className="priority">
-          <PriorityTag priority={priority} />
-        </div>
-      </div>
+      <Button buttontype=/>
     </div>
   );
 };
