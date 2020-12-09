@@ -5,10 +5,9 @@ import Header from "./Header.js";
 import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
-import AddNewTaskView from "./AddNewTaskView";
+import TaskView from "./TaskView";
 import CategoryView from './CategoryView'
 import pagetypes from './pagetypes'
-import Head from "./Head";
 
 class App extends React.Component {
   constructor(props) {
@@ -75,7 +74,7 @@ class App extends React.Component {
       );
     } else if (this.state.currentPage === pagetypes.addTask) {
       return (
-        <AddNewTaskView
+        <TaskView
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
