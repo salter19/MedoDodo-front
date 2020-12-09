@@ -17,9 +17,15 @@ button:hover {
   color: white;
 }
 
-.categories, .weekly .addTask, .modifyTask {
-  border-color: white;
-  border-radius: 4px;
+.categories, .weekly .addTask{
   width: 200px;
+  border-radius: 4px;
+}
+
+.modifyTask {
+  background-color: darkorange;
+  color: white;
+  border-radius: 4px;
+  
 }
 
