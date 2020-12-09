@@ -1,4 +1,4 @@
-import "./styles/AddNewTaskView.css";
+import "./styles/TaskView.css";
 import React from "react";
 import ViewBase from './ViewBase'
 import TextInputField from "./TextInputField";
