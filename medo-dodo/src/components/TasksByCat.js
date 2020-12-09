@@ -18,7 +18,7 @@ class TasksByCat extends React.Component {
       this.createCards()
       
     } catch (error) {
-      alert("Problem with getting data!\nDid you remember to change to local in backend config?" + error);
+      alert("Problem with getting data!\nDid you remember to change to local in backend config?\n" + error);
     }
   };
 

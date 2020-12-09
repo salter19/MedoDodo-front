@@ -27,12 +27,10 @@ class App extends React.Component {
 
   changeViewToAdd = () => {
     this.setState({ currentPage: pagetypes.addTask });
-    console.log("Currently we are on page " + this.state.currentPage);
   };
   
   changeViewToModify = () => {
     this.setState({ currentPage: pagetypes.modifyTask });
-    console.log("Currently we are on page " + this.state.currentPage);
   };
 
   changeViewToCats = () => {
@@ -45,25 +43,20 @@ class App extends React.Component {
 
   changeViewToWeekly = () => {
     this.setState({ currentPage: pagetypes.weekly });
-    console.log("Currently we are on page " + this.state.currentPage);
   };
 
   handleNextWeek = () => {
     if (this.state.showingWeek === 53) {
       this.setState({ showingWeek: 1 });
-      console.log(this.state.showingWeek);
     } else {
       this.setState({ showingWeek: this.state.showingWeek + 1 });
-      console.log(this.state.showingWeek);
     }
   };
   handleLastWeek = () => {
     if (this.state.showingWeek === 1) {
       this.setState({ showingWeek: 53 });
-      console.log(this.state.showingWeek);
     } else {
       this.setState({ showingWeek: this.state.showingWeek - 1 });
-      console.log(this.state.showingWeek);
     }
   };
 
@@ -138,7 +131,6 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentPage !== this.state.currentPage) {
-      console.log("need to change view now");
       this.checkView();
     }
   }

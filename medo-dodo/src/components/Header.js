@@ -17,7 +17,6 @@ export default class Head extends React.Component {
       headerMessage: "Header message",
       currentWeekMsg: '',
     };
-    console.log(this.props.page);
   }
 
   defineHeaderMessage() {
@@ -61,9 +60,7 @@ export default class Head extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.showingWeek !== this.props.showingWeek) {
-      console.log("something happened" + JSON.stringify(prevProps));
       this.defineHeaderMessage();
-      console.log("header changed to " + this.state.headerMessage);
     }
   }
 

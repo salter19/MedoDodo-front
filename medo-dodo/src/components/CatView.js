@@ -3,24 +3,6 @@ import ViewBase from './ViewBase'
 import TasksByCat from './TasksByCat'
 
 class CatView extends React.Component {
-    state = { view:'' }
-    componentDidMount() {
-        const tmp = this.getView();
-        console.log(tmp.length)
-    }
-
-    getView = () => {
-        console.log("getting view")
-        return (
-            <div className="ui segement">
-                <ul>
-                    <li>task 1</li>
-                    <li>task 2</li>
-                    <li>task 3</li>
-                </ul>
-            </div>
-        )
-    }
 
     render() {
         return (
