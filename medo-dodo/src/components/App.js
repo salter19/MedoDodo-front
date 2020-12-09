@@ -28,6 +28,11 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.addTask });
     console.log("Currently we are on page " + this.state.currentPage);
   };
+  
+  changeViewToModify = () => {
+    this.setState({ currentPage: pagetypes.modifyTask });
+    console.log("Currently we are on page " + this.state.currentPage);
+  };
 
   changeViewToCats = () => {
     this.setState({ currentPage: pagetypes.categories });
@@ -80,6 +85,17 @@ class App extends React.Component {
           date={this.state.currentDate}
           placeholder={'What to do, Dodo?'}
           description={'Elaborate...'}
+          onSave={this.changeViewToWeekly}
+        />
+      );
+    } else if (this.state.currentPage === pagetypes.modifyTask) {
+      return (
+        <TaskView
+          title={this.state.currentPage}
+          page={this.state.currentPage}
+          date={this.state.currentDate}
+          placeholder={'Here will be the task in question.'}
+          description={'And it\'s possible description...'}
           onSave={this.changeViewToWeekly}
         />
       );
