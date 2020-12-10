@@ -9,3 +9,11 @@ li {
 .tasklist {
   margin: 20px;
 }
+
+.emptyWeek {
+  padding: 45px;
+}
+
+.emptyContainer {
+  margin: 10px 0px;
+}
