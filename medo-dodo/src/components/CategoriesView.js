@@ -4,43 +4,68 @@ import categoryTitles from './validCategoryTitles'
 import CategoryIcon from './CategoryIcon'
 
 class CategoriesView extends React.Component {
-    state = { tasklist: [], cards: [] }
+    state = { titles: [], tasks: [], icons: [] }
 
     componentDidMount() {
-        this.createCards();
+        this.createIcons();
     }
 
-    createCards = async() => {
-        const titles = await categoryTitles.validCatTitles(); 
-        titles.map(e => this.setDataForIcon(e)) 
-        let taskCards = []
+    createIcons = async() => {
+        try {            
+            const catTitles = await categoryTitles.validCatTitles(); 
+            const taskObjs = await this.getTaskObjects(catTitles);
+            const taskTitles = taskObjs.map(e => this.getTaskTitles(e))
+         
+            this.setState({ titles: catTitles, tasks: taskTitles})
 
-      
-        /*
-        let i = 0;
-        const taskCards = titles.map((e) => {
-            return <CategoryIcon key={i++} title={e} onClickCat={this.props.onClickCat} />;
-        });*/
+            const catIcons = catTitles.map(e => {
+                const items = this.getTasksPerCategoryByTitle(e)
+                return (
+                    <CategoryIcon key={e} title={e} data={items} />
+                )
+            })
 
-        this.setState({ cards: taskCards });
+            this.setState( { icons: catIcons } )
+            
+        } catch (error) {
+            alert(`Something went wrong with title and task retrieval.\n${error}`)
+        }  
     }
 
-    setDataForIcon = async(e) => {
-        const taskObjects = await categoryTitles.taskTitlesByCat(e)
-        this.setTasksPerIcon(taskObjects); 
+    getTasksPerCategoryByTitle = (e) => {
+        console.log(this.state.titles.indexOf(e))
+        return this.state.tasks[this.state.titles.indexOf(e)]
     }
 
-    setTasksPerIcon = (taskObjects) => {       
+    getTaskObjects = async(titles) => {
+        try {            
+            const someFunc = async(resolve, reject) => {
+                let res = []
+                for (let i = 0; i < titles.length; i++) {
+                    const obj = await categoryTitles.taskTitlesByCat(titles[i]);
+
+                    res.push(obj)
+                }
+                res.length < titles.length ? reject('tasks do not come through') : resolve(res)
+
+            }
+            return new Promise (someFunc)
+        } catch (error) {
+            alert(`something went wrong with the retrieval of tasks.\n${error}`)
+        }
+
+    }
+
+    getTaskTitles = (taskObjects) => {       
         const tasks = taskObjects.map((e) => e.title)
-        const tasks_max_three = tasks.length > 3 ? tasks.slice(0, 3) : tasks;        
-        this.setState({ tasklist: tasks_max_three })
+        return tasks.length > 3 ? tasks.slice(0, 3) : tasks;
     }
     
     render() {
         const view = (
                 <div className="categories">
                     <ul>
-                        {this.state.cards}
+                        {this.state.icons}
                     </ul>
                 </div>
             )
