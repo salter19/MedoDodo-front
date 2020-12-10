@@ -16,7 +16,6 @@ class CategoryIcon extends React.Component {
         this.setState( { tasks: listItems } )
     }
 
-
     render () {
         return (
             <div className="category-icon">
@@ -41,8 +40,7 @@ class CategoryIcon extends React.Component {
                 </div>
             </div>
         )
-    }
-    
+    }  
 }
 
 export default CategoryIcon
