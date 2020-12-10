@@ -46,7 +46,11 @@ class App extends React.Component {
   };
 
   handleNextWeek = () => {
-    if (this.state.showingWeek === 53) {
+    const lastWeekOfYear = currentWeekNumber(
+      "12/31/" + this.state.currentDate.getFullYear()
+    );
+    console.log(lastWeekOfYear);
+    if (this.state.showingWeek === lastWeekOfYear) {
       this.setState({ showingWeek: 1 });
       console.log(this.state.showingWeek);
     } else {
