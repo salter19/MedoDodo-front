@@ -41,6 +41,20 @@ export default class TasksWeekly extends React.Component {
     this.setState({ taskCards: tmp });
   };
 
+  showTasksIsEmpty() {
+    if (this.state.tasks.length === 0) {
+      return (
+        <div className="emptyContainer">
+          <div className="ui segment">
+            <div className="emptyWeek">
+              <h2>There are no tasks in week {this.props.showingWeek}</h2>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
   componentDidMount() {
     this.readTasks();
   }
@@ -54,18 +68,14 @@ export default class TasksWeekly extends React.Component {
   }
 
   render() {
-    /*const tasks = this.state.tasks.map((task) => {
-      return (
-        <li key={task.id}>
-          {task.id} {task.title} {task.due_date}
-        </li>
-      );
-    });
-    */
+    const noTasks = this.showTasksIsEmpty();
     return (
       <div className="tasklist">
         <h1>Here we have tasks dued:</h1>
-        <ul>{this.state.taskCards}</ul>
+        <ul>
+          {this.state.taskCards}
+          {noTasks}
+        </ul>
       </div>
     );
   }
