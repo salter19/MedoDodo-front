@@ -19,4 +19,4 @@ const everyCat = async() => {
     return result.data
 }
 
-export default {byWeek, byCategory: byCategoryTitle, everyCat}
+export default {byWeek, byCategoryTitle, everyCat}
