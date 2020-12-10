@@ -3,7 +3,7 @@ import React from "react";
 import TaskCard from "./TaskCard";
 import TasksGetter from './TasksGetter'
 
-class TasksByCat extends React.Component {
+class TasksByCatTitle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,6 @@ class TasksByCat extends React.Component {
       const everyCat = await TasksGetter.everyCat();
       console.log(everyCat)
       const tasksOfTheCat = await TasksGetter.byCategoryTitle('my_tasks')
-      //const tasksOfTheCat = await TasksGetter.byCategoryTitle('my_tasks')
       this.setState({tasks: tasksOfTheCat})
       this.createCards()
       
@@ -54,4 +53,4 @@ class TasksByCat extends React.Component {
   }
 }
 
-export default TasksByCat
+export default TasksByCatTitle
