@@ -1,8 +1,18 @@
 import React from 'react'
 import CatecoryIcon from './CategoryIcon'
 import ViewBase from './ViewBase'
+import validCatTitles from './validCategoryTitles'
 
 class CategoriesView extends React.Component {
+    state = { titles: [], cards: []}
+
+    componentDidMount() {
+        this.setState({titles: validCatTitles()})
+        this.createCards()
+    }
+    createCards = () => {
+
+    }
     render() {
         return (
             <div className="categories-view">
