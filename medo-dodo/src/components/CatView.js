@@ -1,6 +1,6 @@
 import React from 'react'
 import ViewBase from './ViewBase'
-import TasksByCat from './TasksByCat'
+import TasksByCatTitle from './TasksByCatTitle'
 
 class CatView extends React.Component {
 
@@ -13,7 +13,7 @@ class CatView extends React.Component {
                     onClickRight={this.props.onClickAdd} 
                     onClickLeft={this.props.onClickCats}
                     catTitle="meow-1"
-                    view={<TasksByCat />}
+                    view={<TasksByCatTitle />}
                 />
             </div>
         )
