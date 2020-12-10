@@ -20,7 +20,7 @@ class CategoriesView extends React.Component {
     
         let i = 0;
         const taskCards = this.state.titles.map((e) => {
-            return <CategoryIcon key={i++} title={e}/>;
+            return <CategoryIcon key={i++} title={e} onClickCat={this.props.onClickCat} />;
         });
         this.setState({ cards: taskCards });
     }
