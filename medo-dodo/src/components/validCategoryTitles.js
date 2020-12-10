@@ -5,5 +5,10 @@ const validCatTitles = async() => {
     return titlesArr
 }
 
-export default validCatTitles
+const taskTitlesByCat = async(cat) => {
+    const taskObj = await TasksGetter.byCategoryTitle(cat)
+    console.log(taskObj)
+}
+
+export default { validCatTitles, taskTitlesByCat }
 

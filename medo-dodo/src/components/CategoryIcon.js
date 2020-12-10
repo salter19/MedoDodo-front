@@ -14,7 +14,10 @@ class CategoryIcon extends React.Component {
             <div className="category-icon">
                 <div className="ui card">
                     <div className="blue box">
-                    <div className="ui header">{this.props.title}</div>
+                        
+                        <div className="header">{this.props.title}</div>
+
+
     
                         <MyButton page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} />
                     </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import ViewBase from './ViewBase'
 import validCatTitles from './validCategoryTitles'
-import TaskCard from './TaskCard'
 import CategoryIcon from './CategoryIcon'
 
 class CategoriesView extends React.Component {
