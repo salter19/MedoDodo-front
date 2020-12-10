@@ -6,16 +6,17 @@ import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
-import CategoryView from './CategoryView'
-import pagetypes from './pagetypes'
+import CategoryView from "./CategoryView";
+import pagetypes from "./pagetypes";
+const currentWeekNumber = require("current-week-number");
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentDate: new Date(),
-      currentWeek: 49,
-      showingWeek: 49,
+      currentWeek: currentWeekNumber(new Date()),
+      showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
     };
   }
@@ -28,7 +29,7 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.addTask });
     console.log("Currently we are on page " + this.state.currentPage);
   };
-  
+
   changeViewToModify = () => {
     this.setState({ currentPage: pagetypes.modifyTask });
     console.log("Currently we are on page " + this.state.currentPage);
@@ -36,8 +37,8 @@ class App extends React.Component {
 
   changeViewToCats = () => {
     this.setState({ currentPage: pagetypes.categories });
-    console.log("cats was clicked! " + this.state.currentPage)
-  }
+    console.log("cats was clicked! " + this.state.currentPage);
+  };
 
   changeViewToWeekly = () => {
     this.setState({ currentPage: pagetypes.weekly });
@@ -84,8 +85,8 @@ class App extends React.Component {
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
-          placeholder={'What to do, Dodo?'}
-          description={'Elaborate...'}
+          placeholder={"What to do, Dodo?"}
+          description={"Elaborate..."}
           onSave={this.changeViewToWeekly}
         />
       );
@@ -95,21 +96,21 @@ class App extends React.Component {
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
-          placeholder={'Here will be the task in question.'}
-          description={'And it\'s possible description...'}
+          placeholder={"Here will be the task in question."}
+          description={"And it's possible description..."}
           onSave={this.changeViewToWeekly}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
       return (
-        <CategoryView 
+        <CategoryView
           page={this.state.currentPage}
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
           onClickWeeks={this.changeViewToWeekly}
           onClickTask={this.changeViewToModify}
         />
-      )
+      );
     } else {
       return (
         <div>
@@ -129,11 +130,7 @@ class App extends React.Component {
 
   render() {
     let view = this.checkView();
-    return (
-      <div className="App ui container">
-        {view}
-      </div>
-    );
+    return <div className="App ui container">{view}</div>;
   }
 }
 
