@@ -12,9 +12,8 @@ class CategoriesView extends React.Component {
         this.createCards()
     }
     getTitles = async() => {
-        const tmp = await validCatTitles();
-        console.log(tmp)
-        this.setState({ titles: tmp })
+        const res = await validCatTitles();
+        this.setState({ titles: res })
         this.createCards()
     }
     createCards = () => {
@@ -24,7 +23,6 @@ class CategoriesView extends React.Component {
             return <CategoryIcon key={i++} title={e}/>;
         });
         this.setState({ cards: taskCards });
-        console.log(this.state.titles.length)
     }
     
     render() {
