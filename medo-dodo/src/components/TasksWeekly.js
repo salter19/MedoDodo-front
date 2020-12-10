@@ -1,7 +1,7 @@
 import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
-import Servers from './Servers'
+import Servers from "./Servers";
 import TasksGetter from "./TasksGetter";
 
 export default class TasksWeekly extends React.Component {
@@ -14,20 +14,29 @@ export default class TasksWeekly extends React.Component {
     };
   }
 
-  readTasks = async() => {
+  readTasks = async () => {
     try {
-      const tasksOfTheWeek = await TasksGetter.byWeek(this.props.showingWeek)
-      this.setState({tasks: tasksOfTheWeek})
-      this.createCards()
-      
+      const tasksOfTheWeek = await TasksGetter.byWeek(this.props.showingWeek);
+      this.setState({ tasks: tasksOfTheWeek });
+      this.createCards();
     } catch (error) {
-      alert("Problem with getting data!\nDid you remember to change to local in backend config?" + error);
+      alert(
+        "Problem with getting data!\nDid you remember to change to local in backend config?" +
+          error
+      );
     }
   };
 
   createCards = () => {
     const tmp = this.state.tasks.map((e) => {
-      return <TaskCard key={e.id} id={e.id} priority={e.priority} onClickTask={this.props.onClickTask}/>;
+      return (
+        <TaskCard
+          key={e.id}
+          id={e.id}
+          priority={e.priority}
+          onClickTask={this.props.onClickTask}
+        />
+      );
     });
     this.setState({ taskCards: tmp });
   };
@@ -45,13 +54,14 @@ export default class TasksWeekly extends React.Component {
   }
 
   render() {
-    const tasks = this.state.tasks.map((task) => {
+    /*const tasks = this.state.tasks.map((task) => {
       return (
         <li key={task.id}>
           {task.id} {task.title} {task.due_date}
         </li>
       );
     });
+    */
     return (
       <div className="tasklist">
         <h1>Here we have tasks dued:</h1>
