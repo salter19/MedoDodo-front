@@ -6,11 +6,15 @@ import buttontypes from './buttontypes'
 
 class CategoryIcon extends React.Component {
 
+    constructor({props}) {
+        super(props)
+    }
     render () {
         return (
             <div className="category-icon">
                 <div className="ui card">
                     <div className="blue box">
+                    <div className="ui header">{this.props.title}</div>
     
                         <MyButton page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} />
                     </div>
