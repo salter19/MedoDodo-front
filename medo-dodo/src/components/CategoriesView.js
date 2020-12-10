@@ -5,7 +5,7 @@ import ViewBase from './ViewBase'
 class CategoriesView extends React.Component {
     render() {
         return (
-            <div className="category-view">
+            <div className="categories-view">
 
                 <ViewBase 
                     date={this.props.date} 

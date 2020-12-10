@@ -1,20 +1,24 @@
 import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
-import TasksGetter from "./TasksGetter";
+import TasksGetter from './TasksGetter'
 
 class TasksByCat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      tasks: [],
       taskCards: [],
     };
   }
 
   readTasks = async() => {
     try {
-      const tasksOfTheCat = await TasksGetter.byCategory("my_tasks")
-      this.setState({tasks: tasksOfTheCat})
+      const everyCat = await TasksGetter.everyCat();
+      console.log(everyCat)
+      const tasksOfTheCat = await TasksGetter.byCategoryTitle('my_tasks')
+      //const tasksOfTheCat = await TasksGetter.byCategoryTitle('my_tasks')
+      //this.setState({tasks: tasksOfTheCat})
       this.createCards()
       
     } catch (error) {
