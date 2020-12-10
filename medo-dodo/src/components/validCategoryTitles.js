@@ -7,7 +7,7 @@ const validCatTitles = async() => {
 
 const taskTitlesByCat = async(cat) => {
     const taskObj = await TasksGetter.byCategoryTitle(cat)
-    console.log(taskObj)
+    return taskObj
 }
 
 export default { validCatTitles, taskTitlesByCat }
