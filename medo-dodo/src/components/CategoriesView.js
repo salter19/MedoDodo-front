@@ -2,7 +2,7 @@ import React from 'react'
 import CatecoryIcon from './CategoryIcon'
 import ViewBase from './ViewBase'
 
-class CategoryView extends React.Component {
+class CategoriesView extends React.Component {
     render() {
         return (
             <div className="category-view">
@@ -21,4 +21,4 @@ class CategoryView extends React.Component {
     }
 }
 
-export default CategoryView
+export default CategoriesView

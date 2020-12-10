@@ -6,7 +6,7 @@ import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
-import CategoryView from './CategoryView'
+import CategoriesView from './CategoriesView'
 import CatView from './CatView'
 import pagetypes from './pagetypes'
 
@@ -99,7 +99,7 @@ class App extends React.Component {
       );
     } else if (this.state.currentPage === pagetypes.categories) {
       return (
-        <CategoryView 
+        <CategoriesView 
           page={this.state.currentPage}
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
