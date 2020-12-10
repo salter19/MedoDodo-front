@@ -59,8 +59,17 @@ class App extends React.Component {
     }
   };
   handleLastWeek = () => {
+    let lastWeekLastYear = currentWeekNumber(
+      "12/31/" + (this.state.currentDate.getFullYear() - 1)
+    );
+    if (lastWeekLastYear === 1) {
+      lastWeekLastYear = currentWeekNumber(
+        "12/24/" + (this.state.currentDate.getFullYear() - 1)
+      );
+    }
+    console.log(lastWeekLastYear);
     if (this.state.showingWeek === 1) {
-      this.setState({ showingWeek: 53 });
+      this.setState({ showingWeek: lastWeekLastYear });
       console.log(this.state.showingWeek);
     } else {
       this.setState({ showingWeek: this.state.showingWeek - 1 });
