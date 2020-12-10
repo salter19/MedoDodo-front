@@ -15,6 +15,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentDate: new Date(),
+      showingYear: new Date().getFullYear(),
       currentWeek: currentWeekNumber(new Date()),
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
@@ -46,35 +47,36 @@ class App extends React.Component {
   };
 
   handleNextWeek = () => {
-    const lastWeekOfYear = currentWeekNumber(
-      "12/31/" + this.state.currentDate.getFullYear()
-    );
-    console.log(lastWeekOfYear);
+    const lastWeekOfYear = currentWeekNumber("12/31/" + this.state.showingYear);
     if (this.state.showingWeek === lastWeekOfYear) {
-      this.setState({ showingWeek: 1 });
-      console.log(this.state.showingWeek);
+      this.setState({
+        showingWeek: 1,
+        showingYear: this.state.showingYear + 1,
+      });
     } else {
       this.setState({ showingWeek: this.state.showingWeek + 1 });
-      console.log(this.state.showingWeek);
     }
+    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
+
   handleLastWeek = () => {
     let lastWeekLastYear = currentWeekNumber(
-      "12/31/" + (this.state.currentDate.getFullYear() - 1)
+      "12/31/" + (this.state.showingYear - 1)
     );
     if (lastWeekLastYear === 1) {
       lastWeekLastYear = currentWeekNumber(
-        "12/24/" + (this.state.currentDate.getFullYear() - 1)
+        "12/24/" + (this.state.showingYear - 1)
       );
     }
-    console.log(lastWeekLastYear);
     if (this.state.showingWeek === 1) {
-      this.setState({ showingWeek: lastWeekLastYear });
-      console.log(this.state.showingWeek);
+      this.setState({
+        showingWeek: lastWeekLastYear,
+        showingYear: this.state.showingYear - 1,
+      });
     } else {
       this.setState({ showingWeek: this.state.showingWeek - 1 });
-      console.log(this.state.showingWeek);
     }
+    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
 
   checkView() {
