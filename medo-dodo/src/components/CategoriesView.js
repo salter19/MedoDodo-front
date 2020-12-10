@@ -21,7 +21,7 @@ class CategoriesView extends React.Component {
             const catIcons = catTitles.map(e => {
                 const items = this.getTasksPerCategoryByTitle(e)
                 return (
-                    <CategoryIcon key={e} title={e} data={items} />
+                    <CategoryIcon key={e} title={e} data={items} onClickCat={this.props.onClickCat} />
                 )
             })
 
@@ -33,7 +33,6 @@ class CategoriesView extends React.Component {
     }
 
     getTasksPerCategoryByTitle = (e) => {
-        console.log(this.state.titles.indexOf(e))
         return this.state.tasks[this.state.titles.indexOf(e)]
     }
 
