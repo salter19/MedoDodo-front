@@ -2,7 +2,7 @@ import React from 'react'
 import ViewBase from './ViewBase'
 import TasksByCatTitle from './TasksByCatTitle'
 
-class CatView extends React.Component {
+class CategoryView extends React.Component {
 
     render() {
         return (
@@ -20,4 +20,4 @@ class CatView extends React.Component {
     }
 }
 
-export default CatView
+export default CategoryView
