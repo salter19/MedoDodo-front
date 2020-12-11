@@ -43,7 +43,7 @@ class MyButton extends React.Component {
     return (
       <div className="button">
         <button className={this.state.buttontype} onClick={this.changePage} >
-          {this.state.buttontype}
+          {this.state.buttonText}
         </button>
     </div>
       
