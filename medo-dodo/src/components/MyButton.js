@@ -4,10 +4,14 @@ import pagetypes from './pagetypes'
 import buttontypes from './buttontypes'
 
 class MyButton extends React.Component {
-  state = { buttontype: '', errormsg: 'Where are we, asks button?' }
+  state = { buttontype: '', errormsg: 'Where are we, asks button?', buttonText:'' }
 
   componentDidMount() {
     this.setState({ buttontype: this.props.buttontype })
+  }
+
+  setButtonText = () => {
+
   }
   changePage = () => {
     this.props.page === pagetypes.addTask || this.props.page === pagetypes.modifyTask
