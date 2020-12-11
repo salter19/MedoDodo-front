@@ -13,7 +13,7 @@ class CategoryView extends React.Component {
                     onClickRight={this.props.onClickAdd} 
                     onClickLeft={this.props.onClickCats}
                     catTitle={this.props.title}
-                    view={<TasksByCatTitle />}
+                    view={<TasksByCatTitle catTitle={this.props.title} />}
                 />
             </div>
         )
