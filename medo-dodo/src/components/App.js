@@ -85,6 +85,7 @@ class App extends React.Component {
           placeholder={'What to do, Dodo?'}
           description={'Elaborate...'}
           onSave={this.changeViewToWeekly}
+          onSaveC={this.changeViewToCats}
         />
       );
     } else if (this.state.currentPage === pagetypes.modifyTask) {
@@ -96,6 +97,7 @@ class App extends React.Component {
           placeholder={'Here will be the task in question.'}
           description={'And it\'s possible description...'}
           onSave={this.changeViewToWeekly}
+          onSaveC={this.changeViewToCats}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
