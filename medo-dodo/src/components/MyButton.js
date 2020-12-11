@@ -12,9 +12,9 @@ class MyButton extends React.Component {
   }
 
   setButtonText = () => {
-    this.state.buttontype === buttontypes.category
+    this.props.buttontype === buttontypes.category
       ? this.setState( { buttonText: this.props.category } )
-      : this.setState( { buttonText: this.state.buttontype } )
+      : this.setState( { buttonText: this.props.buttontype } )
   }
 
   changePage = () => {
