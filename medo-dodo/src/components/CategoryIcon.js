@@ -20,17 +20,16 @@ class CategoryIcon extends React.Component {
     render () {
         return (
             <div className="category-icon">
+                
                 <div className="ui card">
-                    <div className="blue">
-
-                        <div className="task">
-                            <ul>
-                                {this.state.tasks}
-                            </ul>
-                        </div>
-    
-                        <MyButton page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} category={this.props.title} />
+                    <MyButton className="butt" page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} category={this.props.title} />
+                                               
+                    <div className="task">
+                        <ul>
+                            {this.state.tasks}
+                        </ul>
                     </div>
+                    
     
                 </div>
             </div>
