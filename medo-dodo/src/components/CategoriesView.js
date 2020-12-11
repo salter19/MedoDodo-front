@@ -1,3 +1,4 @@
+import './styles/CategoriesView.css'
 import React from 'react'
 import ViewBase from './ViewBase'
 import categoryTitles from './validCategoryTitles'
@@ -21,7 +22,9 @@ class CategoriesView extends React.Component {
             const catIcons = catTitles.map(e => {
                 const items = this.getTasksPerCategoryByTitle(e)
                 return (
-                    <CategoryIcon key={e} title={e} data={items} onClickCat={this.props.onClickCat} />
+                    <div className="eight wide column" >
+                        <CategoryIcon key={e} title={e} data={items} onClickCat={this.props.onClickCat} />
+                    </div>
                 )
             })
 
@@ -63,8 +66,10 @@ class CategoriesView extends React.Component {
     render() {
         const view = (
                 <div className="categories">
-                    <ul>
+                    <div className="ui grid container" >
                         {this.state.icons}
+                    </div>
+                    <ul>
                     </ul>
                 </div>
             )
