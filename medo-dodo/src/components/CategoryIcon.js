@@ -12,7 +12,8 @@ class CategoryIcon extends React.Component {
     }
 
     componentDidMount() {
-        const listItems = this.props.data.map(e => <li>{e}</li>)
+        let i = 0;
+        const listItems = this.props.data.map(e => <li key={i++} >{e}</li>)
         this.setState( { tasks: listItems } )
     }
 
@@ -21,12 +22,6 @@ class CategoryIcon extends React.Component {
             <div className="category-icon">
                 <div className="ui card">
                     <div className="blue box">
-                        
-                        <div className="header">
-                            <h3>
-                                {this.props.title}
-                            </h3>
-                        </div>
 
                         <div className="task">
                             <ul>
