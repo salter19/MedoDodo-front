@@ -34,7 +34,7 @@ class CategoryIcon extends React.Component {
                             </ul>
                         </div>
     
-                        <MyButton page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} />
+                        <MyButton page={pagetypes.category} buttontype={buttontypes.category} onClickCat={this.props.onClickCat} category={} />
                     </div>
     
                 </div>
