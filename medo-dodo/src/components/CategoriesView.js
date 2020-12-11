@@ -65,9 +65,11 @@ class CategoriesView extends React.Component {
     
     render() {
         const view = (
-                <div className="categories">
-                    <div className="ui grid container" >
-                        {this.state.icons}
+                <div className="categories-grid">
+                    <div className="ui grid container">
+                        <div className="ui two column centred grid" >
+                            {this.state.icons}
+                        </div>                        
                     </div>
                     <ul>
                     </ul>
