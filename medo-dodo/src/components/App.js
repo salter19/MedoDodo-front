@@ -38,8 +38,8 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.categories });
   }
 
-  changeViewToCat = () => {
-    this.setState({ currentPage: pagetypes.category });
+  changeViewToCat = (cat) => {
+    this.setState({ currentPage: pagetypes.category, currentCategory: cat });
   }
 
   changeViewToWeekly = () => {
@@ -114,6 +114,7 @@ class App extends React.Component {
         <CategoryView 
           page={this.state.currentPage}
           date={this.state.currentDate}
+          title={this.state.currentCategory}
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
