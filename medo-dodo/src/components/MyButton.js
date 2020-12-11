@@ -4,7 +4,7 @@ import pagetypes from './pagetypes'
 import buttontypes from './buttontypes'
 
 class MyButton extends React.Component {
-  state = { buttontype: '', errormsg: 'Where are we, asks button?', category: ''}
+  state = { buttontype: '', errormsg: 'Where are we, asks button?' }
 
   componentDidMount() {
     this.setState({ buttontype: this.props.buttontype })
