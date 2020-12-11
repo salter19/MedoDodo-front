@@ -42,6 +42,7 @@ class TaskView extends React.Component {
           page={this.props.page}
           date={this.props.date}
           onSave={this.props.onSave} 
+          onSaveC={this.props.onSaveC}
           view={this.view()}
         />
         
