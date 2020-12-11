@@ -18,6 +18,7 @@ class App extends React.Component {
       currentWeek: 49,
       showingWeek: 49,
       currentPage: pagetypes.weekly,
+      currentCategory: '',
     };
   }
 
