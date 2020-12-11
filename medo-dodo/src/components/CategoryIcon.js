@@ -21,7 +21,7 @@ class CategoryIcon extends React.Component {
         return (
             <div className="category-icon">
                 <div className="ui card">
-                    <div className="blue box">
+                    <div className="blue">
 
                         <div className="task">
                             <ul>

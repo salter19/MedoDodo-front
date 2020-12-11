@@ -1,9 +1,5 @@
-button {
-  cursor: pointer;
-}
 .button {
   border-color: white;
-  border-radius: 4px;
   margin: 20px;
 }
 button:hover {
@@ -13,7 +9,6 @@ button:hover {
 .save {
   background-color: green;
   border-color: white;
-  border-radius: 4px;
   color: white;
 }
 
@@ -24,8 +19,6 @@ button:hover {
 
 .modifyTask {
   background-color: darkorange;
-  color: white;
-  border-radius: 4px;
-  
+  color: white; 
 }
 

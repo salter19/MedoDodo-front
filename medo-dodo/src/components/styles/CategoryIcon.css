@@ -3,8 +3,14 @@
     margin: 3%;
 }
 
-.blue.box {
+.blue {
     margin: 2px;
     border-color: blue;
     background-color: cornflowerblue;
+    color: white;
+    text-align: left;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 1.3%;
 }
+
