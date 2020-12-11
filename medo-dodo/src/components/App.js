@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
 import CategoriesView from './CategoriesView'
-import CategoryView from './CatView'
+import CategoryView from './CategoryView'
 import pagetypes from './pagetypes'
 
 class App extends React.Component {
