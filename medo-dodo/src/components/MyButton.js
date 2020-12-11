@@ -4,7 +4,7 @@ import pagetypes from './pagetypes'
 import buttontypes from './buttontypes'
 
 class MyButton extends React.Component {
-  state = { buttontype: '', errormsg: 'Where are we, asks button?'}
+  state = { buttontype: '', errormsg: 'Where are we, asks button?', category: ''}
 
   componentDidMount() {
     this.setState({ buttontype: this.props.buttontype })
@@ -34,7 +34,7 @@ class MyButton extends React.Component {
   render() {
     return (
       <div className="button">
-        <button className={this.state.buttontype} onClick={this.changePage}>
+        <button className={this.state.buttontype} onClick={this.changePage} >
           {this.state.buttontype}
         </button>
     </div>
