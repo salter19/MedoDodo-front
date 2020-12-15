@@ -7,9 +7,11 @@ import priority_levels from './prioritylevels'
 class PriorityTagList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { values: [], isChosen: priority_levels[priority_levels.length -1] };
+    this.state = { values: [] };
   }
   componentDidMount() {
+
+    this.createPriorityTags();
     const priorityTags = priority_levels.map((tag) => {
       return <PriorityTag key={tag} priority={tag} priorityChosen={this.state.isChosen} onTagClick={this.onPriorityTagClick}/>;
     });

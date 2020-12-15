@@ -19,6 +19,7 @@ class PriorityTag extends React.Component {
         : value === priority_levels[last - 2]
         ? "ui green button"
         : "ui grey button"
+      )
     };
   
     getTitle = (value) => {
