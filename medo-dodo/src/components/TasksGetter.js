@@ -5,9 +5,7 @@ const address = Servers.local;
 const options = ["week/", "category/", "categorytitles/"];
 
 const byWeek = async (week, year) => {
-  //console.log(`${address}${options[0]}${week}/${year}`);
   const result = await axios.get(`${address}${options[0]}${week}/${year}`);
-  console.log(result.data)
   return result.data;
 };
 
