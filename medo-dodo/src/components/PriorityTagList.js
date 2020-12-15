@@ -11,7 +11,7 @@ class PriorityTagList extends React.Component {
   }
   componentDidMount() {
     const priorityTags = priority_levels.map((tag) => {
-      return <PriorityTag key={tag} priority={tag} onTagClick={this.onPriorityTagClick}/>;
+      return <PriorityTag key={tag} priority={tag} priorityChosen={this.state.isChosen} onTagClick={this.onPriorityTagClick}/>;
     });
     this.setState({ values: priorityTags });
   }
@@ -30,7 +30,7 @@ class PriorityTagList extends React.Component {
       <div className="priority-tag-list">
         <div className="ui segment">
           <div className="ui grid">
-            
+
             <div className="sixteen wide column">
               <Label labelName="Priority" labelAlign={this.props.labelAlign} />
             </div>
