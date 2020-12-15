@@ -13,9 +13,16 @@ export default class TasksWeekly extends React.Component {
 
   readTasks = async () => {
     try {
-      const tasksOfTheWeek = await TasksGetter.byWeek(this.props.showingWeek);
-      this.setState({ tasks: tasksOfTheWeek });
+      console.log("reading tasks now");
+      const tasksOfTheWeek = await TasksGetter.byWeek(
+        this.props.showingWeek,
+        this.props.showingYear
+      );
+      console.log(JSON.stringify(tasksOfTheWeek));
+      this.setState({ taskCards: tasksOfTheWeek });
+      console.log("state is set");
       this.createCards();
+      console.log("created cards");
     } catch (error) {
       alert(
         "Problem with getting data!\nDid you remember to change to local in backend config?" +
@@ -25,7 +32,7 @@ export default class TasksWeekly extends React.Component {
   };
 
   createCards = () => {
-    const cards = this.state.tasks.map((e) => {
+    const cards = this.state.taskCards.map((e) => {
       return (
         <TaskCard
           key={e.id}
