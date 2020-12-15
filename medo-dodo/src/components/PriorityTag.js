@@ -2,7 +2,7 @@ import React from "react";
 import priority_levels from './prioritylevels'
 
 class PriorityTag extends React.Component {
-  state = { tagColor: "", title: "" };
+  state = { tagColor: "", title: "", isChosen: false };
 
   componentDidMount() {
     this.setState({ 
@@ -27,8 +27,10 @@ class PriorityTag extends React.Component {
         : "LOW" )
     };
 
-    onInputChange = (event) => {
-      console.log(this.props.priority)
+    onInputChange = () => {
+      !this.state.isChosen
+        ? this.setState({ isChosen: true })
+        : console.log(this.props.priority + ": " + this.state.isChosen)
     }
 
   render() {
