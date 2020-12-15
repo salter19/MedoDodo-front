@@ -10,12 +10,15 @@ class PriorityTag extends React.Component {
       title: this.getTitle(this.props.priority)});
   }
   getButtonStyle = (value) => {
+    const last = priority_levels.length - 1;
     return (
-        value === priority_levels[2] 
+        value === priority_levels[last] 
         ? "ui red button" 
-        : value === priority_levels[1]
+        : value === priority_levels[last - 1]
         ? "ui yellow button"
-        : "ui green button" )
+        : value === priority_levels[last - 2]
+        ? "ui green button"
+        : "ui grey button"
     };
   
     getTitle = (value) => {
