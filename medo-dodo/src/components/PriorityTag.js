@@ -32,7 +32,7 @@ class PriorityTag extends React.Component {
         this.setState( { isChosen: true } )
       }
 
-      this.props.onTagClick(this.state.isChosen)
+      this.props.onTagClick(this.props.priority)
     }
 
   render() {

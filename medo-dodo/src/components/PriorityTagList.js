@@ -17,7 +17,12 @@ class PriorityTagList extends React.Component {
   }
 
   onPriorityTagClick = (value) => {
-    console.log(value)
+    
+    this.setState( { isChosen: value } )
+  }
+
+  setButtonColor = () => {
+    
   }
 
   render() {
@@ -25,6 +30,7 @@ class PriorityTagList extends React.Component {
       <div className="priority-tag-list">
         <div className="ui segment">
           <div className="ui grid">
+            
             <div className="sixteen wide column">
               <Label labelName="Priority" labelAlign={this.props.labelAlign} />
             </div>
@@ -40,6 +46,7 @@ class PriorityTagList extends React.Component {
                 </div>
               </form>
             </div>
+
           </div>
         </div>
       </div>
