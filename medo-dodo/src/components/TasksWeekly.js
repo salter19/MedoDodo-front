@@ -18,10 +18,7 @@ export default class TasksWeekly extends React.Component {
         this.props.showingWeek,
         this.props.showingYear
       );
-<<<<<<< HEAD
-=======
 
->>>>>>> 069eccc (Remove from TasksWeekly: redundant comments and console.logs.)
       this.setState({ tasks: tasksOfTheWeek });
       this.createCards();
     } catch (error) {
@@ -33,10 +30,7 @@ export default class TasksWeekly extends React.Component {
   };
 
   createCards = () => {
-<<<<<<< HEAD
-=======
      
->>>>>>> 069eccc (Remove from TasksWeekly: redundant comments and console.logs.)
     const cards = this.state.tasks.map((e) => {
       return (
         <TaskCard
