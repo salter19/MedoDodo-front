@@ -41,7 +41,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
     <div className="task-card">
       <div className="ui segment">
         <div className="ui two column centered grid">
-          <div className="six column centered row">
+          <div className="three column centered row">
             <div className="column">
               <div className="ui checkbox">
                 <input className="box" type="checkbox" onClick={setDone} />

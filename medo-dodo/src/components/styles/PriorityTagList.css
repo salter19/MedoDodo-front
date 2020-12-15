@@ -1,5 +1,11 @@
-.flex.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.priority-tag-list {
+  margin: 10px;
+}
+.three.wide.row {
+  margin-top: 16px;
+  margin-left: 25%;
+}
+
+.tag {
+  margin-left: 4%;
 }

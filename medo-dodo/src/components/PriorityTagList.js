@@ -30,13 +30,19 @@ class PriorityTagList extends React.Component {
               <Label labelName="Priority" labelAlign={this.props.labelAlign} />
             </div>
 
-            <PriorityButtons 
-              priorityL={this.setLow}
-              priorityM={this.setMedium}
-              priorityH={this.setHigh} 
-            />
+            <div className="three wide row">
+              <PriorityButtons 
+                priorityL={this.setLow}
+                priorityM={this.setMedium}
+                priorityH={this.setHigh} 
+              />
+              
+              <div className="tag">
+                <div className={this.state.tag}>{this.state.priorityTitle}</div>
+              </div>
+            </div>
+            
 
-            <div className={this.state.tag}>{this.state.priorityTitle}</div>
 
           </div>
         </div>
