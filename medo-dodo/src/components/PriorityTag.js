@@ -25,8 +25,8 @@ class PriorityTag extends React.Component {
         : "LOW" )
     };
 
-    onInputChange = () => {
-
+    onInputChange = (event) => {
+      console.log(this.props.priority)
     }
 
   render() {
