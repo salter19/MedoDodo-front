@@ -8,29 +8,18 @@ export default class TasksWeekly extends React.Component {
     super(props);
     this.state = {
       taskCards: [],
-      tasks: []
+      tasks: [],
     };
   }
 
   readTasks = async () => {
     try {
-      console.log("reading tasks now");
-
-      // Tämä palauttaa objectin
       const tasksOfTheWeek = await TasksGetter.byWeek(
         this.props.showingWeek,
         this.props.showingYear
       );
-      //console.log(JSON.stringify(tasksOfTheWeek));
-  
-      // tämä asetti palautetun objectin this.state.taskCards:iin modTaskissa
-      // develissä palautuspaikka oli this.state.tasks - tämä siis mun jäljiltä, jännittävää osoite siksi, 
-      // ettei sellaista statea ollut, noh, statessa määriteltynä, koska muistan sen poistaneeni tarpeettomana... Go minä!
-      // --> Siispä määrittelin sellaisen takaisin. Ps. vilkaise funkkari createCards!
       this.setState({ tasks: tasksOfTheWeek });
-      console.log("state is set");
       this.createCards();
-      console.log("created cards");
     } catch (error) {
       alert(
         "Problem with getting data!\nDid you remember to change to local in backend config?" +
@@ -40,10 +29,6 @@ export default class TasksWeekly extends React.Component {
   };
 
   createCards = () => {
-    
-    // tämä mappasi this.state.taskCard:it modTaskissa
-    // develissä this.state.tasks:it, tuon siellä määrittelemättömän state item arrayn
-    // Vaihdoin siis mappaamaan this.state.tasks:it, jotka nyt olin jälleen määritellyt ja homma alkoi toimia! 
     const cards = this.state.tasks.map((e) => {
       return (
         <TaskCard
