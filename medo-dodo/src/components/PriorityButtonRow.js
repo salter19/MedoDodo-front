@@ -41,8 +41,6 @@ class PriorityButtonRow extends React.Component {
                 <div className={this.state.tag}>{this.state.priorityTitle}</div>
               </div>
             </div>
-            
-
 
           </div>
         </div>
