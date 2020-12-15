@@ -7,7 +7,7 @@ import priority_levels from './prioritylevels'
 class PriorityTagList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { values: [] };
+    this.state = { values: [], isChosen: priority_levels[priority_levels.length -1] };
   }
   componentDidMount() {
     const priorityTags = priority_levels.map((tag) => {
