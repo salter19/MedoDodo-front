@@ -5,6 +5,7 @@ import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
+import priorityLevels from './prioritylevels'
 
 class TaskView extends React.Component {
 
