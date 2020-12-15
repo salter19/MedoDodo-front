@@ -25,11 +25,17 @@ class PriorityTag extends React.Component {
         : "LOW" )
     };
 
+    onInputChange = () => {
+
+    }
+
   render() {
     return (
       <div key={this.state.title} className="priority-tag">
         <div className={this.state.title}>
-          <div className={this.state.tagColor}>{this.state.title}</div>
+          <div className={this.state.tagColor} onClick={this.onInputChange} >
+            {this.state.title}
+          </div>
         </div>
       </div>
     );
