@@ -21,10 +21,6 @@ class PriorityTagList extends React.Component {
     this.setState( { isChosen: value } )
   }
 
-  setButtonColor = () => {
-    
-  }
-
   render() {
     return (
       <div className="priority-tag-list">
