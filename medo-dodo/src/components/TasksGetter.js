@@ -5,6 +5,7 @@ const address = Servers.local;
 const options = ["week/", "category/", "categorytitles/"];
 
 const byWeek = async (week, year) => {
+  console.log(`${address}${options[0]}${week}/${year}`);
   const result = await axios.get(`${address}${options[0]}${week}/${year}`);
   return result.data;
 };
@@ -19,4 +20,6 @@ const everyCat = async () => {
   return result.data;
 };
 
-export default { byWeek, byCategoryTitle, everyCat };
+const obj = { byWeek, byCategoryTitle, everyCat };
+
+export default obj;
