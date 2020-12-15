@@ -5,7 +5,9 @@ class PriorityTag extends React.Component {
   state = { tagColor: "", title: "" };
 
   componentDidMount() {
-    this.setState({ tagColor: this.getButtonStyle(this.props.priority), title: this.getTitle(this.props.priority) });
+    this.setState({ 
+      tagColor: this.getButtonStyle(this.props.priority), 
+      title: this.getTitle(this.props.priority)});
   }
   getButtonStyle = (value) => {
     return (
@@ -33,7 +35,7 @@ class PriorityTag extends React.Component {
     return (
       <div key={this.state.title} className="priority-tag">
         <div className={this.state.title}>
-          <div className={this.state.tagColor} onClick={this.onInputChange} >
+          <div className={this.state.tagColor} onClick={this.onInputChange}>
             {this.state.title}
           </div>
         </div>
