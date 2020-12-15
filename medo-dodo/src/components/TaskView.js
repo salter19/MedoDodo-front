@@ -3,10 +3,9 @@ import React from "react";
 import ViewBase from './ViewBase'
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
-import PriorityTagList from "./PriorityTagList";
+import PriorityButtonRow from "./PriorityButtonRow";
 import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
-import PriorityButtons from './PriorityButtons'
 
 class TaskView extends React.Component {
 
@@ -31,7 +30,7 @@ class TaskView extends React.Component {
           placeholder={this.props.description}
           labelName="Description: "
         />
-        <PriorityTagList labelAlign="center" />
+        <PriorityButtonRow labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
       </div>
