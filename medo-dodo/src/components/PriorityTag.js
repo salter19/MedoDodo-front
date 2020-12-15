@@ -6,7 +6,7 @@ class PriorityTag extends React.Component {
 
   componentDidMount() {
     this.setState({ 
-      tagColor: this.getButtonStyle(this.props.priority), 
+      tagColor: this.getButtonStyle(this.props.priorityChosen), 
       title: this.getTitle(this.props.priority)});
   }
   getButtonStyle = (value) => {
