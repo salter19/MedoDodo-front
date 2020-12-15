@@ -4,7 +4,7 @@ import Label from "./Label";
 import PriorityButtons from './PriorityButtons'
 import priority_levels from './prioritylevels'
 
-class PriorityTagList extends React.Component {
+class PriorityButtonRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { priority: priority_levels[priority_levels.length -1], tag: 'ui red tag label', priorityTitle: 'high'}
@@ -51,4 +51,4 @@ class PriorityTagList extends React.Component {
   }
 }
 
-export default PriorityTagList;
+export default PriorityButtonRow;
