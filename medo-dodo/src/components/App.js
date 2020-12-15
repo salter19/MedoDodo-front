@@ -88,6 +88,7 @@ class App extends React.Component {
           currentWeek={this.state.currentWeek}
           page={this.state.currentPage}
           showingWeek={this.state.showingWeek}
+          showingYear={this.state.showingYear}
           currentDate={this.state.currentDate}
           onClickNext={this.handleNextWeek}
           onClickLast={this.handleLastWeek}
