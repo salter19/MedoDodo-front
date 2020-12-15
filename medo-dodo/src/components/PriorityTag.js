@@ -28,9 +28,9 @@ class PriorityTag extends React.Component {
     };
 
     onInputChange = () => {
-      !this.state.isChosen
-        ? this.setState({ isChosen: true })
-        : console.log(this.props.priority + ": " + this.state.isChosen)
+      if (! this.state.isChosen) { 
+        this.setState({ isChosen: true })
+      }
     }
 
   render() {
