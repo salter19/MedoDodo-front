@@ -8,6 +8,8 @@ import DropDown from "./DropDown";
 
 class TaskView extends React.Component {
 
+  state = { task: '', description: '', due_date: '', priority: null, category:'' }
+
   onTextFieldSubmit(term) {
     console.log(term);
   }
