@@ -1,26 +1,23 @@
 import "./styles/PriorityTagList.css";
 import React from "react";
 import Label from "./Label";
-import PriorityTag from "./PriorityTag";
+import PriorityButtons from './PriorityButtons'
 import priority_levels from './prioritylevels'
 
 class PriorityTagList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { values: [] };
-  }
-  componentDidMount() {
-
-    this.createPriorityTags();
-    const priorityTags = priority_levels.map((tag) => {
-      return <PriorityTag key={tag} priority={tag} priorityChosen={this.state.isChosen} onTagClick={this.onPriorityTagClick}/>;
-    });
-    this.setState({ values: priorityTags });
+    this.state = { priority: priority_levels[priority_levels.length -1], tag: 'ui red tag label', priorityTitle: 'high'}
   }
 
-  onPriorityTagClick = (value) => {
-    
-    this.setState( { isChosen: value } )
+  setLow = () => {
+    this.setState({priority: priority_levels[0], tag: "ui green tag label", priorityTitle: 'low'} )
+  }
+  setMedium = () => {
+    this.setState({priority: priority_levels[1], tag: "ui yellow tag label", priorityTitle: 'medium'})
+  }
+  setHigh = () => {
+    this.setState({priority: priority_levels[2], tag: "ui red tag label", priorityTitle: 'high'})
   }
 
   render() {
@@ -33,17 +30,13 @@ class PriorityTagList extends React.Component {
               <Label labelName="Priority" labelAlign={this.props.labelAlign} />
             </div>
 
-            <div className="ui row">
-              <form className="ui form">
-                <div className="fields">
-                  <div className="field">
-                    <div className="ui row flex container">
-                      {this.state.values}
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <PriorityButtons 
+              priorityL={this.setLow}
+              priorityM={this.setMedium}
+              priorityH={this.setHigh} 
+            />
+
+            <div className={this.state.tag}>{this.state.priorityTitle}</div>
 
           </div>
         </div>

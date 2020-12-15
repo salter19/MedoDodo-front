@@ -2,23 +2,26 @@ import React from "react";
 import priority_levels from './prioritylevels'
 
 class PriorityTag extends React.Component {
-  state = { tagColor: "", title: "", isChosen: false };
+  state = { tagColor: "", title: "", chosen: true };
 
   componentDidMount() {
     this.setState({ 
       tagColor: this.getButtonStyle(this.props.priorityChosen), 
-      title: this.getTitle(this.props.priority)});
+      title: this.getTitle(this.props.priorityChosen),
+      chosen: this.props.chosen
+    });
   }
   getButtonStyle = (value) => {
     const last = priority_levels.length - 1;
     return (
-        value === priority_levels[last] 
+        value === priority_levels[last] && this.state.chosen 
         ? "ui red button" 
-        : value === priority_levels[last - 1]
+        : value === priority_levels[last - 1] && this.state.chosen
         ? "ui yellow button"
-        : value === priority_levels[last - 2]
+        : value === priority_levels[last - 2] && this.state.chosen
         ? "ui green button"
         : "ui grey button"
+        
       )
     };
   
@@ -32,11 +35,7 @@ class PriorityTag extends React.Component {
     };
 
     onInputChange = () => {
-      if (!this.state.isChosen) {
-        this.setState( { isChosen: true } )
-      }
-
-      this.props.onTagClick(this.props.priority)
+      this.props.onTagClick(this.props.priorityChosen)
     }
 
   render() {

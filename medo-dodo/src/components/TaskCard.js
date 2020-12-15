@@ -53,7 +53,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
               <div className="date">{dueDate}</div>
 
               <div className="priority">
-                <PriorityTag priority={priority} onTagClick={()=> console.log('click')}/>
+                <PriorityTag priority={priority} onTagClick={()=> console.log('click')} chosen={true}/>
               </div>
             </div>
 

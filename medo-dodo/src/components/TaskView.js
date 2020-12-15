@@ -6,6 +6,7 @@ import DueTime from "./DueTimeInput";
 import PriorityTagList from "./PriorityTagList";
 import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
+import PriorityButtons from './PriorityButtons'
 
 class TaskView extends React.Component {
 
