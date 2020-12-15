@@ -8,18 +8,26 @@ export default class TasksWeekly extends React.Component {
     super(props);
     this.state = {
       taskCards: [],
+      tasks: []
     };
   }
 
   readTasks = async () => {
     try {
       console.log("reading tasks now");
+
+      // Tämä palauttaa objectin
       const tasksOfTheWeek = await TasksGetter.byWeek(
         this.props.showingWeek,
         this.props.showingYear
       );
-      console.log(JSON.stringify(tasksOfTheWeek));
-      this.setState({ taskCards: tasksOfTheWeek });
+      //console.log(JSON.stringify(tasksOfTheWeek));
+  
+      // tämä asetti palautetun objectin this.state.taskCards:iin modTaskissa
+      // develissä palautuspaikka oli this.state.tasks - tämä siis mun jäljiltä, jännittävää osoite siksi, 
+      // ettei sellaista statea ollut, noh, statessa määriteltynä, koska muistan sen poistaneeni tarpeettomana... Go minä!
+      // --> Siispä määrittelin sellaisen takaisin. Ps. vilkaise funkkari createCards!
+      this.setState({ tasks: tasksOfTheWeek });
       console.log("state is set");
       this.createCards();
       console.log("created cards");
@@ -32,7 +40,11 @@ export default class TasksWeekly extends React.Component {
   };
 
   createCards = () => {
-    const cards = this.state.taskCards.map((e) => {
+    
+    // tämä mappasi this.state.taskCard:it modTaskissa
+    // develissä this.state.tasks:it, tuon siellä määrittelemättömän state item arrayn
+    // Vaihdoin siis mappaamaan this.state.tasks:it, jotka nyt olin jälleen määritellyt ja homma alkoi toimia! 
+    const cards = this.state.tasks.map((e) => {
       return (
         <TaskCard
           key={e.id}
