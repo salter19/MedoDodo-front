@@ -9,7 +9,7 @@ import priorityLevels from './prioritylevels'
 
 class TaskView extends React.Component {
 
-  state = { task: '', description: '', due_date: '', priority: null, category:'' }
+  state = { task: '', description: '', due_date: '', priority: priorityLevels[priorityLevels.length -1], category: 1 }
 
   onTextFieldSubmit(term) {
     console.log(term);
