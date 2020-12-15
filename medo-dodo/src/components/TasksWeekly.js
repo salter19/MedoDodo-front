@@ -39,7 +39,7 @@ export default class TasksWeekly extends React.Component {
   };
 
   showTasksIsEmpty() {
-    if (this.state.tasks.length === 0) {
+    if (this.state.taskCards.length === 0) {
       return (
         <div className="emptyContainer">
           <div className="ui segment">
