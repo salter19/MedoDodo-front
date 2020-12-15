@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PriorityTag from "./PriorityTag";
-import Servers from './Servers'
-import MyButton from './MyButton'
-import buttontypes from './buttontypes'
-import pagetypes from './pagetypes'
+import Servers from "./Servers";
+import MyButton from "./MyButton";
+import buttontypes from "./buttontypes";
+import pagetypes from "./pagetypes";
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
@@ -40,15 +40,14 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
   return (
     <div className="task-card">
       <div className="ui segment">
-        
         <div className="ui two column centered grid">
           <div className="six column centered row">
-
             <div className="column">
-
               <div className="ui checkbox">
                 <input className="box" type="checkbox" onClick={setDone} />
-                <label><h3>{title}</h3></label>
+                <label>
+                  <h3>{title}</h3>
+                </label>
               </div>
 
               <div className="date">{dueDate}</div>
@@ -59,7 +58,11 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
             </div>
 
             <div className="right floated column">
-              <MyButton buttontype={buttontypes.modify} page={pagetypes.modifyTask} onSave={onClickTask}/>
+              <MyButton
+                buttontype={buttontypes.modify}
+                page={pagetypes.modifyTask}
+                onSave={onClickTask}
+              />
             </div>
           </div>
         </div>

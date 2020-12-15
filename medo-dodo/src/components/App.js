@@ -6,19 +6,21 @@ import Footer from "./Footer";
 */
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
-import CategoriesView from './CategoriesView'
-import CategoryView from './CategoryView'
-import pagetypes from './pagetypes'
+import CategoriesView from "./CategoriesView";
+import CategoryView from "./CategoryView";
+import pagetypes from "./pagetypes";
+const currentWeekNumber = require("current-week-number");
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentDate: new Date(),
-      currentWeek: 49,
-      showingWeek: 49,
+      showingYear: new Date().getFullYear(),
+      currentWeek: currentWeekNumber(new Date()),
+      showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
-      currentCategory: '',
+      currentCategory: "",
     };
   }
 
@@ -29,36 +31,54 @@ class App extends React.Component {
   changeViewToAdd = () => {
     this.setState({ currentPage: pagetypes.addTask });
   };
-  
+
   changeViewToModify = () => {
     this.setState({ currentPage: pagetypes.modifyTask });
   };
 
   changeViewToCats = () => {
     this.setState({ currentPage: pagetypes.categories });
-  }
+  };
 
   changeViewToCat = (cat) => {
     this.setState({ currentPage: pagetypes.category, currentCategory: cat });
-  }
+  };
 
   changeViewToWeekly = () => {
     this.setState({ currentPage: pagetypes.weekly });
   };
 
   handleNextWeek = () => {
-    if (this.state.showingWeek === 53) {
-      this.setState({ showingWeek: 1 });
+    const lastWeekOfYear = currentWeekNumber("12/31/" + this.state.showingYear);
+    if (this.state.showingWeek === lastWeekOfYear) {
+      this.setState({
+        showingWeek: 1,
+        showingYear: this.state.showingYear + 1,
+      });
     } else {
       this.setState({ showingWeek: this.state.showingWeek + 1 });
     }
+    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
+
   handleLastWeek = () => {
+    let lastWeekLastYear = currentWeekNumber(
+      "12/31/" + (this.state.showingYear - 1)
+    );
+    if (lastWeekLastYear === 1) {
+      lastWeekLastYear = currentWeekNumber(
+        "12/24/" + (this.state.showingYear - 1)
+      );
+    }
     if (this.state.showingWeek === 1) {
-      this.setState({ showingWeek: 53 });
+      this.setState({
+        showingWeek: lastWeekLastYear,
+        showingYear: this.state.showingYear - 1,
+      });
     } else {
       this.setState({ showingWeek: this.state.showingWeek - 1 });
     }
+    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
 
   checkView() {
@@ -82,8 +102,8 @@ class App extends React.Component {
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
-          placeholder={'What to do, Dodo?'}
-          description={'Elaborate...'}
+          placeholder={"What to do, Dodo?"}
+          description={"Elaborate..."}
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
         />
@@ -94,15 +114,15 @@ class App extends React.Component {
           title={this.state.currentPage}
           page={this.state.currentPage}
           date={this.state.currentDate}
-          placeholder={'Here will be the task in question.'}
-          description={'And it\'s possible description...'}
+          placeholder={"Here will be the task in question."}
+          description={"And it's possible description..."}
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
       return (
-        <CategoriesView 
+        <CategoriesView
           page={this.state.currentPage}
           date={this.state.currentDate}
           onClickAdd={this.changeViewToAdd}
@@ -110,10 +130,10 @@ class App extends React.Component {
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
         />
-      )
+      );
     } else if (this.state.currentPage === pagetypes.category) {
       return (
-        <CategoryView 
+        <CategoryView
           page={this.state.currentPage}
           date={this.state.currentDate}
           title={this.state.currentCategory}
@@ -122,7 +142,7 @@ class App extends React.Component {
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
         />
-      )
+      );
     } else {
       return (
         <div>
@@ -141,11 +161,7 @@ class App extends React.Component {
 
   render() {
     let view = this.checkView();
-    return (
-      <div className="App ui container">
-        {view}
-      </div>
-    );
+    return <div className="App ui container">{view}</div>;
   }
 }
 
