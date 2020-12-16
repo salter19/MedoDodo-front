@@ -107,6 +107,12 @@ class TaskView extends React.Component {
 
   setDropdown = async(ID) => {
 
+
+  }
+
+  setCatID = (event) => {
+    console.log(event.target.value)
+    console.log('hi there')
   }
 
   onTextFieldSubmit(term) {
@@ -120,7 +126,7 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
-        <DropDown labelName="Category" labelAlign="center" />
+        <DropDown labelName="Category" labelAlign="center" onClick={this.setCatID}/>
       </div>
     )
   }

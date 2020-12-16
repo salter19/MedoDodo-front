@@ -13,9 +13,6 @@ class DropDown extends React.Component {
     this.setState( {categories: cats})
     const ops = this.createOptions()
     this.setState( { options: ops } )
-
-    
-
   }
 
   getCategories = async() => {
@@ -27,11 +24,22 @@ class DropDown extends React.Component {
   createOptions = () => {
     const res = []
     this.state.categories.forEach(function(item, index, array) {
-      res.push(<option key={index} value={index}>{item}</option>)
+      res.push(<option key={index} value={index} >{item}</option>)
     })
+    
+    res.unshift(<option key="-1" value="">Choose category</option> )
+    res.push(<option key="-2" value="">Add new category</option>)
+    
     return res;
   }
+
+  sayHello = () => {
+    console.log('here')
+    console.log(document.getElementById("my-select").value)
+    
+  }
   render() {
+ 
     return (
       <div className="drop-down">
         <div className="ui segment">
@@ -48,10 +56,8 @@ class DropDown extends React.Component {
                 <div className="fields">
                   <div className="field">
 
-                    <select className="ui search dropdown">
-                      <option key="-1" value="">Choose category</option>                      
+                    <select id="my-select" className="ui search dropdown">                    
                       {this.state.options}
-                      <option key="-2" value="">Add new category</option>
                     </select>
 
                   </div>
