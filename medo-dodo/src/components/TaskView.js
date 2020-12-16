@@ -28,7 +28,8 @@ class TaskView extends React.Component {
 
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask()      
-      this.createTextInputFields(data.title, data.description)
+      console.log(data)
+      this.createTextInputFields(data.title, data.description )
 
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
