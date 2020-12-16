@@ -2,6 +2,10 @@ import React from "react";
 import Label from "./Label";
 
 class DropDown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { title: '', value: '', categories: [] } 
+  }
   render() {
     return (
       <div className="drop-down">
@@ -18,12 +22,14 @@ class DropDown extends React.Component {
               <form className="ui form">
                 <div className="fields">
                   <div className="field">
+
                     <select className="ui search dropdown">
                       <option value="">Choose category</option>
                       <option value="0">My Tasks</option>
                       <option value="1">School Stuff</option>
                       <option value="">Add new category</option>
                     </select>
+
                   </div>
                 </div>
               </form>
