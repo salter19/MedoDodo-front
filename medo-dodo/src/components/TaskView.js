@@ -106,7 +106,9 @@ class TaskView extends React.Component {
   }
 
   setDropdown = async(ID) => {
-
+    const cats = await TaskGetter.everyCat();
+    console.log(cats)
+    //const cat = await TaskGetter.byCategoryTitle(cats)
 
   }
 
@@ -121,7 +123,7 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
-        <DropDown labelName="Category" labelAlign="center" selected={this.state.selectedCategory}/>
+        <DropDown labelName="Category" labelAlign="center" />
       </div>
     )
   }
