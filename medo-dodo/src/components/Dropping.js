@@ -17,6 +17,9 @@ const Dropdown = ( {options, header} ) => {
                     
                     <i className="dropdown icon"></i>
                     <div className="text"> {header} </div>
+                    <div className="menu visible transition">
+                        {renderedOptions}    
+                    </div>
                 
                 </div>
 
