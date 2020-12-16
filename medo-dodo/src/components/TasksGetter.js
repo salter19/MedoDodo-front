@@ -26,7 +26,6 @@ const byCategoryId = async (value) => {
 
 const everyCategory = async () => {
   const result = await axios.get(`${address}${options[4]}`);
-  console.log(result.data)
   return result.data;
 }
 
