@@ -24,6 +24,6 @@ const byId = async (taskID) => {
   return result.data;
 }
 
-const obj = { byWeek, byCategoryTitle, everyCat };
+const obj = { byWeek, byCategoryTitle, everyCat, byId};
 
 export default obj;
