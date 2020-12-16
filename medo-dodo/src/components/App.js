@@ -1,16 +1,11 @@
 import "./styles/App.css";
 import React from "react";
-/*
-import Header from "./Header.js";
-import Footer from "./Footer";
-*/
 import WeeklyView from "./WeeklyView";
 import TaskView from "./TaskView";
 import CategoriesView from "./CategoriesView";
 import CategoryView from "./CategoryView";
 import pagetypes from "./pagetypes";
 import TaskGetter from "./TasksGetter";
-
 import currentWeekNumber from "current-week-number";
 
 class App extends React.Component {
