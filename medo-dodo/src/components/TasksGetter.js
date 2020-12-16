@@ -2,6 +2,7 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.local;
+const address2 = Servers.local2;
 const options = ["week/", "category/", "categorytitles/", "id/", 'categories/'];
 
 const byWeek = async (week, year) => {
@@ -20,12 +21,13 @@ const everyCatTitle = async () => {
 };
 
 const byCategoryId = async (value) => {
-  const result = await axios.get(`${address}${options[1]}${options[3]}${value}`)
+  const result = await axios.get(`${address}${options[1]}${options[3]}${value}`);
   return result.data;
 } 
 
 const everyCategory = async () => {
-  const result = await axios.get(``)
+  const result = await axios.get(`${address2}${options[4]}`);
+  return result.data;
 }
 
 const byId = async (taskID) => {
