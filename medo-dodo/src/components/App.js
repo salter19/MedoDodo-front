@@ -121,6 +121,7 @@ class App extends React.Component {
           description={"And it's possible description..."}
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
+          currentTaskID={this.state.currentTaskID}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
