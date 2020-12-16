@@ -22,8 +22,10 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
 
   useEffect(() => {
     const task = async () => {
-      const { data } = await axios.get(`${Servers.local}${id}`);
+      //const { data } = await axios.get(`${Servers.local}${id}`);
 
+      const data = await TaskGetter.byId(id)
+      console.log(data)
       const date = getFormattedDate(data[0].due_date);
       setTitle(data[0].title);
       setDueDate(date);
