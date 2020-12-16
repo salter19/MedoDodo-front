@@ -33,10 +33,13 @@ class TaskView extends React.Component {
       console.log(data)
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
+      this.setDropdown(data.category_id)
+
       this.setState({
         task: data.title,
         description: data.description,
-        priority: data.priority
+        priority: data.priority,
+        category: data.category_id
       })
 
     } else {      
@@ -100,6 +103,10 @@ class TaskView extends React.Component {
     } catch (error) {
       alert('something at loss in priority setting.')
     }
+  }
+
+  setDropdown = async(ID) => {
+
   }
 
   onTextFieldSubmit(term) {
