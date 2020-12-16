@@ -1,6 +1,6 @@
 import TasksGetter from './TasksGetter'
 const validCatTitles = async() => {
-    const catObj = await TasksGetter.everyCat()
+    const catObj = await TasksGetter.everyCatTitle()
     const titlesArr = catObj.map(obj => obj.title)
     return titlesArr
 }

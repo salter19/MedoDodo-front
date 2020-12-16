@@ -48,7 +48,8 @@ class TaskView extends React.Component {
    
     const ddOpts = await this.setDropdownOptions()
     this.setState({
-      dropdownOptions:ddOpts
+      dropdownOptions: ddOpts,
+      selectedCategory: ddOpts[0]
     });
 
     console.log(this.state)
