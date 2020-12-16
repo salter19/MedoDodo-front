@@ -11,17 +11,55 @@ import pagetypes from './pagetypes'
 
 class TaskView extends React.Component {
 
-  state = { task: '', description: '', due_date: '', priority: priorityLevels[priorityLevels.length -1], category: 1 }
+  state 
+  constructor(props) {
+    super(props)
+    this.state = { 
+      task: '', 
+      description: '', 
+      due_date: '', 
+      priority: priorityLevels[priorityLevels.length -1], 
+      category: 1,
+      inputFields: []
+    }
+  }
 
   async componentDidMount() {
-    console.log(`The id of the task at hand: ${this.props.currentTaskID}`)
+    if (this.props.page === pagetypes.modifyTask) {
+      const data = await this.setByTask()
+      
+      this.setState({
+        task: data.title,
+        description: data.description
+      })
+
+      console.log(this.state.task + " at cdm")
+      this.createTextInputFields(data.title, data.description)
+
+    } else {
+      
+      const tmp = [this.props.placeholder, this.props.description]
     
-    let data = [];
-    this.props.page === pagetypes.modifyTask
-      ? data = await this.getTaskData()
-      : data = [{ title: this.props.placeholder, description: this.props.description }]
-    console.log(data)
-    this.setData(data)
+      this.setState({
+        task: tmp[0],
+        description: tmp[1]
+      })
+
+      this.createTextInputFields(tmp[0], tmp[1])
+      console.log(this.state.task + " at cdm " + tmp[0])
+    }  
+    
+  }
+
+  setByTask = async() => {
+    try {
+      const taskObj = await this.getTaskData()
+      const data = taskObj[0]
+      return data
+      
+    } catch (error) {
+      alert(`Something went wrong in default data setting.`)
+    }
   }
 
   getTaskData = async() => {
@@ -29,11 +67,31 @@ class TaskView extends React.Component {
     return task
   }
 
-  setData = (data) => {
-    this.setState( {
-      task: data.title,
-      description: data.description
-    })
+  createTextInputFields = (task, description) => {
+    try {
+      const taskField = ( 
+        <TextInputField
+          onSubmit={this.onTextFieldSubmit}
+          type="text"
+          placeholder={task}
+          labelName="Task"
+        /> 
+      )
+
+      const descriptionField = (        
+        <TextInputField
+          onSubmit={this.onTextFieldSubmit}
+          type="text"
+          placeholder={description}
+          labelName="Description: "
+        />
+      )
+      
+      this.setState({ inputFields: [taskField, descriptionField] })
+      console.log('here')
+    } catch (error) {
+      alert("something wrong at field creation")
+    }
   }
 
   onTextFieldSubmit(term) {
@@ -41,20 +99,11 @@ class TaskView extends React.Component {
   }
 
   view = () => {
+    console.log(this.state.inputFields.length)
     return (
-      <div className="content">   
-        <TextInputField
-        onSubmit={this.onTextFieldSubmit}
-        type="text"
-        placeholder={this.props.placeholder}
-        labelName="Task"
-        />
-        <TextInputField
-          onSubmit={this.onTextFieldSubmit}
-          type="text"
-          placeholder={this.props.description}
-          labelName="Description: "
-        />
+      <div className="content">  
+        
+        {this.state.inputFields}
         <PriorityButtonRow labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
