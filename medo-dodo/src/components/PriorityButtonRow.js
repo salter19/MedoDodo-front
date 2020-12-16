@@ -26,9 +26,10 @@ class PriorityButtonRow extends React.Component {
 
   setTagDefault = async() => {
     const defaultValue = await this.props.priorityValue
-    console.log(defaultValue)
-    defaultValue === priority_levels[0] ? this.setLow()
-    : defaultValue === priority_levels[1] ? this.setMedium()
+    defaultValue === priority_levels[0] 
+    ? this.setLow()
+    : defaultValue === priority_levels[1] 
+    ? this.setMedium()
     : this.setHigh()
   }
 
