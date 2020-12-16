@@ -33,7 +33,7 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
-      const ddOpts = this.setDropdown()
+      const ddOpts = this.setDropdownOptions()
 
       this.setState({
         task: data.title,
@@ -104,7 +104,7 @@ class TaskView extends React.Component {
     }
   }
 
-  setDropdown = async() => {
+  setDropdownOptions = async() => {
     const options = await TaskGetter.everyCat();   
     return options;
   }
