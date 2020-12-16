@@ -46,10 +46,11 @@ class TaskView extends React.Component {
       this.createTextInputFields(tmp[0], tmp[1])
     } 
    
-    const ddOpts = await this.setDropdownOptions()
+    const dropdownOptions = await this.setDropdownOptions();
+    
     this.setState({
-      dropdownOptions: ddOpts,
-      selectedCategory: ddOpts[0]
+      dropdownOptions: dropdownOptions,
+      selectedCategory: dropdownOptions[1]
     });
 
     console.log(this.state)
@@ -112,11 +113,10 @@ class TaskView extends React.Component {
   }
 
   setDropdownOptions = async() => {
-    const options = await TaskGetter.everyCatTitle(); 
-    const res = options.map (obj => obj.title) 
     const ops = await TaskGetter.everyCategory()
-    console.log(ops) 
-    return res;
+    const objs = ops.map(obj => {return [obj.id, obj.title]})
+    
+    return objs;
   }
 
   onTextFieldSubmit(term) {
