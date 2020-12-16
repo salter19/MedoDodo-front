@@ -40,6 +40,6 @@ const everyTask = async() => {
   return result.data;
 }
 
-const obj = { byWeek, byCategoryTitle, everyCat: everyCatTitle, byId, everyTask, byCategoryId};
+const obj = { byWeek, byCategoryTitle, everyCat: everyCatTitle, byId, everyTask, byCategoryId, everyCategory };
 
 export default obj;
