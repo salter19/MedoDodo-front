@@ -13,11 +13,14 @@ class TaskView extends React.Component {
 
   state = { task: '', description: '', due_date: '', priority: priorityLevels[priorityLevels.length -1], category: 1 }
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log(`The id of the task at hand: ${this.props.currentTaskID}`)
-
     
-    const data = this.getTaskData()
+    let data = [];
+    this.props.page === pagetypes.modifyTask
+      ? data = await this.getTaskData()
+      : data = [{ title: this.props.placeholder, description: this.props.description }]
+    console.log(data)
     this.setData(data)
   }
 
