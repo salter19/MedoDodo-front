@@ -53,7 +53,7 @@ class TaskView extends React.Component {
       selectedCategory: dropdownOptions[1]
     });
 
-    console.log(this.state)
+    //console.log(this.state)
 
   }
 
