@@ -7,11 +7,11 @@ class DropDown extends React.Component {
     super(props)
     this.state = { title: '', value: '', categories: [] } 
   }
-  
+
   async componentDidMount() {
     const cats = await this.getCategories()
     this.setState( {categories: cats})
-    console.log(this.state)
+    this.createOptions()
   }
 
   getCategories = async() => {
@@ -20,6 +20,10 @@ class DropDown extends React.Component {
     return res;
   }
 
+  createOptions = () => {
+    const res = this.state.categories.map(cat => <option value="">{cat}</option>)
+    console.log(res.length)
+  }
   render() {
     return (
       <div className="drop-down">
