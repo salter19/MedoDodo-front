@@ -25,25 +25,21 @@ class TaskView extends React.Component {
   }
 
   async componentDidMount() {
+
     if (this.props.page === pagetypes.modifyTask) {
-      const data = await this.setByTask()
-      
+      const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
 
-    } else {
-      
+    } else {      
       const tmp = [this.props.placeholder, this.props.description]
-
       this.createTextInputFields(tmp[0], tmp[1])
-    }  
-    
+    }      
   }
 
   setByTask = async() => {
     try {
       const taskObj = await this.getTaskData()
-      const data = taskObj[0]
-      return data
+      return taskObj[0]
       
     } catch (error) {
       alert(`Something went wrong in default data setting.`)
@@ -91,6 +87,7 @@ class TaskView extends React.Component {
       <div className="content">  
         
         {this.state.inputFields}
+        
         <PriorityButtonRow labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
