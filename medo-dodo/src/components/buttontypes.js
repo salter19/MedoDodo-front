@@ -1,11 +1,13 @@
-import pagetypes from './pagetypes'
+import pagetypes from "./pagetypes";
 
-export default {
-    categories: pagetypes.categories, 
-    weekly: pagetypes.weekly, 
-    addTask: pagetypes.addTask, 
-    save:'save',
-    modify: pagetypes.modifyTask,
-    delete: 'delete',
-    category: pagetypes.category
+const obj = {
+  categories: pagetypes.categories,
+  weekly: pagetypes.weekly,
+  addTask: pagetypes.addTask,
+  save: "save",
+  modify: pagetypes.modifyTask,
+  delete: "delete",
+  category: pagetypes.category,
 };
+
+export default obj;
