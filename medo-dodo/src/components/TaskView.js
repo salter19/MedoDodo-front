@@ -28,25 +28,13 @@ class TaskView extends React.Component {
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask()
       
-      this.setState({
-        task: data.title,
-        description: data.description
-      })
-
-      console.log(this.state.task + " at cdm")
       this.createTextInputFields(data.title, data.description)
 
     } else {
       
       const tmp = [this.props.placeholder, this.props.description]
-    
-      this.setState({
-        task: tmp[0],
-        description: tmp[1]
-      })
 
       this.createTextInputFields(tmp[0], tmp[1])
-      console.log(this.state.task + " at cdm " + tmp[0])
     }  
     
   }
@@ -88,7 +76,7 @@ class TaskView extends React.Component {
       )
       
       this.setState({ inputFields: [taskField, descriptionField] })
-      console.log('here')
+    
     } catch (error) {
       alert("something wrong at field creation")
     }
@@ -99,7 +87,6 @@ class TaskView extends React.Component {
   }
 
   view = () => {
-    console.log(this.state.inputFields.length)
     return (
       <div className="content">  
         
