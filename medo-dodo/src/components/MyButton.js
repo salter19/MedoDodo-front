@@ -35,7 +35,7 @@ class MyButton extends React.Component {
       : this.errorHandler()
 
     this.state.buttontype === buttontypes.modify
-      ? console.log("modify clicked")
+      ? console.log("modify clicked from: " + this.props.taskID)
       : this.errorHandler();
   };
 
