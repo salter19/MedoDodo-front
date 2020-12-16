@@ -13,6 +13,13 @@ const Dropdown = ( {options, header} ) => {
             <div className="field">
                 <label className="label"> {header} </label>
 
+                <div className="ui selection dropdown visible active">
+                    
+                    <i className="dropdown icon"></i>
+                    <div className="text"> {header} </div>
+                
+                </div>
+
             </div>
         </div>
     )
