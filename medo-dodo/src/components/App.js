@@ -21,6 +21,7 @@ class App extends React.Component {
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
       currentCategory: "",
+      currentTaskID: null
     };
   }
 
