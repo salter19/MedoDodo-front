@@ -79,7 +79,7 @@ export default class Footer extends React.Component {
           <MyButton
             buttontype={buttontypes.delete}
             page={this.props.page}
-            onDelete={this.props.onDelete}
+            onSave={this.props.onSave}
           />
         </div>
       );
