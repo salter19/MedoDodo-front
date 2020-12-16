@@ -21,6 +21,7 @@ const everyCat = async () => {
 
 const byCategoryId = async (value) => {
   const result = await axios.get(`${address}${options[1]}${options[3]}${value}`)
+  return result.data;
 } 
 
 const byId = async (taskID) => {
