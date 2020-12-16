@@ -35,6 +35,7 @@ class App extends React.Component {
 
   changeViewToModify = (taskID) => {
     this.setState({ currentPage: pagetypes.modifyTask, currentTaskID: taskID });
+    console.log(taskID)
   };
 
   changeViewToCats = () => {

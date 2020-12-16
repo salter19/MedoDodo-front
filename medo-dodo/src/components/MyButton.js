@@ -35,7 +35,7 @@ class MyButton extends React.Component {
       : this.errorHandler()
 
     this.state.buttontype === buttontypes.modify
-      ? this.onClickTask(this.props.taskID)
+      ? this.props.onClickTask(this.props.taskID)
       : this.errorHandler();
   };
 
