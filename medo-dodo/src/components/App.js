@@ -9,6 +9,9 @@ import TaskView from "./TaskView";
 import CategoriesView from "./CategoriesView";
 import CategoryView from "./CategoryView";
 import pagetypes from "./pagetypes";
+import TaskGetter from './TasksGetter'
+
+
 const currentWeekNumber = require("current-week-number");
 
 class App extends React.Component {
@@ -21,12 +24,15 @@ class App extends React.Component {
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
       currentCategory: "",
-      currentTaskID: null
+      currentTaskID: null,
+      allTasks: []
     };
   }
 
-  componentDidMount() {
-    console.log(this.state.currentDate);
+  async componentDidMount() {
+    const tasks = await TaskGetter.everyTask()
+    this.setState({allTasks:tasks})
+    console.log(this.state.allTasks);
   }
 
   changeViewToAdd = () => {

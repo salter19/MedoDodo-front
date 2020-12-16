@@ -19,12 +19,16 @@ const everyCat = async () => {
   return result.data;
 };
 
-// Terhi 1.
 const byId = async (taskID) => {
   const result = await axios.get(`${address}${taskID}`)
   return result.data;
 }
 
-const obj = { byWeek, byCategoryTitle, everyCat, byId};
+const everyTask = async() => {
+  const result = await axios.get(`${address}`)
+  return result.data;
+}
+
+const obj = { byWeek, byCategoryTitle, everyCat, byId, everyTask};
 
 export default obj;
