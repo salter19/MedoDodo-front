@@ -1,11 +1,25 @@
 import React from "react";
 import Label from "./Label";
+import TaskGetter from './TasksGetter'
 
 class DropDown extends React.Component {
   constructor(props) {
     super(props)
     this.state = { title: '', value: '', categories: [] } 
   }
+  
+  async componentDidMount() {
+    const cats = await this.getCategories()
+    this.setState( {categories: cats})
+    console.log(this.state)
+  }
+
+  getCategories = async() => {
+    const data = await TaskGetter.everyCat()
+    const res = data.map( obj => obj.title )
+    return res;
+  }
+
   render() {
     return (
       <div className="drop-down">
