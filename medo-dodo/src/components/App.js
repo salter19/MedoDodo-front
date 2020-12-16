@@ -61,6 +61,10 @@ class App extends React.Component {
     console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
 
+  handleDelete = () => {
+    console.log("handling delete now: " + this.state.currentTaskID);
+  };
+
   handleLastWeek = () => {
     let lastWeekLastYear = currentWeekNumber(
       "12/31/" + (this.state.showingYear - 1)
@@ -120,6 +124,7 @@ class App extends React.Component {
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
           currentTaskID={this.state.currentTaskID}
+          onDelete={this.handleDelete}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
