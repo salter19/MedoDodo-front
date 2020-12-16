@@ -16,7 +16,7 @@ class DropDown extends React.Component {
   }
 
   getCategories = async() => {
-    const data = await TaskGetter.everyCat()
+    const data = await TaskGetter.everyCatTitle()
     const res = data.map( obj => obj.title )
     return res;
   }

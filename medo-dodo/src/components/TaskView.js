@@ -112,8 +112,10 @@ class TaskView extends React.Component {
   }
 
   setDropdownOptions = async() => {
-    const options = await TaskGetter.everyCat(); 
-    const res = options.map (obj => obj.title)  
+    const options = await TaskGetter.everyCatTitle(); 
+    const res = options.map (obj => obj.title) 
+    const ops = await TaskGetter.everyCategory()
+    console.log(ops) 
     return res;
   }
 
