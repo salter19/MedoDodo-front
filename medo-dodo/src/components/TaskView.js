@@ -55,6 +55,7 @@ class TaskView extends React.Component {
     try {
       const taskField = ( 
         <TextInputField
+          key={task}
           onSubmit={this.onTextFieldSubmit}
           type="text"
           placeholder={task}
@@ -64,6 +65,7 @@ class TaskView extends React.Component {
 
       const descriptionField = (        
         <TextInputField
+          key={description}
           onSubmit={this.onTextFieldSubmit}
           type="text"
           placeholder={description}
@@ -87,7 +89,7 @@ class TaskView extends React.Component {
       <div className="content">  
         
         {this.state.inputFields}
-        
+
         <PriorityButtonRow labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
