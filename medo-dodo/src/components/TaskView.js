@@ -30,7 +30,6 @@ class TaskView extends React.Component {
 
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask()      
-      console.log(data)
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
       this.setDropdown(data.category_id)
@@ -46,8 +45,6 @@ class TaskView extends React.Component {
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
     } 
-    
-    console.log(this.state)
   }
 
   setByTask = async() => {
@@ -105,10 +102,10 @@ class TaskView extends React.Component {
     }
   }
 
-  setDropdown = async(ID) => {
+  setDropdown = async() => {
     const cats = await TaskGetter.everyCat();
-    console.log(cats)
-    //const cat = await TaskGetter.byCategoryTitle(cats)
+    const cat = await TaskGetter.byCategoryTitle(cats[0].title)
+    
 
   }
 
