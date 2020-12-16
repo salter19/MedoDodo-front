@@ -8,6 +8,7 @@ import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
+import Dropper from './Dropping'
 
 class TaskView extends React.Component {
 
@@ -21,7 +22,7 @@ class TaskView extends React.Component {
       category: 1,
       inputFields: [],
       priorityTag: [],
-      dropdown: [],
+      dropdownOptions: [],
       selectedCategory: ''
     }
   }
@@ -32,13 +33,14 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
-      this.setDropdown(data.category_id)
+      const ddOpts = this.setDropdown()
 
       this.setState({
         task: data.title,
         description: data.description,
         priority: data.priority,
-        category: data.category_id
+        category: data.category_id,
+        dropdownOptions: ddOpts,
       })
 
     } else {      
@@ -102,10 +104,9 @@ class TaskView extends React.Component {
     }
   }
 
-  setDropdown = async(ID) => {
-    const cats = await TaskGetter.byCategoryId(ID)
-    console.log(cats)
-    this.setState( { selectedCategory: cats } )
+  setDropdown = async() => {
+    const options = await TaskGetter.everyCat();   
+    return options;
   }
 
   onTextFieldSubmit(term) {
@@ -120,6 +121,7 @@ class TaskView extends React.Component {
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
+        <Dropper/>
       </div>
     )
   }
