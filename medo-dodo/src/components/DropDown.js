@@ -5,7 +5,7 @@ import TaskGetter from './TasksGetter'
 class DropDown extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { title: '', value: '', categories: [] } 
+    this.state = { title: '', value: '', categories: [], options: [] } 
   }
 
   async componentDidMount() {
