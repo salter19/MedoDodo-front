@@ -23,8 +23,8 @@ class CategoriesView extends React.Component {
             const catIcons = catTitles.map(e => {
                 const items = this.getTasksPerCategoryByTitle(e)
                 return (
-                    <div className="eight wide column" >
-                        <CategoryIcon key={i++} title={e} data={items} onClickCat={this.props.onClickCat} />
+                    <div key={i++} className="eight wide column" >
+                        <CategoryIcon title={e} data={items} onClickCat={this.props.onClickCat} />
                     </div>
                 )
             })
