@@ -11,6 +11,10 @@ class TaskView extends React.Component {
 
   state = { task: '', description: '', due_date: '', priority: priorityLevels[priorityLevels.length -1], category: 1 }
 
+  componentDidMount() {
+    console.log(`The id of the task at hand: ${this.props.currentTaskID}`)
+  }
+
   onTextFieldSubmit(term) {
     console.log(term);
   }
