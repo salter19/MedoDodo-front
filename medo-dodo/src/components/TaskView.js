@@ -33,20 +33,26 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
-      const ddOpts = this.setDropdownOptions()
 
       this.setState({
         task: data.title,
         description: data.description,
         priority: data.priority,
         category: data.category_id,
-        dropdownOptions: ddOpts,
       })
 
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
     } 
+   
+    const ddOpts = await this.setDropdownOptions()
+    this.setState({
+      dropdownOptions:ddOpts
+    });
+
+    console.log(this.state)
+
   }
 
   setByTask = async() => {
@@ -105,8 +111,9 @@ class TaskView extends React.Component {
   }
 
   setDropdownOptions = async() => {
-    const options = await TaskGetter.everyCat();   
-    return options;
+    const options = await TaskGetter.everyCat(); 
+    const res = options.map (obj => obj.title)  
+    return res;
   }
 
   onTextFieldSubmit(term) {
@@ -121,7 +128,7 @@ class TaskView extends React.Component {
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
-        <Dropper/>
+        <Dropper options={this.state.dropdownOptions} header="Select Category"/>
       </div>
     )
   }
