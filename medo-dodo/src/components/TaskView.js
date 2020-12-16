@@ -1,69 +1,65 @@
 import "./styles/TaskView.css";
 import React from "react";
-import ViewBase from './ViewBase'
+import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityButtonRow from "./PriorityButtonRow";
 import DropDown from "./DropDown";
-import priorityLevels from './prioritylevels'
-import TaskGetter from './TasksGetter'
-import pagetypes from './pagetypes'
+import priorityLevels from "./prioritylevels";
+import TaskGetter from "./TasksGetter";
+import pagetypes from "./pagetypes";
 
 class TaskView extends React.Component {
-
-  state 
+  state;
   constructor(props) {
-    super(props)
-    this.state = { 
-      task: '', 
-      description: '', 
-      due_date: '', 
-      priority: priorityLevels[priorityLevels.length -1], 
+    super(props);
+    this.state = {
+      task: "",
+      description: "",
+      due_date: "",
+      priority: priorityLevels[priorityLevels.length - 1],
       category: 1,
-      inputFields: []
-    }
+      inputFields: [],
+    };
   }
 
   async componentDidMount() {
-
     if (this.props.page === pagetypes.modifyTask) {
-      const data = await this.setByTask()      
-      this.createTextInputFields(data.title, data.description)
-
-    } else {      
-      const tmp = [this.props.placeholder, this.props.description]
-      this.createTextInputFields(tmp[0], tmp[1])
-    }      
-  }
-
-  setByTask = async() => {
-    try {
-      const taskObj = await this.getTaskData()
-      return taskObj[0]
-      
-    } catch (error) {
-      alert(`Something went wrong in default data setting.`)
+      const data = await this.setByTask();
+      this.createTextInputFields(data.title, data.description);
+    } else {
+      const tmp = [this.props.placeholder, this.props.description];
+      this.createTextInputFields(tmp[0], tmp[1]);
     }
   }
 
-  getTaskData = async() => {
-    const task = await TaskGetter.byId(this.props.currentTaskID)
-    return task
-  }
+  setByTask = async () => {
+    try {
+      const taskObj = await this.getTaskData();
+      return taskObj[0];
+    } catch (error) {
+      alert(`Something went wrong in default data setting.`);
+    }
+  };
+
+  getTaskData = async () => {
+    const task = await TaskGetter.byId(this.props.currentTaskID);
+    return task;
+  };
 
   createTextInputFields = (task, description) => {
     try {
-      const taskField = ( 
+      const taskField = (
         <TextInputField
           key={task}
           onSubmit={this.onTextFieldSubmit}
           type="text"
           placeholder={task}
           labelName="Task"
-        /> 
-      )
+        />
+      );
 
-      const descriptionField = (        
+      const descriptionField = (
         <TextInputField
           key={description}
           onSubmit={this.onTextFieldSubmit}
@@ -71,14 +67,13 @@ class TaskView extends React.Component {
           placeholder={description}
           labelName="Description: "
         />
-      )
-      
-      this.setState({ inputFields: [taskField, descriptionField] })
-    
+      );
+
+      this.setState({ inputFields: [taskField, descriptionField] });
     } catch (error) {
-      alert("something wrong at field creation")
+      alert("something wrong at field creation");
     }
-  }
+  };
 
   onTextFieldSubmit(term) {
     console.log(term);
@@ -86,29 +81,27 @@ class TaskView extends React.Component {
 
   view = () => {
     return (
-      <div className="content">  
-        
+      <div className="content">
         {this.state.inputFields}
 
         <PriorityButtonRow labelAlign="center" />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
-   
     return (
       <div className="task-view">
-        <ViewBase          
+        <ViewBase
           page={this.props.page}
           date={this.props.date}
-          onSave={this.props.onSave} 
+          onSave={this.props.onSave}
           onSaveC={this.props.onSaveC}
+          onDelete={this.props.onDelete}
           view={this.view()}
         />
-        
       </div>
     );
   }
