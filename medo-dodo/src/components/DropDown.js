@@ -5,7 +5,7 @@ import TaskGetter from './TasksGetter'
 class DropDown extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { title: '', value: '', categories: [], options: [] } 
+    this.state = { title: '', value: '', categories: [], options: [], selection: '' } 
   }
 
   async componentDidMount() {
@@ -24,7 +24,7 @@ class DropDown extends React.Component {
   createOptions = () => {
     const res = []
     this.state.categories.forEach(function(item, index, array) {
-      res.push(<option key={index} value={index} >{item}</option>)
+      res.push(<option key={index} value={index}> {item} </option>)
     })
     
     res.unshift(<option key="-1" value="">Choose category</option> )
@@ -32,12 +32,7 @@ class DropDown extends React.Component {
     
     return res;
   }
-
-  sayHello = () => {
-    console.log('here')
-    console.log(document.getElementById("my-select").value)
-    
-  }
+q                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
   render() {
  
     return (
@@ -56,7 +51,7 @@ class DropDown extends React.Component {
                 <div className="fields">
                   <div className="field">
 
-                    <select id="my-select" className="ui search dropdown">                    
+                    <select id="my-select" className="ui selection dropdown visible active">                    
                       {this.state.options}
                     </select>
 

@@ -11,7 +11,6 @@ import pagetypes from './pagetypes'
 
 class TaskView extends React.Component {
 
-  state 
   constructor(props) {
     super(props)
     this.state = { 
@@ -22,7 +21,8 @@ class TaskView extends React.Component {
       category: 1,
       inputFields: [],
       priorityTag: [],
-      dropdown: []
+      dropdown: [],
+      selectedCategory: ''
     }
   }
 
@@ -110,11 +110,6 @@ class TaskView extends React.Component {
 
   }
 
-  setCatID = (event) => {
-    console.log(event.target.value)
-    console.log('hi there')
-  }
-
   onTextFieldSubmit(term) {
     console.log(term);
   }
@@ -126,7 +121,7 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
-        <DropDown labelName="Category" labelAlign="center" onClick={this.setCatID}/>
+        <DropDown labelName="Category" labelAlign="center" selected={this.state.selectedCategory}/>
       </div>
     )
   }
