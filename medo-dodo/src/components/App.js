@@ -32,7 +32,6 @@ class App extends React.Component {
   async componentDidMount() {
     const tasks = await TaskGetter.everyTask()
     this.setState({allTasks:tasks})
-    console.log(this.state.allTasks);
   }
 
   changeViewToAdd = () => {
