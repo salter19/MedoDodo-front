@@ -6,6 +6,7 @@ import DueTime from "./DueTimeInput";
 import PriorityButtonRow from "./PriorityButtonRow";
 import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
+import TaskGetter from './TasksGetter'
 
 class TaskView extends React.Component {
 
@@ -13,6 +14,17 @@ class TaskView extends React.Component {
 
   componentDidMount() {
     console.log(`The id of the task at hand: ${this.props.currentTaskID}`)
+    const data = this.getTaskData()
+    this.setData(data)
+  }
+
+  getTaskData = async() => {
+    const task = await TaskGetter.byId(this.props.currentTaskID)
+    return task
+  }
+
+  setData = (data) => {
+
   }
 
   onTextFieldSubmit(term) {
