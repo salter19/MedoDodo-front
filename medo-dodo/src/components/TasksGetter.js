@@ -19,6 +19,7 @@ const everyCat = async () => {
   return result.data;
 };
 
+// Terhi 1.
 const byId = async (taskID) => {
   const result = await axios.get(`${address}${taskID}`)
   return result.data;
