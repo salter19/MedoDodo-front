@@ -36,8 +36,7 @@ class TasksByCatTitle extends React.Component {
 
   componentDidUpdate() {
     this.readTasks();
-    this.createCards();
-    
+    this.createCards();    
   }
 
   render() {
