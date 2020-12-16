@@ -33,8 +33,8 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.addTask });
   };
 
-  changeViewToModify = () => {
-    this.setState({ currentPage: pagetypes.modifyTask });
+  changeViewToModify = (taskID) => {
+    this.setState({ currentPage: pagetypes.modifyTask, currentTaskID: taskID });
   };
 
   changeViewToCats = () => {
