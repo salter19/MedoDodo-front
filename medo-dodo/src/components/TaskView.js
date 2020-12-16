@@ -21,7 +21,8 @@ class TaskView extends React.Component {
       priority: priorityLevels[priorityLevels.length -1], 
       category: 1,
       inputFields: [],
-      priorityTag: []
+      priorityTag: [],
+      dropdown: []
     }
   }
 
