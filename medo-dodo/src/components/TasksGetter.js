@@ -19,6 +19,11 @@ const everyCat = async () => {
   return result.data;
 };
 
+const byId = async (taskID) => {
+  const result = await axios.get(`${address}${taskID}`)
+  return result.data;
+}
+
 const obj = { byWeek, byCategoryTitle, everyCat };
 
 export default obj;
