@@ -49,11 +49,9 @@ class DropDown extends React.Component {
                   <div className="field">
 
                     <select className="ui search dropdown">
-                      <option value="">Choose category</option>
-                      <option value="0">My Tasks</option>
-                      <option value="1">School Stuff</option>
-                      <option value="">Add new category</option>
+                      <option key="-1" value="">Choose category</option>                      
                       {this.state.options}
+                      <option key="-2" value="">Add new category</option>
                     </select>
 
                   </div>
