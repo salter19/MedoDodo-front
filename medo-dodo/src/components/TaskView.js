@@ -32,7 +32,7 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
-      this.setDropdown(1)
+      this.setDropdown(data.category_id)
 
       this.setState({
         task: data.title,
@@ -105,9 +105,7 @@ class TaskView extends React.Component {
   setDropdown = async(ID) => {
     const cats = await TaskGetter.byCategoryId(ID)
     console.log(cats)
-
-    
-
+    this.setState( { selectedCategory: cats } )
   }
 
   onTextFieldSubmit(term) {

@@ -34,9 +34,11 @@ class TasksByCatTitle extends React.Component {
     this.readTasks();
   }
 
-  componentDidUpdate() {
-    this.readTasks();
-    this.createCards();    
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.showingWeek !== this.props.showingWeek) {
+      this.readTasks();
+      this.createCards();
+    }
   }
 
   render() {
