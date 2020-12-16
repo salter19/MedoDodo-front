@@ -2,7 +2,7 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.local;
-const options = ["week/", "category/", "categorytitles/", "id/"];
+const options = ["week/", "category/", "categorytitles/", "id/", 'categories/'];
 
 const byWeek = async (week, year) => {
   const result = await axios.get(`${address}${options[0]}${week}/${year}`);
@@ -24,6 +24,9 @@ const byCategoryId = async (value) => {
   return result.data;
 } 
 
+const everyCategory = async () => {
+  const result = await axios.get(``)
+}
 
 const byId = async (taskID) => {
   const result = await axios.get(`${address}${taskID}`)
