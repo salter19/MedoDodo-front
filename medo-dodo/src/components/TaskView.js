@@ -91,7 +91,7 @@ class TaskView extends React.Component {
         
         {this.state.inputFields}
 
-        <PriorityButtonRow labelAlign="center" />
+        <PriorityButtonRow labelAlign="center" priorityValue={this.state.priority}/>
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
       </div>
