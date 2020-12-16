@@ -61,6 +61,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
                 buttontype={buttontypes.modify}
                 page={pagetypes.modifyTask}
                 onSave={onClickTask}
+                taskID={id}
               />
             </div>
           </div>
