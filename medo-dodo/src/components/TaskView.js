@@ -20,7 +20,8 @@ class TaskView extends React.Component {
       due_date: '', 
       priority: priorityLevels[priorityLevels.length -1], 
       category: 1,
-      inputFields: []
+      inputFields: [],
+      priorityTag: []
     }
   }
 
@@ -30,11 +31,19 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       console.log(data)
       this.createTextInputFields(data.title, data.description)
+      this.setPriority(data.priority)
+      this.setState({
+        task: data.title,
+        description: data.description,
+        priority: data.priority
+      })
 
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
-    }      
+    } 
+    
+    console.log(this.state)
   }
 
   setByTask = async() => {
@@ -81,6 +90,17 @@ class TaskView extends React.Component {
     }
   }
 
+  setPriority = (taskPr) => {
+    try {
+      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
+      
+      this.setState( { priority: taskPr, priorityTag: br } )
+      
+    } catch (error) {
+      alert('something at loss in priority setting.')
+    }
+  }
+
   onTextFieldSubmit(term) {
     console.log(term);
   }
@@ -90,8 +110,7 @@ class TaskView extends React.Component {
       <div className="content">  
         
         {this.state.inputFields}
-
-        <PriorityButtonRow labelAlign="center" priorityValue={this.state.priority}/>
+        {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
       </div>
