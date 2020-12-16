@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import PriorityTag from "./PriorityTag";
-import Servers from "./Servers";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
 import pagetypes from "./pagetypes";
