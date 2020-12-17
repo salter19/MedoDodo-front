@@ -8,6 +8,7 @@ import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
 import Dropdown from './Dropdown'
+import DatePicker from './DatePicker'
 
 class TaskView extends React.Component {
 
@@ -147,6 +148,7 @@ class TaskView extends React.Component {
       <div className="content">
         {this.state.inputFields}
         {this.state.priorityTag}
+        <DatePicker />
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
