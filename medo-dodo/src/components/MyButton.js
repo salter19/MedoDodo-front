@@ -48,7 +48,7 @@ class MyButton extends React.Component {
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.deleteC
-      ? console.log("deleting category")
+      ? this.props.onCatDelete(this.props.currentCatID)
       : this.errorHandler();
   };
 
