@@ -26,7 +26,16 @@ class TaskView extends React.Component {
     }
   }
 
-  async componentDidMount() {    
+  componentDidMount() {    
+    this.getGoing();
+
+  }
+  
+  componentDidUpdate() {
+    console.log('something updated')
+  }
+
+  getGoing = async() => {
     this.setDefaultsByPagetype();
     const dropdownOptions = await this.setDropdownOptions();
     
@@ -35,7 +44,6 @@ class TaskView extends React.Component {
     });
 
     console.log(this.state)
-
   }
   
   setDefaultsByPagetype = async() => {
@@ -83,6 +91,7 @@ class TaskView extends React.Component {
   }
 
   setDueTime = (time) => {
+    console.log('t: ' + time)
     this.setState( { due_date: time } )
   }
   
@@ -161,7 +170,7 @@ class TaskView extends React.Component {
       <div className="content">
         {this.state.inputFields}
         {this.state.priorityTag}
-        <DatePicker />
+        <DatePicker onSelectedChange={this.setDueTime}/>
         <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     );

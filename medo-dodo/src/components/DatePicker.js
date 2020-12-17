@@ -2,12 +2,13 @@ import './styles/DatePicker.css'
 import React, {useState, useEffect} from 'react'
 import DateTimeSetter from 'react-datetime-picker'
 
-const DatePicker = () => {
+const DatePicker = ({onSelectedChange}) => {
     const [value, setValue] = useState(new Date());
 
     useEffect(()=>{
 
         const time = {day: value.getDate(), month: value.getMonth() + 1, hour: value.getHours(), minutes: value.getMinutes()}
+        onSelectedChange(value);
         console.log(time)
     }, [value])
 
