@@ -33,27 +33,33 @@ class TaskView extends React.Component {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
       this.setPriority(data.priority)
+      const defCat = await this.setDefaultCategoryForDropdown(data.category_id)
 
       this.setState({
         task: data.title,
         description: data.description,
         priority: data.priority,
         category: data.category_id,
+        selectedCategory: defCat
       })
 
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
+      const defCat = await this.setDefaultCategoryForDropdown(1)
+
+      this.setState({
+        selectedCategory: defCat
+      })
     } 
    
     const dropdownOptions = await this.setDropdownOptions();
     
     this.setState({
       dropdownOptions: dropdownOptions,
-      selectedCategory: dropdownOptions[1]
     });
 
-    //console.log(this.state)
+    console.log(this.state)
 
   }
 
@@ -120,7 +126,19 @@ class TaskView extends React.Component {
   }
 
   setSelectedCategory = (cat) => {
-    this.setState( { selectedCategory: cat } )
+    console.log(cat)
+    this.setState( { selectedCategory: cat } )    
+  }
+
+  setDefaultCategoryForDropdown = async(id) => {
+    console.log('this is the id: ' + id)
+    const categories = await TaskGetter.everyCategory();
+    let res = []
+    categories.map((obj) => 
+      obj.id === id ? res.push(obj.id, obj.title) : null
+    );
+
+    return res;
   }
 
   onTextFieldSubmit(term) {
