@@ -119,6 +119,10 @@ class TaskView extends React.Component {
     return objs;
   }
 
+  setSelectedCategory = (cat) => {
+    this.setState( { selectedCategory: cat } )
+  }
+
   onTextFieldSubmit(term) {
     console.log(term);
   }
@@ -131,7 +135,7 @@ class TaskView extends React.Component {
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
         <DropDown labelName="Category" labelAlign="center" />
-        <Dropper options={this.state.dropdownOptions} header="Select Category"/>
+        <Dropper options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     )
   }
