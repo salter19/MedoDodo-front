@@ -1,6 +1,6 @@
 import "./styles/Header.css";
 import React from "react";
-import pagetypes from './pagetypes'
+import pagetypes from "./pagetypes";
 
 export default class Head extends React.Component {
   constructor(props) {
@@ -8,14 +8,14 @@ export default class Head extends React.Component {
     this.state = {
       showArrowButtons: false,
       headerMessages: [
-        "Week " + this.props.showingWeek,
+        "Week " + this.props.showingWeek + " / " + this.props.showingYear,
         "Categories",
         "Add new task",
         "Modify task",
-        this.props.catTitle
+        this.props.catTitle,
       ],
       headerMessage: "Header message",
-      currentWeekMsg: '',
+      currentWeekMsg: "",
     };
   }
 
@@ -23,7 +23,8 @@ export default class Head extends React.Component {
     if (this.props.page === pagetypes.weekly) {
       this.setState({
         showArrowButtons: true,
-        headerMessage: "Week " + this.props.showingWeek,
+        headerMessage:
+          "Week " + this.props.showingWeek + " / " + this.props.showingYear,
         currentWeekMsg: `Current week number is: ${this.props.weekNumber}`,
       });
     } else if (this.props.page === pagetypes.categories) {
@@ -117,7 +118,7 @@ export default class Head extends React.Component {
           </button>
         </div>
         <div className="headerMessage">
-          <h1>Week {this.props.showingWeek}</h1>
+          <h1>{this.state.headerMessage}</h1>
           <br />
           Today is: {this.getFormattedDate(this.props.date)}
         </div>

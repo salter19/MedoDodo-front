@@ -19,6 +19,7 @@ class App extends React.Component {
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
       currentCategory: "",
+      currentCatID: "",
       currentTaskID: null,
       allTasks: [],
     };
@@ -46,21 +47,50 @@ class App extends React.Component {
   };
 
   changeViewToCat = (cat) => {
-    this.setState({ currentPage: pagetypes.category, currentCategory: cat });
+    this.setState({
+      currentPage: pagetypes.category,
+      currentCategory: cat,
+      currentCatID: cat.id,
+    });
+    console.log("category id is: " + cat.id);
   };
 
   changeViewToWeekly = () => {
     this.setState({ currentPage: pagetypes.weekly });
   };
 
-  handleDelete = () => {
-    console.log("handling delete now: " + this.state.currentTaskID);
-    TaskRemover.removeByTaskID(
-      this.state.currentTaskID,
-      this.removeFromAllTasks
-    );
-    // this.removeFromAllTasks(this.state.currentTaskID);
+  handleCatDelete = () => {
+    if (this.confirmDelete("category")) {
+      console.log("handling category delete now: " + this.state.currentCatID);
+    } else {
+      console.log(
+        "didn't want to delete after all: " + this.state.currentCatID
+      );
+    }
   };
+
+  handleDelete = () => {
+    if (this.confirmDelete("task")) {
+      TaskRemover.removeByTaskID(
+        this.state.currentTaskID,
+        this.removeFromAllTasks
+      );
+      console.log("handling delete now: " + this.state.currentTaskID);
+    } else {
+      console.log(
+        "didn't want to delete after all: " + this.state.currentTaskID
+      );
+    }
+  };
+
+  confirmDelete(task) {
+    let decision = window.confirm(`Do you really want to delete this ${task}?`);
+    if (decision === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   removeFromAllTasks = () => {
     
@@ -160,6 +190,7 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === pagetypes.category) {
+      // console.log("this is view for a single category");
       return (
         <CategoryView
           page={this.state.currentPage}
@@ -169,6 +200,8 @@ class App extends React.Component {
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
+          currentCatID={this.state.currentCatID}
+          onCatDelete={this.handleCatDelete}
         />
       );
     } else {
@@ -183,7 +216,7 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentPage !== this.state.currentPage) {
-      this.checkView();
+      // this.checkView();
     }
   }
 
