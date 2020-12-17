@@ -6,42 +6,10 @@ const DatePicker = () => {
     const [value, setValue] = useState(new Date());
 
     useEffect(()=>{
-        const date = getFormattedDate(value);
-        console.log(date)
+
+        const time = {day: value.getDate(), month: value.getMonth() + 1, hour: value.getHours(), minutes: value.getMinutes()}
+        console.log(time)
     }, [value])
-
-    getFormattedDate = (date) => {
-        const formatted =
-        this.getDayOfTheWeek(date.getDay()) +
-        " " +
-        date.getDate() +
-        " / " +
-        (date.getMonth() + 1) +
-        " / " +
-        date.getFullYear();
-        return formatted;
-    }
-
-    getDayOfTheWeek = (daynumber) => {
-        switch (daynumber) {
-          case 0:
-            return "Sunday";
-          case 1:
-            return "Monday";
-          case 2:
-            return "Tuesday";
-          case 3:
-            return "Wednesday";
-          case 4:
-            return "Thursday";
-          case 5:
-            return "Friday";
-          case 6:
-            return "Saturday";
-          default:
-            return "Current day";
-        }
-      }
 
     return (
         <div className="date-picker">
