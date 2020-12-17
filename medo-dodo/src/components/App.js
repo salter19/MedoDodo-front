@@ -64,6 +64,16 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.weekly });
   };
 
+  handleCatDelete = () => {
+    if (this.confirmDelete("category")) {
+      console.log("handling category delete now: " + this.state.currentCatID);
+    } else {
+      console.log(
+        "didn't want to delete after all: " + this.state.currentCatID
+      );
+    }
+  };
+
   handleDelete = () => {
     if (this.confirmDelete("task")) {
       TaskRemover.removeByTaskID(
