@@ -6,6 +6,7 @@ import CategoriesView from "./CategoriesView";
 import CategoryView from "./CategoryView";
 import pagetypes from "./pagetypes";
 import TaskGetter from "./TasksGetter";
+import TaskRemover from "./TasksRemover";
 import currentWeekNumber from "current-week-number";
 
 class App extends React.Component {
@@ -48,6 +49,35 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.weekly });
   };
 
+  handleDelete = () => {
+    console.log("handling delete now: " + this.state.currentTaskID);
+    TaskRemover.removeByTaskID(
+      this.state.currentTaskID,
+      this.removeFromAllTasks
+    );
+    // this.removeFromAllTasks(this.state.currentTaskID);
+  };
+
+  removeFromAllTasks = () => {
+    console.log(
+      "allTasks before: length=" +
+        this.state.allTasks.length +
+        " " +
+        JSON.stringify(this.state.allTasks)
+    );
+    const list = [...this.state.allTasks];
+    const updatedList = list.filter(
+      (task) => task.id !== this.state.currentTaskID
+    );
+    this.setState({ allTasks: updatedList });
+    console.log(
+      "allTasks after: length=" +
+        this.state.allTasks.length +
+        " " +
+        JSON.stringify(this.state.allTasks)
+    );
+  };
+
   handleNextWeek = () => {
     const lastWeekOfYear = currentWeekNumber("12/31/" + this.state.showingYear);
     if (this.state.showingWeek === lastWeekOfYear) {
@@ -59,10 +89,6 @@ class App extends React.Component {
       this.setState({ showingWeek: this.state.showingWeek + 1 });
     }
     console.log(this.state.showingWeek + " " + this.state.showingYear);
-  };
-
-  handleDelete = () => {
-    console.log("handling delete now: " + this.state.currentTaskID);
   };
 
   handleLastWeek = () => {
