@@ -2,7 +2,6 @@ import "./styles/TaskView.css";
 import React from "react";
 import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
-import DueTime from "./DueTimeInput";
 import PriorityButtonRow from "./PriorityButtonRow";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
@@ -23,7 +22,7 @@ class TaskView extends React.Component {
       inputFields: [],
       priorityTag: [],
       dropdownOptions: [],
-      selectedCategory: ''
+      selectedCategory: []
     }
   }
 
@@ -42,19 +41,15 @@ class TaskView extends React.Component {
   setDefaultsByPagetype = async() => {
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask(); 
-      this.createTextInputFields(data.title, data.description);
-      this.setPriority(data.priority);
+      this.setTaskTitle(data.title);
+      this.setDescription(data.description);
+      this.setDueTime(data.due_date);
+      this.setPriorityAndTag(data.priority);
+      this.setCategory(data.category_id);
+      this.createTextInputFields(data.title, data.description);      
       const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
-
-      this.setState({
-        task: data.title,
-        description: data.description,
-        due_date: data.due_date,
-        priority: data.priority,
-        category: data.category_id,
-        selectedCategory: defCat
-      })
-
+      this.setSelectedCategory(defCat);
+      
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
@@ -78,6 +73,33 @@ class TaskView extends React.Component {
     const task = await TaskGetter.byId(this.props.currentTaskID);
     return task;
   };
+
+  setTaskTitle = (title) => {
+    this.setState({task: title});
+  }
+
+  setDescription = (text) => {
+    this.setState({description: text});
+  }
+
+  setDueTime = (time) => {
+    this.setState( { due_date: time } )
+  }
+  
+  setPriorityAndTag = (taskPr) => {
+    try {
+      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
+      
+      this.setState( { priority: taskPr, priorityTag: br } )
+      
+    } catch (error) {
+      alert('something at loss in priority setting.')
+    }
+  }
+
+  setCategory = (id) => {
+    this.setState( { category: id } )
+  }
 
   createTextInputFields = (task, description) => {
     try {
@@ -107,16 +129,6 @@ class TaskView extends React.Component {
     }
   };
 
-  setPriority = (taskPr) => {
-    try {
-      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
-      
-      this.setState( { priority: taskPr, priorityTag: br } )
-      
-    } catch (error) {
-      alert('something at loss in priority setting.')
-    }
-  }
 
   setDropdownOptions = async() => {
     const ops = await TaskGetter.everyCategory()
