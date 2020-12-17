@@ -63,23 +63,13 @@ class App extends React.Component {
   };
 
   removeFromAllTasks = () => {
-    console.log(
-      "allTasks before: length=" +
-        this.state.allTasks.length +
-        " " +
-        JSON.stringify(this.state.allTasks)
-    );
+    
     const list = [...this.state.allTasks];
     const updatedList = list.filter(
       (task) => task.id !== this.state.currentTaskID
     );
     this.setState({ allTasks: updatedList });
-    console.log(
-      "allTasks after: length=" +
-        this.state.allTasks.length +
-        " " +
-        JSON.stringify(this.state.allTasks)
-    );
+    
   };
 
   handleNextWeek = () => {
