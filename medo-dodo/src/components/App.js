@@ -57,7 +57,7 @@ class App extends React.Component {
       currentCategory: cat,
       currentCatID: cat.id,
     });
-    console.log("category id is: " + this.state.currentCatID);
+    console.log("category id is: " + cat.id);
   };
 
   changeViewToWeekly = () => {
@@ -65,7 +65,7 @@ class App extends React.Component {
   };
 
   handleDelete = () => {
-    if (this.confirmDelete()) {
+    if (this.confirmDelete("task")) {
       TaskRemover.removeByTaskID(
         this.state.currentTaskID,
         this.removeFromAllTasks
@@ -78,8 +78,8 @@ class App extends React.Component {
     }
   };
 
-  confirmDelete() {
-    let decision = window.confirm("Do you really want to delete this task?");
+  confirmDelete(task) {
+    let decision = window.confirm(`Do you really want to delete this ${task}?`);
     if (decision === true) {
       return true;
     } else {
@@ -88,23 +88,27 @@ class App extends React.Component {
   }
 
   removeFromAllTasks = () => {
+    /*
     console.log(
       "allTasks before: length=" +
         this.state.allTasks.length +
         " " +
         JSON.stringify(this.state.allTasks)
     );
+    */
     const list = [...this.state.allTasks];
     const updatedList = list.filter(
       (task) => task.id !== this.state.currentTaskID
     );
     this.setState({ allTasks: updatedList });
+    /*
     console.log(
       "allTasks after: length=" +
         this.state.allTasks.length +
         " " +
         JSON.stringify(this.state.allTasks)
     );
+    */
   };
 
   handleNextWeek = () => {
