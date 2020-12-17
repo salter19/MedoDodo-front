@@ -19,11 +19,12 @@ class CategoriesView extends React.Component {
          
             this.setState({ titles: catTitles, tasks: taskTitles})
 
+            let i = 0;
             const catIcons = catTitles.map(e => {
                 const items = this.getTasksPerCategoryByTitle(e)
                 return (
-                    <div className="eight wide column" >
-                        <CategoryIcon key={e} title={e} data={items} onClickCat={this.props.onClickCat} />
+                    <div key={i++} className="eight wide column" >
+                        <CategoryIcon title={e} data={items} onClickCat={this.props.onClickCat} />
                     </div>
                 )
             })

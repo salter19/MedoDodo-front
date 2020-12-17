@@ -11,7 +11,7 @@ class PriorityTag extends React.Component {
     });
   }
   getTagColor = (value) => {
-    console.log(value)
+    
     return (
       value === priority_levels[2]
       ? "ui red tag label" 

@@ -2,7 +2,7 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.local;
-const options = ["week/", "category/", "categorytitles/"];
+const options = ["week/", "category/", "categorytitles/", "id/", 'categories/'];
 
 const byWeek = async (week, year) => {
   const result = await axios.get(`${address}${options[0]}${week}/${year}`);
@@ -14,10 +14,20 @@ const byCategoryTitle = async (value) => {
   return result.data;
 };
 
-const everyCat = async () => {
+const everyCatTitle = async () => {
   const result = await axios.get(`${address}${options[2]}`);
   return result.data;
 };
+
+const byCategoryId = async (value) => {
+  const result = await axios.get(`${address}${options[1]}${options[3]}${value}`);
+  return result.data;
+} 
+
+const everyCategory = async () => {
+  const result = await axios.get(`${address}${options[4]}`);
+  return result.data;
+}
 
 const byId = async (taskID) => {
   const result = await axios.get(`${address}${taskID}`)
@@ -29,6 +39,6 @@ const everyTask = async() => {
   return result.data;
 }
 
-const obj = { byWeek, byCategoryTitle, everyCat, byId, everyTask};
+const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, byCategoryId, everyCategory };
 
 export default obj;

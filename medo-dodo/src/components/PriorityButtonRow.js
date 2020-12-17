@@ -10,6 +10,10 @@ class PriorityButtonRow extends React.Component {
     this.state = { priority: priority_levels[priority_levels.length -1], tag: 'ui red tag label', priorityTitle: 'high'}
   }
 
+  componentDidMount() {
+    this.setTagDefault();
+  }
+
   setLow = () => {
     this.setState({priority: priority_levels[0], tag: "ui green tag label", priorityTitle: 'low'} )
   }
@@ -18,6 +22,15 @@ class PriorityButtonRow extends React.Component {
   }
   setHigh = () => {
     this.setState({priority: priority_levels[2], tag: "ui red tag label", priorityTitle: 'high'})
+  }
+
+  setTagDefault = async() => {
+    const defaultValue = await this.props.priorityValue
+    defaultValue === priority_levels[0] 
+    ? this.setLow()
+    : defaultValue === priority_levels[1] 
+    ? this.setMedium()
+    : this.setHigh()
   }
 
   render() {

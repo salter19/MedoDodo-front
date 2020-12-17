@@ -1,8 +1,40 @@
 import React from "react";
 import Label from "./Label";
+import TaskGetter from './TasksGetter'
 
 class DropDown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { title: '', value: '', categories: [], options: [], selection: '' } 
+  }
+
+  async componentDidMount() {
+    const cats = await this.getCategories()
+    this.setState( {categories: cats})
+    const ops = this.createOptions()
+    this.setState( { options: ops } )
+  }
+
+  getCategories = async() => {
+    const data = await TaskGetter.everyCatTitle()
+    const res = data.map( obj => obj.title )
+    return res;
+  }
+
+  createOptions = () => {
+    const res = []
+    this.state.categories.forEach(function(item, index, array) {
+      res.push(<option key={index} value={index}> {item} </option>)
+    })
+    
+    res.unshift(<option key="-1" value="">Choose category</option> )
+    res.push(<option key="-2" value="">Add new category</option>)
+    
+    return res;
+  }
+q                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
   render() {
+ 
     return (
       <div className="drop-down">
         <div className="ui segment">
@@ -18,12 +50,11 @@ class DropDown extends React.Component {
               <form className="ui form">
                 <div className="fields">
                   <div className="field">
-                    <select className="ui search dropdown">
-                      <option value="">Choose category</option>
-                      <option value="0">My Tasks</option>
-                      <option value="1">School Stuff</option>
-                      <option value="">Add new category</option>
+
+                    <select id="my-select" className="ui selection dropdown visible active">                    
+                      {this.state.options}
                     </select>
+
                   </div>
                 </div>
               </form>
