@@ -34,6 +34,7 @@ export default class WeeklyView extends React.Component {
           showingWeek={this.props.showingWeek}
           showingYear={this.props.showingYear}
           onClickTask={this.props.onClickTask}
+          allTasks={this.props.allTasks}
         />
         <Footer
           key={2}
