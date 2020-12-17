@@ -35,20 +35,21 @@ class TaskView extends React.Component {
       dropdownOptions: dropdownOptions,
     });
 
-    //console.log(this.state)
+    console.log(this.state)
 
   }
   
   setDefaultsByPagetype = async() => {
     if (this.props.page === pagetypes.modifyTask) {
-      const data = await this.setByTask()      
-      this.createTextInputFields(data.title, data.description)
-      this.setPriority(data.priority)
-      const defCat = await this.setDefaultCategoryForDropdown(data.category_id)
+      const data = await this.setByTask(); 
+      this.createTextInputFields(data.title, data.description);
+      this.setPriority(data.priority);
+      const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
 
       this.setState({
         task: data.title,
         description: data.description,
+        due_date: data.due_date,
         priority: data.priority,
         category: data.category_id,
         selectedCategory: defCat
