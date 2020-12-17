@@ -131,12 +131,11 @@ class TaskView extends React.Component {
   }
 
   setSelectedCategory = (cat) => {
-    console.log(cat)
     this.setState( { selectedCategory: cat } )    
   }
 
   setDefaultCategoryForDropdown = async(id) => {
-    console.log('this is the id: ' + id)
+    
     const categories = await TaskGetter.everyCategory();
     let res = []
     categories.map((obj) => 
