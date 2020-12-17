@@ -4,7 +4,6 @@ import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
 import DueTime from "./DueTimeInput";
 import PriorityButtonRow from "./PriorityButtonRow";
-import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
