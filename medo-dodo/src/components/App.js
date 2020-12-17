@@ -24,9 +24,18 @@ class App extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.upDateTaskList();
+    /*
     const tasks = await TaskGetter.everyTask();
     this.setState({ allTasks: tasks });
+    */
+  }
+
+  async upDateTaskList() {
+    const tasks = await TaskGetter.everyTask();
+    this.setState({ allTasks: tasks });
+    console.log(JSON.stringify(this.state.allTasks) + " component has mounted");
   }
 
   changeViewToAdd = () => {
@@ -125,6 +134,7 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
+          allTasks={this.state.allTasks}
         />
       );
     } else if (this.state.currentPage === pagetypes.addTask) {
@@ -149,6 +159,7 @@ class App extends React.Component {
           description={"And it's possible description..."}
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
+          allTasks={this.state.allTasks}
           currentTaskID={this.state.currentTaskID}
           onDelete={this.handleDelete}
         />
