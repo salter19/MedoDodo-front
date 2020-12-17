@@ -14,7 +14,7 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
         }
 
         document.body.addEventListener('click', onBodyClick); 
-        
+
         // detach the event listener when component is removed from the DOM
         return () => {
             document.body.removeEventListener('click', onBodyClick);
@@ -42,25 +42,27 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
     });
 
     return (
-        <div className="ui form" ref={ref}>
-            <div className="field">
-                <label className="label"> {header} </label>
+        <div className="ui segment">
+            <div className="ui form" ref={ref}>
+                <div className="field">
+                    <label className="label"> {header} </label>
 
-                <div 
-                    className={`ui selection dropdown ${open ? 'visible active' : ''}`} 
-                    onClick={() => {
-                        setOpen(!open);
-                        }
-                    }>
+                    <div 
+                        className={`ui selection dropdown ${open ? 'visible active' : ''}`} 
+                        onClick={() => {
+                            setOpen(!open);
+                            }
+                        }>
+                        
+                        <i className="dropdown icon"></i>
+                        <div className="text"> {selected[1]} </div>
+                        <div className={`menu ${open ? 'visible transition' : ''}`}>
+                            {renderedOptions}    
+                        </div>
                     
-                    <i className="dropdown icon"></i>
-                    <div className="text"> {selected[1]} </div>
-                    <div className={`menu ${open ? 'visible transition' : ''}`}>
-                        {renderedOptions}    
                     </div>
-                
-                </div>
 
+                </div>
             </div>
         </div>
     )
