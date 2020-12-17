@@ -7,7 +7,7 @@ import PriorityButtonRow from "./PriorityButtonRow";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
-import Dropper from './Dropping'
+import Dropdown from './Dropdown'
 
 class TaskView extends React.Component {
 
@@ -148,7 +148,7 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
-        <Dropper options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
+        <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     );
   };
