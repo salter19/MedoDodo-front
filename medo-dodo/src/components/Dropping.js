@@ -1,9 +1,16 @@
 import React, {useState, useEffect} from 'react'
 
 const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
-    const renderedOptions = options.map( option => {
+   
 
-        // option[0]: id, option[1]: title        
+    const renderedOptions = options.map( option => {
+        // option[0]: id, option[1]: title  
+
+        // this removes chosen option from the dropdown
+        if (option[0] === selected[0]) {
+            return null;
+        }      
+
         return (
             <div 
                 key={option[0]} 
