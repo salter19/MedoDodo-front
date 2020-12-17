@@ -69,6 +69,7 @@ class TasksByCatTitle extends React.Component {
                   buttontype={buttontypes.deleteC}
                   page={this.props.page}
                   // onSave={this.props.onSave}
+                  currentCatID={this.props.currentCatID}
                   onCatDelete={this.props.onCatDelete}
                 />
               </div>
