@@ -19,6 +19,7 @@ class App extends React.Component {
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
       currentCategory: "",
+      currentCatID: "",
       currentTaskID: null,
       allTasks: [],
     };
@@ -51,7 +52,12 @@ class App extends React.Component {
   };
 
   changeViewToCat = (cat) => {
-    this.setState({ currentPage: pagetypes.category, currentCategory: cat });
+    this.setState({
+      currentPage: pagetypes.category,
+      currentCategory: cat,
+      currentCatID: cat.id,
+    });
+    console.log("category id is: " + this.state.currentCatID);
   };
 
   changeViewToWeekly = () => {
@@ -190,6 +196,7 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === pagetypes.category) {
+      // console.log("this is view for a single category");
       return (
         <CategoryView
           page={this.state.currentPage}
@@ -199,6 +206,8 @@ class App extends React.Component {
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
+          currentCatID={this.state.currentCatID}
+          onCatDelete={this.handleCatDelete}
         />
       );
     } else {
@@ -213,7 +222,7 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentPage !== this.state.currentPage) {
-      this.checkView();
+      // this.checkView();
     }
   }
 
