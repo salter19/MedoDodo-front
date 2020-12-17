@@ -29,6 +29,20 @@ class TaskView extends React.Component {
 
   async componentDidMount() {
 
+    this.setDefaultsBasedOnPageType();
+   
+    const dropdownOptions = await this.setDropdownOptions();
+    
+    this.setState({
+      dropdownOptions: dropdownOptions,
+    });
+
+    console.log(this.state)
+
+  }
+
+  setDefaultsBasedOnPageType = async() => {
+
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
@@ -52,15 +66,6 @@ class TaskView extends React.Component {
         selectedCategory: defCat
       })
     } 
-   
-    const dropdownOptions = await this.setDropdownOptions();
-    
-    this.setState({
-      dropdownOptions: dropdownOptions,
-    });
-
-    console.log(this.state)
-
   }
 
   setByTask = async() => {
