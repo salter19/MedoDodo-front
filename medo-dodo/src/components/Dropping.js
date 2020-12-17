@@ -2,11 +2,14 @@ import React, {useState, useEffect, useRef} from 'react'
 
 const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
 
     useEffect(() => {
         document.body.addEventListener('click', (event) => {
-            setOpen( !open );
-            console.log(event.target)
+            if (ref.current && ref.current.contains(event.target)) {
+                return;
+            }
+            setOpen( false );
         })
     }, []);
 
@@ -29,8 +32,9 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
             </div>
         )
     });
+
     return (
-        <div className="ui form">
+        <div className="ui form" ref={ref}>
             <div className="field">
                 <label className="label"> {header} </label>
 
