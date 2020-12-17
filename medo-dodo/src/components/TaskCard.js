@@ -3,7 +3,7 @@ import PriorityTag from "./PriorityTag";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
 import pagetypes from "./pagetypes";
-import TaskGetter from './TasksGetter'
+import TaskGetter from "./TasksGetter";
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
@@ -20,11 +20,13 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
 
   useEffect(() => {
     const task = async () => {
-      const data = await TaskGetter.byId(id)
-      
-      const date = getFormattedDate(data[0].due_date);
-      setTitle(data[0].title);
-      setDueDate(date);
+      const data = await TaskGetter.byId(id);
+      console.log(data);
+      if (data.length > 0) {
+        const date = getFormattedDate(data[0].due_date);
+        setTitle(data[0].title);
+        setDueDate(date);
+      }
     };
 
     task();
@@ -52,7 +54,7 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
               <div className="date">{dueDate}</div>
 
               <div className="priority">
-                <PriorityTag priorityChosen={priority}/>
+                <PriorityTag priorityChosen={priority} />
               </div>
             </div>
 
