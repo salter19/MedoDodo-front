@@ -59,13 +59,27 @@ class App extends React.Component {
   };
 
   handleDelete = () => {
-    console.log("handling delete now: " + this.state.currentTaskID);
-    TaskRemover.removeByTaskID(
-      this.state.currentTaskID,
-      this.removeFromAllTasks
-    );
-    // this.removeFromAllTasks(this.state.currentTaskID);
+    if (this.confirmDelete()) {
+      TaskRemover.removeByTaskID(
+        this.state.currentTaskID,
+        this.removeFromAllTasks
+      );
+      console.log("handling delete now: " + this.state.currentTaskID);
+    } else {
+      console.log(
+        "didn't want to delete after all: " + this.state.currentTaskID
+      );
+    }
   };
+
+  confirmDelete() {
+    let decision = window.confirm("Do you really want to delete this task?");
+    if (decision === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   removeFromAllTasks = () => {
     console.log(
