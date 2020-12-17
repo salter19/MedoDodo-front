@@ -26,16 +26,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.upDateTaskList();
-    /*
-    const tasks = await TaskGetter.everyTask();
-    this.setState({ allTasks: tasks });
-    */
   }
 
   async upDateTaskList() {
     const tasks = await TaskGetter.everyTask();
     this.setState({ allTasks: tasks });
-    console.log(JSON.stringify(this.state.allTasks) + " component has mounted");
   }
 
   changeViewToAdd = () => {

@@ -149,7 +149,6 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DatePicker />
-        <DueTime labelName="Due date and time:" labelAlign="center" />
         <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     );
