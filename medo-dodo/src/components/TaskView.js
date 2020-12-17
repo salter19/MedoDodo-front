@@ -27,22 +27,19 @@ class TaskView extends React.Component {
     }
   }
 
-  async componentDidMount() {
-
-    this.setDefaultsBasedOnPageType();
-   
+  async componentDidMount() {    
+    this.setDefaultsByPagetype();
     const dropdownOptions = await this.setDropdownOptions();
     
     this.setState({
       dropdownOptions: dropdownOptions,
     });
 
-    console.log(this.state)
+    //console.log(this.state)
 
   }
-
-  setDefaultsBasedOnPageType = async() => {
-
+  
+  setDefaultsByPagetype = async() => {
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask()      
       this.createTextInputFields(data.title, data.description)
@@ -61,7 +58,6 @@ class TaskView extends React.Component {
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
       const defCat = await this.setDefaultCategoryForDropdown(1)
-
       this.setState({
         selectedCategory: defCat
       })
@@ -131,11 +127,12 @@ class TaskView extends React.Component {
   }
 
   setSelectedCategory = (cat) => {
+    console.log(cat)
     this.setState( { selectedCategory: cat } )    
   }
 
   setDefaultCategoryForDropdown = async(id) => {
-    
+    console.log('this is the id: ' + id)
     const categories = await TaskGetter.everyCategory();
     let res = []
     categories.map((obj) => 
@@ -156,6 +153,7 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityTag}
         <DueTime labelName="Due date and time:" labelAlign="center" />
+        <DropDown labelName="Category" labelAlign="center" />
         <Dropper options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     )
