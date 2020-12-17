@@ -30,7 +30,6 @@ export default class TasksWeekly extends React.Component {
   };
 
   createCards = () => {
-     
     const cards = this.state.tasks.map((e) => {
       return (
         <TaskCard
@@ -63,9 +62,11 @@ export default class TasksWeekly extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.showingWeek !== this.props.showingWeek) {
+    if (
+      prevProps.showingWeek !== this.props.showingWeek ||
+      prevProps.allTasks.length !== this.props.allTasks.length
+    ) {
       this.readTasks();
-      this.createCards();
     }
   }
 
