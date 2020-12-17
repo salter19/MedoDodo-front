@@ -6,7 +6,8 @@ const obj = {
   addTask: pagetypes.addTask,
   save: "save",
   modify: pagetypes.modifyTask,
-  delete: "delete",
+  delete: "Delete task",
+  deleteC: "Delete this category",
   category: pagetypes.category,
 };
 

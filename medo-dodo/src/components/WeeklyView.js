@@ -26,6 +26,7 @@ export default class WeeklyView extends React.Component {
           weekNumber={this.props.currentWeek}
           page={this.props.page}
           showingWeek={this.props.showingWeek}
+          showingYear={this.props.showingYear}
           date={this.props.currentDate}
           onClickNext={this.props.onClickNext}
           onClickLast={this.props.onClickLast}

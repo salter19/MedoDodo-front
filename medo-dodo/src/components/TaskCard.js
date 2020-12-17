@@ -21,7 +21,6 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
   useEffect(() => {
     const task = async () => {
       const data = await TaskGetter.byId(id);
-      console.log(data);
       if (data.length > 0) {
         const date = getFormattedDate(data[0].due_date);
         setTitle(data[0].title);

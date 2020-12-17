@@ -2,13 +2,12 @@ import "./styles/TaskView.css";
 import React from "react";
 import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
-import DueTime from "./DueTimeInput";
 import PriorityButtonRow from "./PriorityButtonRow";
-import DropDown from "./DropDown";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
-import Dropper from './Dropping'
+import DatePicker from './DatePicker'
+import Dropdown from './Dropdown'
 
 class TaskView extends React.Component {
 
@@ -23,11 +22,20 @@ class TaskView extends React.Component {
       inputFields: [],
       priorityTag: [],
       dropdownOptions: [],
-      selectedCategory: ''
+      selectedCategory: []
     }
   }
 
-  async componentDidMount() {    
+  componentDidMount() {    
+    this.getGoing();
+
+  }
+  
+  componentDidUpdate() {
+    console.log('something updated')
+  }
+
+  getGoing = async() => {
     this.setDefaultsByPagetype();
     const dropdownOptions = await this.setDropdownOptions();
     
@@ -35,25 +43,21 @@ class TaskView extends React.Component {
       dropdownOptions: dropdownOptions,
     });
 
-    //console.log(this.state)
-
+    console.log(this.state)
   }
   
   setDefaultsByPagetype = async() => {
     if (this.props.page === pagetypes.modifyTask) {
-      const data = await this.setByTask()      
-      this.createTextInputFields(data.title, data.description)
-      this.setPriority(data.priority)
-      const defCat = await this.setDefaultCategoryForDropdown(data.category_id)
-
-      this.setState({
-        task: data.title,
-        description: data.description,
-        priority: data.priority,
-        category: data.category_id,
-        selectedCategory: defCat
-      })
-
+      const data = await this.setByTask(); 
+      this.setTaskTitle(data.title);
+      this.setDescription(data.description);
+      this.setDueTime(data.due_date);
+      this.setPriorityAndTag(data.priority);
+      this.setCategory(data.category_id);
+      this.createTextInputFields(data.title, data.description);      
+      const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
+      this.setSelectedCategory(defCat);
+      
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1])
@@ -77,6 +81,34 @@ class TaskView extends React.Component {
     const task = await TaskGetter.byId(this.props.currentTaskID);
     return task;
   };
+
+  setTaskTitle = (title) => {
+    this.setState({task: title});
+  }
+
+  setDescription = (text) => {
+    this.setState({description: text});
+  }
+
+  setDueTime = (time) => {
+    console.log('t: ' + time)
+    this.setState( { due_date: time } )
+  }
+  
+  setPriorityAndTag = (taskPr) => {
+    try {
+      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
+      
+      this.setState( { priority: taskPr, priorityTag: br } )
+      
+    } catch (error) {
+      alert('something at loss in priority setting.')
+    }
+  }
+
+  setCategory = (id) => {
+    this.setState( { category: id } )
+  }
 
   createTextInputFields = (task, description) => {
     try {
@@ -106,16 +138,6 @@ class TaskView extends React.Component {
     }
   };
 
-  setPriority = (taskPr) => {
-    try {
-      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
-      
-      this.setState( { priority: taskPr, priorityTag: br } )
-      
-    } catch (error) {
-      alert('something at loss in priority setting.')
-    }
-  }
 
   setDropdownOptions = async() => {
     const ops = await TaskGetter.everyCategory()
@@ -148,8 +170,8 @@ class TaskView extends React.Component {
       <div className="content">
         {this.state.inputFields}
         {this.state.priorityTag}
-        <DueTime labelName="Due date and time:" labelAlign="center" />
-        <Dropper options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
+        <DatePicker onSelectedChange={this.setDueTime}/>
+        <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>
     );
   };

@@ -84,6 +84,8 @@ class CategoriesView extends React.Component {
           page={this.props.page}
           onClickRight={this.props.onClickAdd}
           onClickLeft={this.props.onClickWeeks}
+          currentCatID={this.props.currentCatID}
+          onCatDelete={this.props.onCatDelete}
           view={view}
         />
       </div>
