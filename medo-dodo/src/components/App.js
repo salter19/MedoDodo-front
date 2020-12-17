@@ -102,7 +102,6 @@ class App extends React.Component {
     } else {
       this.setState({ showingWeek: this.state.showingWeek - 1 });
     }
-    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
 
   checkView() {
