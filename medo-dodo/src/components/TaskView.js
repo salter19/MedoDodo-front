@@ -148,7 +148,7 @@ class TaskView extends React.Component {
           onSubmit={e => this.setDescription(e)}
           type="text"
           placeholder={description}
-          labelName="Description: "
+          labelName="Description"
           onInputChange={e => this.setDescription(e)}
         />
       );
