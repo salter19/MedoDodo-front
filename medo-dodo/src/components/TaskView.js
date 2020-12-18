@@ -20,7 +20,7 @@ class TaskView extends React.Component {
       priority: priorityLevels[priorityLevels.length - 1],
       category: 1,
       inputFields: [],
-      priorityTag: [],
+      priorityRow: [],
       dropdownOptions: [],
       selectedCategory: []
     }
@@ -45,7 +45,7 @@ class TaskView extends React.Component {
       this.setTaskTitle(data.title);
       this.setDescription(data.description);
       this.setDueTime(data.due_date);
-      this.setPriorityAndTag(data.priority);
+      this.setPriorityRow(data.priority);
       this.setCategory(data.category_id);
       this.createTextInputFields(data.title, data.description);      
       const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
@@ -55,7 +55,7 @@ class TaskView extends React.Component {
       const tmp = [this.props.placeholder, this.props.description]
       this.createTextInputFields(tmp[0], tmp[1]);
       const defCat = await this.setDefaultCategoryForDropdown(1);
-      this.setPriorityAndTag(3);
+      this.setPriorityRow(3);
       this.setSelectedCategory(defCat);
     } 
   }
@@ -85,12 +85,21 @@ class TaskView extends React.Component {
   setDueTime = (time) => {
     this.setState( { due_date: time } )
   }
+
+  setNewPriority = (level) => {
+    this.setState( { priority: level } );
+  }
   
-  setPriorityAndTag = (taskPr) => {
+  setPriorityRow = (taskPr) => {
     try {
-      const br = (<PriorityButtonRow labelAlign="center" priorityValue={taskPr}/>)
+      const br = (
+        <PriorityButtonRow 
+          labelAlign="center" 
+          priorityValue={taskPr} 
+          onPriorityChange={this.setNewPriority}
+        />)
       
-      this.setState( { priority: taskPr, priorityTag: br } )
+      this.setState( { priority: taskPr, priorityRow: br } )
       
     } catch (error) {
       alert('something at loss in priority setting.')
@@ -159,7 +168,7 @@ class TaskView extends React.Component {
     return (
       <div className="content">
         {this.state.inputFields}
-        {this.state.priorityTag}
+        {this.state.priorityRow}
         <DatePicker onSelectedChange={this.setDueTime}/>
         <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
       </div>

@@ -7,7 +7,7 @@ import priority_levels from './prioritylevels'
 class PriorityButtonRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { priority: priority_levels[priority_levels.length -1], tag: 'ui red tag label', priorityTitle: 'high'}
+    this.state = { priority: priority_levels[2], tagTitle: 'ui red tag label', priorityTitle: 'high', tag: []}
   }
 
   componentDidMount() {
@@ -15,17 +15,19 @@ class PriorityButtonRow extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("i changed!")
+    console.log("row changed!" + this.state.priority)
+    this.props.onPriorityChange(this.state.priority);
   }
 
+  
   setLow = () => {
-    this.setState({priority: priority_levels[0], tag: "ui green tag label", priorityTitle: 'low'} )
+    this.setState({priority: priority_levels[0], tagTitle: "ui green tag label", priorityTitle: 'low'} )    
   }
   setMedium = () => {
-    this.setState({priority: priority_levels[1], tag: "ui yellow tag label", priorityTitle: 'medium'})
+    this.setState({priority: priority_levels[1], tagTitle: "ui yellow tag label", priorityTitle: 'medium'})
   }
   setHigh = () => {
-    this.setState({priority: priority_levels[2], tag: "ui red tag label", priorityTitle: 'high'})
+    this.setState({priority: priority_levels[2], tagTitle: "ui red tag label", priorityTitle: 'high'})
   }
 
   setTagDefault = async() => {
@@ -52,11 +54,13 @@ class PriorityButtonRow extends React.Component {
                 priorityL={this.setLow}
                 priorityM={this.setMedium}
                 priorityH={this.setHigh} 
+
               />
               
               <div className="tag">
-                <div className={this.state.tag}>{this.state.priorityTitle}</div>
+                <div className={this.state.tagTitle}>{this.state.priorityTitle}</div>
               </div>
+
             </div>
 
           </div>

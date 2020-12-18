@@ -36,7 +36,7 @@ class TasksByCatTitle extends React.Component {
         <TaskCard
           key={e.id}
           id={e.id}
-          priority={e.priority}
+          priorityLevel={e.priority}
           onClickTask={this.props.onClickTask}
         />
       );

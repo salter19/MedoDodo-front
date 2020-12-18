@@ -10,6 +10,7 @@ class PriorityTag extends React.Component {
       title: this.getTitle(this.props.priorityChosen)
     });
   }
+
   getTagColor = (value) => {
     
     return (
@@ -32,9 +33,9 @@ class PriorityTag extends React.Component {
 
   render() {
     return (
-      <div key={this.state.title} className="priority-tag" onChange={() => console.log('I changed!')}>
+      <div className="priority-tag" >
         <div className={this.state.title}>
-          <div className={this.state.tagColor} >
+          <div className={this.state.tagColor}> 
             {this.state.title}
           </div>
         </div>

@@ -13,9 +13,10 @@ const getFormattedDate = (date) => {
   return formatted;
 };
 
-const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
+const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [priority, setPriority] = useState(priorityLevel)
   const [checkbox, setCheckbox] = useState(0);
 
   useEffect(() => {
@@ -53,7 +54,11 @@ const TaskCard = ({ id, priority, levelTitle, onClickTask }) => {
               <div className="date">{dueDate}</div>
 
               <div className="priority">
-                <PriorityTag priorityChosen={priority} />
+                <PriorityTag priorityChosen={priorityLevel}/>
+              </div>
+
+              <div className="priority">
+                <div className=""></div>
               </div>
             </div>
 
