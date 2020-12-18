@@ -2,7 +2,7 @@ import "./styles/TaskView.css";
 import React from "react";
 import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
-import PriorityButtonRow from "./PriorityButtonRow";
+import PrioritySegment from "./PrioritySegment";
 import priorityLevels from './prioritylevels'
 import TaskGetter from './TasksGetter'
 import pagetypes from './pagetypes'
@@ -93,7 +93,7 @@ class TaskView extends React.Component {
   setPriorityRow = (taskPr) => {
     try {
       const br = (
-        <PriorityButtonRow 
+        <PrioritySegment 
           labelAlign="center" 
           priorityValue={taskPr} 
           onPriorityChange={this.setNewPriority}
