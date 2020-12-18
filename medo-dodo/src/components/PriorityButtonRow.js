@@ -15,10 +15,8 @@ class PriorityButtonRow extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("row changed!" + this.state.priority)
     this.props.onPriorityChange(this.state.priority);
   }
-
   
   setLow = () => {
     this.setState({priority: priority_levels[0], tagTitle: "ui green tag label", priorityTitle: 'low'} )    
