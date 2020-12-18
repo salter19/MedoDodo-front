@@ -18,8 +18,6 @@ const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputCh
     setTask(event.target.value);
     onInputChange(task)
   };
-
-
   
   return (
     <div className="ui segment">      
