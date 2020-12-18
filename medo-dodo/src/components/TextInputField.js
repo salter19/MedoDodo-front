@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputChange}) => {
   const [task, setTask] = useState(placeholder)
+  const ref = useRef();
   
   const onFormSubmit = (event) => {
     event.preventDefault();
