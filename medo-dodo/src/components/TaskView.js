@@ -149,7 +149,7 @@ class TaskView extends React.Component {
   }
 
   setSelectedCategory = (cat) => {
-    this.setState( { selectedCategory: cat } )    
+    this.setState( { category: cat[0], selectedCategory: cat } )    
   }
 
   setDefaultCategoryForDropdown = async(id) => {
@@ -170,7 +170,12 @@ class TaskView extends React.Component {
         {this.state.inputFields}
         {this.state.priorityRow}
         <DatePicker onSelectedChange={this.setDueTime}/>
-        <Dropdown options={this.state.dropdownOptions} header="Select Category" selected={this.state.selectedCategory} onSelectedChange={this.setSelectedCategory} />
+        <Dropdown 
+          options={this.state.dropdownOptions} 
+          header="Select Category" 
+          selected={this.state.selectedCategory} 
+          onSelectedChange={this.setSelectedCategory}
+        />
       </div>
     );
   };
