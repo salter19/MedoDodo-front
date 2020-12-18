@@ -10,22 +10,15 @@ const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputCh
       if (ref.current && ref.current.contains(event.target)) {
         return;
       }
+  
     }
     document.body.addEventListener('click', bodyClick);
 
-    const listenKeys = (event) => {      
-      const keycode = event.key;
-      //const key = String.fromCharCode(keycode);
-      console.log(`You hit (${keycode})`)
-    }
-    
-    document.body.addEventListener('keypress', listenKeys)
-
     return () => {
       document.body.removeEventListener('click', bodyClick);
-      document.body.removeEventListener('keypress', listenKeys)
     }
   }, [])
+  
   
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -36,9 +29,9 @@ const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputCh
   
   const onChange = (event) => {
     setTerm(event.target.value);
-    onInputChange(term)
+    onInputChange(event.target.value);
   };
-  
+
   return (
     <div className="ui segment">      
         <form className="ui form" onSubmit={onFormSubmit}>
@@ -52,7 +45,7 @@ const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputCh
                 className="text-input"
                 placeholder={term}
                 onChange={onChange}
-                onClick={() => setTerm('') }
+                onClick={() => setTerm('')}
                 value={term}
               />
             </div>

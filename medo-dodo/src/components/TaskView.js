@@ -32,8 +32,7 @@ class TaskView extends React.Component {
   }
   
   componentDidUpdate() {
-    console.log('something updated')
-    //console.log(this.state)
+    console.log(this.state)
   }
 
   getGoing = async() => {
@@ -83,10 +82,12 @@ class TaskView extends React.Component {
   };
 
   setTaskTitle = (title) => {
+    console.log('task in tv: ' + title);
     this.setState({task: title});
   }
 
   setDescription = (text) => {
+    console.log('descr. in tv: ' + text)
     this.setState({description: text});
   }
 
@@ -108,18 +109,6 @@ class TaskView extends React.Component {
 
   setCategory = (id) => {
     this.setState( { category: id } )
-  }
-
-  onTaskFieldInputChange = (str) => {
-    this.setTaskTitle(str)
-  }
-  
-  onTaskFieldSubmit = (str) => {
-    this.setTaskTitle(str)
-  }
-
-  onDescriptionInputChange = (str) => {
-    this.setDescription(str)
   }
 
   createTextInputFields = (task, description) => {
