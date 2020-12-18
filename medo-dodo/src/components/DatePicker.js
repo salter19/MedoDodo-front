@@ -16,6 +16,7 @@ const DatePicker = ({onSelectedChange}) => {
         <div className="date-picker">
           <div className="ui segments">
             <div className="ui segment top">  
+            
                 <label className="label">Due date and time:</label>
                 <br/>
                 <DateTimeSetter 

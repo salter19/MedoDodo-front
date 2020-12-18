@@ -39,28 +39,32 @@ class PrioritySegment extends React.Component {
   render() {
     return (
       <div className="priority-tag-list">
-        <div className="ui segment">
-          <div className="ui grid">
+        <div className="ui segment">          
+          <div className="ui form">
+            <div className="field">
 
-            <div className="sixteen wide column">
               <label className="label">Priority</label>
-            </div>
 
-            <div className="three wide row">
-              <PriorityButtons 
-                priorityL={this.setLow}
-                priorityM={this.setMedium}
-                priorityH={this.setHigh} 
+              <div className="ui grid">
+                <div className="three wide row">
+                  <PriorityButtons 
+                    priorityL={this.setLow}
+                    priorityM={this.setMedium}
+                    priorityH={this.setHigh} 
 
-              />
-              
-              <div className="tag">
-                <div className={this.state.tagTitle}>{this.state.priorityTitle}</div>
+                  />
+                  
+                  <div className="tag">
+                    <div className={this.state.tagTitle}>{this.state.priorityTitle}</div>
+                  </div>
+
+                </div>
+
               </div>
 
             </div>
-
           </div>
+
         </div>
       </div>
     );

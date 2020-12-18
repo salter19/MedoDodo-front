@@ -12,6 +12,13 @@ button {
   border-radius: 6px;
 }
 
+.ui.segment > .ui.form > .field > .label, .ui.segment > .label, .ui.segment > .top > .label {
+  font-weight: 600;
+  color: blue;
+  float: left;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
