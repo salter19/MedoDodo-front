@@ -72,7 +72,7 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
                   onSubmit={e => console.log('enter')}
                   type="text"
                   placeholder='my new cat'
-                  labelName="Add new category"
+                  labelName="Or add new category"
                   onInputChange={e => console.log('click')}
               />
           
