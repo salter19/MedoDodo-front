@@ -32,7 +32,7 @@ class TaskView extends React.Component {
   }
   
   componentDidUpdate() {
-    console.log('something updated')
+    console.log(this.state)
   }
 
   getGoing = async() => {
@@ -60,11 +60,10 @@ class TaskView extends React.Component {
       
     } else {      
       const tmp = [this.props.placeholder, this.props.description]
-      this.createTextInputFields(tmp[0], tmp[1])
-      const defCat = await this.setDefaultCategoryForDropdown(1)
-      this.setState({
-        selectedCategory: defCat
-      })
+      this.createTextInputFields(tmp[0], tmp[1]);
+      const defCat = await this.setDefaultCategoryForDropdown(1);
+      this.setPriorityAndTag(3);
+      this.setSelectedCategory(defCat);
     } 
   }
 
@@ -83,10 +82,12 @@ class TaskView extends React.Component {
   };
 
   setTaskTitle = (title) => {
+    console.log('task in tv: ' + title);
     this.setState({task: title});
   }
 
   setDescription = (text) => {
+    console.log('descr. in tv: ' + text)
     this.setState({description: text});
   }
 
@@ -115,20 +116,22 @@ class TaskView extends React.Component {
       const taskField = (
         <TextInputField
           key={task}
-          onSubmit={this.onTextFieldSubmit}
+          onSubmit={e => this.setTaskTitle(e)}
           type="text"
           placeholder={task}
           labelName="Task"
+          onInputChange={e => this.setTaskTitle(e)}
         />
       );
 
       const descriptionField = (
         <TextInputField
           key={description}
-          onSubmit={this.onTextFieldSubmit}
+          onSubmit={e => this.setDescription(e)}
           type="text"
           placeholder={description}
           labelName="Description: "
+          onInputChange={e => this.setDescription(e)}
         />
       );
 
@@ -161,9 +164,6 @@ class TaskView extends React.Component {
     return res;
   }
 
-  onTextFieldSubmit(term) {
-    console.log(term);
-  }
 
   view = () => {
     return (

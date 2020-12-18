@@ -1,46 +1,59 @@
 import "./styles/TextInputField.css";
-import React from "react";
-import Label from "./Label";
+import React, { useState, useEffect, useRef } from "react";
 
-// TextInput is build using class component.
-// In the future might refactor it into function component. TS
-class TextInputField extends React.Component {
-  state = { term: "", placeholder: this.props.placeholder };
+const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputChange}) => {
+  const [term, setTerm] = useState(placeholder);
+  const ref = useRef();
 
-  onInputChange = (event) => {
-    this.setState({ term: event.target.value });
-  };
+  useEffect(() => {
+    const bodyClick = (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return;
+      }
+  
+    }
+    document.body.addEventListener('click', bodyClick);
 
-  onFormSubmit = (event) => {
+    return () => {
+      document.body.removeEventListener('click', bodyClick);
+    }
+  }, [])
+  
+  
+  const onFormSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.term);
+    
+    setTerm(event.target.value);
+    onSubmit(term)
+  };
+  
+  const onChange = (event) => {
+    setTerm(event.target.value);
+    onInputChange(event.target.value);
   };
 
-  render() {
-    return (
-      <div className="ui segment">
-        <form className="ui form" onSubmit={this.onFormSubmit}>
+  return (
+    <div className="ui segment">      
+        <form className="ui form" onSubmit={onFormSubmit}>
           <div className="field">
-            <Label
-              labelName={this.props.labelName}
-              textcolor={this.props.labelTextColor}
-              labelAlign={this.props.labelAlign}
-            />
-            <div className={this.props.inputType}>
+            
+            <label className="label"> {labelName} </label>
+
+            <div className={inputType}>
               <input
-                type={this.props.type}
+                type={type}
                 className="text-input"
-                placeholder={this.state.placeholder}
-                onChange={this.onInputChange}
-                onClick={(e) => this.setState({ term: "", placeholder: "" })}
-                value={this.state.term}
+                placeholder={term}
+                onChange={onChange}
+                onClick={() => setTerm('')}
+                value={term}
               />
             </div>
+
           </div>
         </form>
       </div>
-    );
-  }
+  );
 }
 
-export default TextInputField;
+export default TextInput;
