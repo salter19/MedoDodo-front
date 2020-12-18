@@ -5,7 +5,7 @@ import DateTimeSetter from 'react-datetime-picker'
 const DatePicker = ({onSelectedChange}) => {
     const [value, setValue] = useState(new Date());
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const time = {day: value.getDate(), month: value.getMonth() + 1, hour: value.getHours(), minutes: value.getMinutes()}
         onSelectedChange(value);

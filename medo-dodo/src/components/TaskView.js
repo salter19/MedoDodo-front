@@ -34,6 +34,19 @@ class TaskView extends React.Component {
       dropdownOptions: dropdownOptions,
     });
   }
+
+  saveTask = async() => {
+    const task = {
+      title: this.state.task,
+      due_date: this.state.due_date,
+      description: this.state.description,
+      priority: this.state.priority,
+      category_id: this.state.category
+    }
+    //(title, due_date, description, priority, category_id) 
+    const saveUp = await TaskGetter.saveTask(task)
+    
+  }
   
   componentDidUpdate() {
     console.log(this.state)
@@ -184,7 +197,7 @@ class TaskView extends React.Component {
         <ViewBase
           page={this.props.page}
           date={this.props.date}
-          onSave={this.props.onSave}
+          onSave={this.saveTask}
           onSaveC={this.props.onSaveC}
           onDelete={this.props.onDelete}
           view={this.view()}
