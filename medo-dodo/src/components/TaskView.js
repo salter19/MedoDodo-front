@@ -140,7 +140,6 @@ class TaskView extends React.Component {
     }
   };
 
-
   setDropdownOptions = async() => {
     const ops = await TaskGetter.everyCategory()
     const objs = ops.map(obj => {return [obj.id, obj.title]})
@@ -162,7 +161,6 @@ class TaskView extends React.Component {
 
     return res;
   }
-
 
   view = () => {
     return (
