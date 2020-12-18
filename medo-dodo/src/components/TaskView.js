@@ -43,13 +43,15 @@ class TaskView extends React.Component {
       priority: this.state.priority,
       category_id: this.state.category
     }
+    console.log(task)
     //(title, due_date, description, priority, category_id) 
     const saveUp = await TaskGetter.saveTask(task)
+    console.log(saveUp)
     
   }
   
   componentDidUpdate() {
-    console.log(this.state)
+    //console.log(this.state)
   }
 
   setDefaultsByPagetype = async() => {
