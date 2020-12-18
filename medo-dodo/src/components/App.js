@@ -46,13 +46,14 @@ class App extends React.Component {
     this.setState({ currentPage: pagetypes.categories });
   };
 
-  changeViewToCat = (cat) => {
+  changeViewToCat = (cat, id) => {
+    console.log("category is: " + cat);
     this.setState({
       currentPage: pagetypes.category,
       currentCategory: cat,
-      currentCatID: cat.id,
+      currentCatID: id,
     });
-    console.log("category id is: " + cat.id);
+    console.log("category id is: " + id);
   };
 
   changeViewToWeekly = () => {
@@ -83,8 +84,10 @@ class App extends React.Component {
     }
   };
 
-  confirmDelete(task) {
-    let decision = window.confirm(`Do you really want to delete this ${task}?`);
+  confirmDelete(value) {
+    let decision = window.confirm(
+      `Do you really want to delete this ${value}?`
+    );
     if (decision === true) {
       return true;
     } else {
@@ -93,13 +96,11 @@ class App extends React.Component {
   }
 
   removeFromAllTasks = () => {
-    
     const list = [...this.state.allTasks];
     const updatedList = list.filter(
       (task) => task.id !== this.state.currentTaskID
     );
     this.setState({ allTasks: updatedList });
-    
   };
 
   handleNextWeek = () => {
@@ -196,6 +197,7 @@ class App extends React.Component {
           page={this.state.currentPage}
           date={this.state.currentDate}
           title={this.state.currentCategory}
+          catID={this.state.currentCatID}
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
