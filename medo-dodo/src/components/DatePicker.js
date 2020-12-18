@@ -50,6 +50,7 @@ const DatePicker = ({onSelectedChange}) => {
                       onChange={setValue}
                       value={value}
                       disableClock={true}
+                      clearIcon={null}
                   />
                 </div>                
               </div>              
