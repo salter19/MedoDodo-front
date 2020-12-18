@@ -1,4 +1,4 @@
-import "./styles/PriorityTagList.css";
+import "./styles/PrioritySegment.css";
 import React from "react";
 import PriorityButtons from './PriorityButtons'
 import priority_levels from './prioritylevels'
