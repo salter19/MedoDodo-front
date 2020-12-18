@@ -1,6 +1,5 @@
 import "./styles/PriorityTagList.css";
 import React from "react";
-import Label from "./Label";
 import PriorityButtons from './PriorityButtons'
 import priority_levels from './prioritylevels'
 
@@ -44,7 +43,7 @@ class PrioritySegment extends React.Component {
           <div className="ui grid">
 
             <div className="sixteen wide column">
-              <Label labelName="Priority" labelAlign={this.props.labelAlign} />
+              <label className="label">Priority</label>
             </div>
 
             <div className="three wide row">

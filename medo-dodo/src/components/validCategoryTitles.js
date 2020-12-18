@@ -1,4 +1,4 @@
-import TasksGetter from './TasksGetter'
+import TasksGetter from './ConnectToBackend'
 const validCatTitles = async() => {
     const catObj = await TasksGetter.everyCatTitle()
     const titlesArr = catObj.map(obj => obj.title)

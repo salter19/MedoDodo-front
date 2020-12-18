@@ -3,7 +3,7 @@ import React from "react";
 import ViewBase from "./ViewBase";
 import categoryTitles from "./validCategoryTitles";
 import CategoryIcon from "./CategoryIcon";
-import TasksGetter from "./TasksGetter";
+import TasksGetter from "./ConnectToBackend";
 
 class CategoriesView extends React.Component {
   state = { categories: [], titles: [], tasks: [], icons: [] };

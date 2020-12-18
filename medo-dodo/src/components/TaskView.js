@@ -4,7 +4,7 @@ import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
 import PrioritySegment from "./PrioritySegment";
 import priorityLevels from './prioritylevels'
-import TaskGetter from './TasksGetter'
+import TaskGetter from './ConnectToBackend'
 import pagetypes from './pagetypes'
 import DatePicker from './DatePicker'
 import Dropdown from './Dropdown'

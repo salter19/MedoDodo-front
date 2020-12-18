@@ -1,6 +1,7 @@
 .label {
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .ui.segment.top {

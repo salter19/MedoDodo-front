@@ -1,7 +1,7 @@
 import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
-import TasksGetter from "./TasksGetter";
+import TasksGetter from "./ConnectToBackend";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
 

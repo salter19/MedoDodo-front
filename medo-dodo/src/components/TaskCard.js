@@ -3,7 +3,7 @@ import PriorityTag from "./PriorityTag";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
 import pagetypes from "./pagetypes";
-import TaskGetter from "./TasksGetter";
+import TaskGetter from "./ConnectToBackend";
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
