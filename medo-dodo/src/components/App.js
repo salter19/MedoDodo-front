@@ -63,7 +63,7 @@ class App extends React.Component {
   handleCatDelete = () => {
     if (this.confirmDelete("category")) {
       console.log("handling category delete now: " + this.state.currentCatID);
-      this.changeViewToCats();
+      TaskRemover.removeCatByID(this.state.currentCatID, this.changeViewToCats);
     } else {
       console.log(
         "didn't want to delete after all: " + this.state.currentCatID
