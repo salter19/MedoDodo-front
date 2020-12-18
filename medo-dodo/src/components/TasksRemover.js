@@ -15,6 +15,18 @@ const removeByTaskID = async (taskID, callback) => {
   );
 };
 
-const obj = { removeByTaskID };
+const removeCatByID = async (catID, callback) => {
+  await axios.delete(`${address}${catID}`).then(
+    (resp) => {
+      console.log(resp, "Removed Category " + catID);
+      callback();
+    },
+    (e) => {
+      console.log(e);
+    }
+  );
+};
+
+const obj = { removeByTaskID, removeCatByID };
 
 export default obj;
