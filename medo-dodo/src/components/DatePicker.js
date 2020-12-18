@@ -3,7 +3,9 @@ import React, {useState, useEffect} from 'react'
 import DateTimeSetter from 'react-datetime-picker'
 
 const DatePicker = ({onSelectedChange}) => {
+
     const [value, setValue] = useState(new Date());
+
 
     useEffect(() => {
         const time = {
@@ -14,7 +16,8 @@ const DatePicker = ({onSelectedChange}) => {
           minutes: value.getMinutes(), 
           seconds: value.getSeconds()
         }
-        formatDate(time)
+        const formated = formatDate(time)
+        onSelectedChange(formated)
     }, [value])
 
     const formatDate = ({day, month, year, hour, minutes, seconds}) => {
@@ -26,7 +29,7 @@ const DatePicker = ({onSelectedChange}) => {
       minutes = addZeroFront(minutes);
       seconds = addZeroFront(seconds);
       const formated = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`
-      onSelectedChange(formated)
+      return formated;
     }
 
     const addZeroFront = (num) => {
@@ -51,6 +54,7 @@ const DatePicker = ({onSelectedChange}) => {
                       value={value}
                       disableClock={true}
                       clearIcon={null}
+                      required={true}
                   />
                 </div>                
               </div>              

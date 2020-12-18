@@ -52,8 +52,6 @@ class TaskView extends React.Component {
     } catch (error) {
       alert("Something went wrong with saving the task.")
     }
-    
-    
   }
   
   componentDidUpdate() {
@@ -188,7 +186,7 @@ class TaskView extends React.Component {
       <div className="content">
         {this.state.inputFields}
         {this.state.priorityRow}
-        <DatePicker onSelectedChange={this.setDueTime}/>
+        <DatePicker onSelectedChange={this.setDueTime} now={new Date()}/>
         <Dropdown 
           options={this.state.dropdownOptions} 
           header="Select Category" 
