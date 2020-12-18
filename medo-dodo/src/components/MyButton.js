@@ -36,7 +36,7 @@ class MyButton extends React.Component {
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.category
-      ? this.props.onClickCat(this.props.category)
+      ? this.props.onClickCat(this.props.category, this.props.catID)
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.modify
