@@ -1,9 +1,6 @@
 import "./styles/TextInputField.css";
 import React, { useState, useEffect } from "react";
-import Label from "./Label";
 
-// TextInput is build using class component.
-// In the future might refactor it into function component. TS
 const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputChange}) => {
   const [task, setTask] = useState(placeholder)
   
