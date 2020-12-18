@@ -1,5 +1,5 @@
 import "./styles/TextInputField.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputChange}) => {
   const [task, setTask] = useState(placeholder)
