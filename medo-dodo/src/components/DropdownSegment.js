@@ -62,25 +62,21 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
                         </div>
                     
                     </div>
-
-                    <div className="ui secondary segment">
-              
-                        <div className="ui form">
-                            <div className="field">
-                            <label className="label"> Add new category </label>
-                            </div>
-                        </div>
-
-                        <div className="ui grid">
-                            <div className="three wide row">
-                            
-                            </div>                
-                        </div> 
-                    
-                    </div>
-
                 </div>
             </div>
+
+
+              
+              <Textfield                            
+                  key={0}
+                  onSubmit={e => console.log('enter')}
+                  type="text"
+                  placeholder='my new cat'
+                  labelName="Add new category"
+                  onInputChange={e => console.log('click')}
+              />
+          
+          
         </div>
     )
 }
