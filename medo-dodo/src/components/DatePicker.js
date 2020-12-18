@@ -43,7 +43,7 @@ const DatePicker = ({onSelectedChange}) => {
             
               <div className="ui form">
                 <div className="field">
-                  <label className="label">Due date and time:</label>
+                  <label className="label">Due date and time</label>
                 </div>
               </div>
 
@@ -64,7 +64,7 @@ const DatePicker = ({onSelectedChange}) => {
               
               <div className="ui form">
                 <div className="field">
-                  <label className="label">Dued: </label>
+                  <label className="label">Dued </label>
                 </div>
               </div>
 
