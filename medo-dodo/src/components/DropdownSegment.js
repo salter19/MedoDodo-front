@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import Textfield from './TextInputField'
 
 const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
     const [open, setOpen] = useState(false);
@@ -59,6 +60,22 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
                         <div className={`menu ${open ? 'visible transition' : ''}`}>
                             {renderedOptions}    
                         </div>
+                    
+                    </div>
+
+                    <div className="ui secondary segment">
+              
+                        <div className="ui form">
+                            <div className="field">
+                            <label className="label"> Add new category </label>
+                            </div>
+                        </div>
+
+                        <div className="ui grid">
+                            <div className="three wide row">
+                            
+                            </div>                
+                        </div> 
                     
                     </div>
 

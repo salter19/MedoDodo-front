@@ -7,7 +7,7 @@ import priorityLevels from './prioritylevels'
 import TaskGetter from './ConnectToBackend'
 import pagetypes from './pagetypes'
 import DatePicker from './DatePicker'
-import Dropdown from './Dropdown'
+import Dropdown from './DropdownSegment'
 
 class TaskView extends React.Component {
 
