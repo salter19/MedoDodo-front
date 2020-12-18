@@ -189,7 +189,7 @@ class TaskView extends React.Component {
         <DatePicker onSelectedChange={this.setDueTime} now={new Date()}/>
         <Dropdown 
           options={this.state.dropdownOptions} 
-          header="Select Category" 
+          header="Select category" 
           selected={this.state.selectedCategory} 
           onSelectedChange={this.setSelectedCategory}
         />
