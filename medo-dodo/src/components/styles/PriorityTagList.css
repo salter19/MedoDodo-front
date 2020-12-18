@@ -1,9 +1,8 @@
 .priority-tag-list {
-  margin: 10px;
+  margin-bottom: 16px;
 }
 .three.wide.row {
-  margin-top: 16px;
-  margin-left: 25%;
+  margin-left: 5%;
 }
 
 .tag {
