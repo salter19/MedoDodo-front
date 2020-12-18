@@ -15,20 +15,39 @@ const DatePicker = ({onSelectedChange}) => {
     return (
         <div className="date-picker">
           <div className="ui segments">
-            <div className="ui segment top">  
+            <div className="ui segment">  
             
-                <label className="label">Due date and time:</label>
-                <br/>
-                <DateTimeSetter 
-                onChange={setValue}
-                value={value}
-                disableClock={true}
-                />
+              <div className="ui form">
+                <div className="field">
+                  <label className="label">Due date and time:</label>
+                </div>
+              </div>
+
+              <div className="ui grid">
+                <div className="three wide row">
+                  <DateTimeSetter 
+                      onChange={setValue}
+                      value={value}
+                      disableClock={true}
+                  />
+                </div>                
+              </div>              
+
             </div>
             <div className="ui secondary segment">
+              
+              <div className="ui form">
+                <div className="field">
+                  <label className="label">Dued: </label>
+                </div>
+              </div>
 
-              <label className="label">Dued: </label>
-              <div>{value ? `${value}` : ''}</div>
+              <div className="ui grid">
+                <div className="three wide row">
+                  {value ? `${value}` : ''}
+                </div>                
+              </div> 
+              
             </div>
             
           </div>
