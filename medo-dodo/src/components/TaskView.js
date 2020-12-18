@@ -33,7 +33,7 @@ class TaskView extends React.Component {
   
   componentDidUpdate() {
     console.log('something updated')
-    console.log(this.state)
+    //console.log(this.state)
   }
 
   getGoing = async() => {

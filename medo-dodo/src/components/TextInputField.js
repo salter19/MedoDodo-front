@@ -2,19 +2,41 @@ import "./styles/TextInputField.css";
 import React, { useState, useEffect, useRef } from "react";
 
 const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputChange}) => {
-  const [task, setTask] = useState(placeholder)
+  const [term, setTerm] = useState(placeholder);
   const ref = useRef();
+
+  useEffect(() => {
+    const bodyClick = (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return;
+      }
+    }
+    document.body.addEventListener('click', bodyClick);
+
+    const listenKeys = (event) => {      
+      const keycode = event.key;
+      //const key = String.fromCharCode(keycode);
+      console.log(`You hit (${keycode})`)
+    }
+    
+    document.body.addEventListener('keypress', listenKeys)
+
+    return () => {
+      document.body.removeEventListener('click', bodyClick);
+      document.body.removeEventListener('keypress', listenKeys)
+    }
+  }, [])
   
   const onFormSubmit = (event) => {
     event.preventDefault();
     
-    setTask(event.target.value);
-    onSubmit(task)
+    setTerm(event.target.value);
+    onSubmit(term)
   };
   
   const onChange = (event) => {
-    setTask(event.target.value);
-    onInputChange(task)
+    setTerm(event.target.value);
+    onInputChange(term)
   };
   
   return (
@@ -28,10 +50,10 @@ const TextInput = ({onSubmit, labelName, inputType, type, placeholder, onInputCh
               <input
                 type={type}
                 className="text-input"
-                placeholder={task}
+                placeholder={term}
                 onChange={onChange}
-                onClick={() => setTask('') }
-                value={task}
+                onClick={() => setTerm('') }
+                value={term}
               />
             </div>
 
