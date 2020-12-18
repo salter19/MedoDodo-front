@@ -1,10 +1,13 @@
 .priority-tag-list {
   margin-bottom: 16px;
 }
-.three.wide.row {
-  margin-left: 5%;
+
+.ui.buttons {
+  float: left;
+  margin-left: -50%;
 }
 
 .tag {
-  margin-left: 4%;
+  margin-left: -20%;
+  margin-top: 4%;
 }

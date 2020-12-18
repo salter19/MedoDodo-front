@@ -47,7 +47,8 @@ class PrioritySegment extends React.Component {
 
               <div className="ui grid">
                 <div className="three wide row">
-                  <PriorityButtons 
+                  <PriorityButtons
+                    className="button-row"
                     priorityL={this.setLow}
                     priorityM={this.setMedium}
                     priorityH={this.setHigh} 
