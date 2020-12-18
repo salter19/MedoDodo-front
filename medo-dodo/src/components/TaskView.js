@@ -26,26 +26,19 @@ class TaskView extends React.Component {
     }
   }
 
-  componentDidMount() {    
-    this.getGoing();
-
-  }
-  
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
-  getGoing = async() => {
+  async componentDidMount() {    
     this.setDefaultsByPagetype();
     const dropdownOptions = await this.setDropdownOptions();
     
     this.setState({
       dropdownOptions: dropdownOptions,
     });
-
-    console.log(this.state)
   }
   
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
   setDefaultsByPagetype = async() => {
     if (this.props.page === pagetypes.modifyTask) {
       const data = await this.setByTask(); 
@@ -82,17 +75,14 @@ class TaskView extends React.Component {
   };
 
   setTaskTitle = (title) => {
-    console.log('task in tv: ' + title);
     this.setState({task: title});
   }
 
   setDescription = (text) => {
-    console.log('descr. in tv: ' + text)
     this.setState({description: text});
   }
 
   setDueTime = (time) => {
-    console.log('t: ' + time)
     this.setState( { due_date: time } )
   }
   
