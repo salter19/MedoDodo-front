@@ -3,9 +3,10 @@ import React from "react";
 import ViewBase from "./ViewBase";
 import categoryTitles from "./validCategoryTitles";
 import CategoryIcon from "./CategoryIcon";
+import TasksGetter from "./TasksGetter";
 
 class CategoriesView extends React.Component {
-  state = { titles: [], tasks: [], icons: [] };
+  state = { categories: [], titles: [], tasks: [], icons: [] };
 
   componentDidMount() {
     this.createIcons();
@@ -13,13 +14,35 @@ class CategoriesView extends React.Component {
 
   createIcons = async () => {
     try {
+      const catData = await TasksGetter.everyCategory();
+      // console.log("categoryData:" + JSON.stringify(catData));
       const catTitles = await categoryTitles.validCatTitles();
       const taskObjs = await this.getTaskObjects(catTitles);
       const taskTitles = taskObjs.map((e) => this.getTaskTitles(e));
 
-      this.setState({ titles: catTitles, tasks: taskTitles });
+      this.setState({
+        categories: catData,
+        titles: catTitles,
+        tasks: taskTitles,
+      });
 
       let i = 0;
+      const catIcons = catData.map((e) => {
+        const items = this.getTasksPerCategoryByTitle(e.title);
+        console.log("items are:" + JSON.stringify(items));
+        console.log("id: " + e.id);
+        return (
+          <div key={i++} className="eight wide column">
+            <CategoryIcon
+              catID={e.id}
+              title={e.title}
+              data={items}
+              onClickCat={this.props.onClickCat}
+            />
+          </div>
+        );
+      });
+      /*
       const catIcons = catTitles.map((e) => {
         const items = this.getTasksPerCategoryByTitle(e);
         return (
@@ -32,6 +55,7 @@ class CategoriesView extends React.Component {
           </div>
         );
       });
+      */
 
       this.setState({ icons: catIcons });
     } catch (error) {
