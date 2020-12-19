@@ -152,6 +152,7 @@ class App extends React.Component {
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
           onClickDone={this.setDone}
+          currentCategory={this.state.currentCategory}
           allTasks={this.state.allTasks}
         />
       );
@@ -198,7 +199,7 @@ class App extends React.Component {
         <CategoryView
           page={this.state.currentPage}
           date={this.state.currentDate}
-          title={this.state.currentCategory}
+          currentCategory={this.state.currentCategory}
           catID={this.state.currentCatID}
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
