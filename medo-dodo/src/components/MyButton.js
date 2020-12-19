@@ -16,9 +16,17 @@ class MyButton extends React.Component {
   }
 
   setButtonText = () => {
-    this.props.buttontype === buttontypes.category
-      ? this.setState({ buttonText: this.props.category })
-      : this.setState({ buttonText: this.props.buttontype });
+    if (this.props.buttontype === buttontypes.category) {
+      this.setState({ buttonText: this.props.category });
+    } else if (this.props.buttontype === buttontypes.modify) {
+      this.setState({ buttonText: ["MODIFY", <br />, "TASK"] });
+    } else if (this.props.buttontype === buttontypes.addTask) {
+      this.setState({ buttonText: ["ADD NEW", <br />, " TASK"] });
+    } else if (this.props.buttontype === buttontypes.categories) {
+      this.setState({ buttonText: ["GO TO", <br />, "CATEGORIES"] });
+    } else {
+      this.setState({ buttonText: this.props.buttontype });
+    }
   };
 
   changePage = () => {
@@ -60,7 +68,7 @@ class MyButton extends React.Component {
     return (
       <div className="button">
         <button className={this.state.buttontype} onClick={this.changePage}>
-          {this.state.buttonText}
+          <div>{this.state.buttonText}</div>
         </button>
       </div>
     );
