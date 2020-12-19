@@ -167,23 +167,56 @@ class TaskView extends React.Component {
     return objs;
   }
 
-  setSelectedCategory = (cat) => {
-
-    let sign;
+  setSelectedCategory = async(cat) => {
+   
     if (cat[0] === 0 ) {
-      sign = prompt('Add new category');
+      const newCat = prompt('Add new category');
+      
+      const exists = await this.checkIfCatExists(newCat);
+      console.log('uusi kissa: ' + newCat)
+      exists ? await this.setToCorrespondingCategory(newCat) : this.saveNewCategory(newCat);
+    } else {
+      console.log('old one')
+      console.log(cat[0] + ', ' + cat)
+      this.useExistingCategory(cat);
     }
 
-    sign ? this.saveNewCategory(sign) : this.setState( { category: cat[0], selectedCategory: cat } );
 
+  }
+
+  setToCorrespondingCategory = async(newCat) => {
+    this.state.dropdownOptions.map((e) => {    
+      if (e[1] === newCat) {
+        this.useExistingCategory(e);
+      }
+    });
+  }
+  useExistingCategory = (cat) => {
+    
+    console.log('not new cat')
+    console.log(cat[0] + ', ' + cat)
+    this.setState( { category: cat[0], selectedCategory: cat } )
   }
 
   saveNewCategory = async(title) => {
+    console.log('saving new cat');
     const res = await TaskGetter.saveCategory(title);
+    console.log(res + ", " + title)
     this.setState( { category: res, selectedCategory: [res, title] });
-    
   }
 
+  checkIfCatExists = async(title) => {
+    const allCats = await TaskGetter.everyCategory();
+    let res = false; 
+    allCats.forEach(e => {
+      if (e.title === title) {
+        res = true;
+        return;
+      }
+    });
+    return res;
+  }
+ 
   setDefaultCategoryForDropdown = async(id) => {
     
     const categories = await TaskGetter.everyCategory();

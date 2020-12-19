@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef} from 'react'
-import Textfield from './TextInputField'
 
 const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
     const [open, setOpen] = useState(false);
@@ -66,18 +65,6 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
                 </div>
             </div>
 
-
-              
-              <Textfield                            
-                  key={0}
-                  onSubmit={e => console.log('enter')}
-                  type="text"
-                  placeholder='my new cat'
-                  labelName="Or add new category"
-                  onInputChange={e => console.log('click')}
-              />
-          
-          
         </div>
     )
 }
