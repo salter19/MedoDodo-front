@@ -7,7 +7,7 @@ const obj = {
   save: ["SAVE", <br />, "THIS TASK"],
   modify: pagetypes.modifyTask,
   delete: ["DELETE", <br />, "THIS TASK"],
-  deleteC: "DELETE THIS CATEGORY",
+  deleteC: ["DELETE", <br />, "THIS CATEGORY"],
   category: pagetypes.category,
 };
 
