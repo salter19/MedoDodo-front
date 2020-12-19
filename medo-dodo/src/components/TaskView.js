@@ -196,9 +196,7 @@ class TaskView extends React.Component {
   }
 
   saveNewCategory = async(title) => {
-    console.log('saving new cat');
     const res = await TaskGetter.saveCategory(title);
-    console.log(res + ", " + title)
     this.setState( { category: res, selectedCategory: [res, title] });
   }
 
