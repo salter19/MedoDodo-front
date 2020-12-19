@@ -18,7 +18,7 @@ class CategoryView extends React.Component {
           onCatDelete={this.props.onCatDelete}
           view={
             <TasksByCatTitle
-              catTitle={this.props.title}
+              catTitle={this.props.currentCategory}
               catID={this.props.catID}
               onClickTask={this.props.onClickTask}
               onClickDone={this.props.onClickDone}
