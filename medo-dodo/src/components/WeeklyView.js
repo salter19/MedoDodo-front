@@ -14,7 +14,7 @@ export default class WeeklyView extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.showingWeek !== this.props.showingWeek) {
-      console.log("showing different week now");
+     
     }
   }
 
