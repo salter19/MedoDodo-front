@@ -68,6 +68,7 @@ class TaskView extends React.Component {
       this.createTextInputFields(data.title, data.description);
       const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
       this.setSelectedCategory(defCat);
+     
     } else {
       const tmp = [this.props.placeholder, this.props.description];
       this.createTextInputFields(tmp[0], tmp[1]);
