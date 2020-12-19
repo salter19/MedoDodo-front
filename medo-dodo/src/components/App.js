@@ -35,6 +35,11 @@ class App extends React.Component {
     this.setState({ allTasks: tasks });
   }
 
+  setDone = () => {
+    const res = !this.state.isDone;
+    this.setState( { isDone: res } );
+  }
+
   changeViewToAdd = () => {
     this.setState({ currentPage: pagetypes.addTask });
   };
