@@ -1,24 +1,27 @@
 .button {
   border-color: white;
   margin: 20px;
+  font-size: 1rem;
 }
 button:hover {
   font-weight: bold;
 }
 
 .save {
-  background-color: green;
+  background-color: rgb(117, 218, 248);
   border-color: white;
   color: white;
+  width: 200px;
 }
 
-.categories, .weekly .addTask{
-  width: 200px;
+.categories,
+.weekly .addTask {
   border-radius: 4px;
 }
 
 .modifyTask {
+  width: 200px;
+  font-size: 1.3rem;
   background-color: darkorange;
-  color: white; 
+  color: white;
 }
-

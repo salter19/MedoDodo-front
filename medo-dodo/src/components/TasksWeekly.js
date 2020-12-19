@@ -75,10 +75,9 @@ export default class TasksWeekly extends React.Component {
     return (
       <div className="tasklist">
         <h1>Here we have tasks dued:</h1>
-        <ul>
-          {this.state.taskCards}
-          {noTasks}
-        </ul>
+
+        {this.state.taskCards}
+        {noTasks}
       </div>
     );
   }

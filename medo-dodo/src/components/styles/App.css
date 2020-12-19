@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgb(212, 212, 212);
 }
 
 .App-logo {
@@ -12,11 +13,12 @@ button {
   border-radius: 6px;
 }
 
-.ui.segment > .ui.form > .field > .label, .ui.segment > .label, .ui.segment > .top > .label {
+.ui.segment > .ui.form > .field > .label,
+.ui.segment > .label,
+.ui.segment > .top > .label {
   font-weight: 600;
   float: left;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

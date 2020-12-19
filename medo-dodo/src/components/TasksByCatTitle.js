@@ -85,8 +85,8 @@ class TasksByCatTitle extends React.Component {
     return (
       <div className="tasklist">
         <h1>{this.state.header}</h1>
-        <ul>{this.state.taskCards}</ul>
-        <ul>{noTasks}</ul>
+        {this.state.taskCards}
+        {noTasks}
       </div>
     );
   }
