@@ -41,7 +41,7 @@ const everyTask = async() => {
 
 const saveTask = async({title, due_date, description, priority, category_id, category_title}) => {
   // (title, due_date, description, priority, category_id) 
-  console.log(category_id)
+ 
   const result = await axios.post(address, {
     title: title, 
     due_date: due_date,
@@ -50,7 +50,7 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
     category_id: category_id,
     category_title: category_title
   });
-  console.log(result)
+  
   return result.data;
 }
 
