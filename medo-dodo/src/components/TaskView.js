@@ -192,9 +192,6 @@ class TaskView extends React.Component {
     });
   }
   useExistingCategory = (cat) => {
-    
-    console.log('not new cat')
-    console.log(cat[0] + ', ' + cat)
     this.setState( { category: cat[0], selectedCategory: cat } )
   }
 
