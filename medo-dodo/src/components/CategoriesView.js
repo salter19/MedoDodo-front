@@ -15,7 +15,7 @@ class CategoriesView extends React.Component {
   createIcons = async () => {
     try {
       const catData = await TasksGetter.everyCategory();
-      // console.log("categoryData:" + JSON.stringify(catData));
+      console.log("categoryData:" + JSON.stringify(catData));
       const catTitles = await categoryTitles.validCatTitles();
       const taskObjs = await this.getTaskObjects(catTitles);
       const taskTitles = taskObjs.map((e) => this.getTaskTitles(e));
@@ -29,8 +29,6 @@ class CategoriesView extends React.Component {
       let i = 0;
       const catIcons = catData.map((e) => {
         const items = this.getTasksPerCategoryByTitle(e.title);
-        console.log("items are:" + JSON.stringify(items));
-        console.log("id: " + e.id);
         return (
           <div key={i++} className="eight wide column">
             <CategoryIcon
@@ -42,6 +40,7 @@ class CategoriesView extends React.Component {
           </div>
         );
       });
+
       /*
       const catIcons = catTitles.map((e) => {
         const items = this.getTasksPerCategoryByTitle(e);

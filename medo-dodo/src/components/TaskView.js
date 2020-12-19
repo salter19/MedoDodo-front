@@ -168,20 +168,20 @@ class TaskView extends React.Component {
   }
 
   setSelectedCategory = (cat) => {
-    this.setState( { category: cat[0], selectedCategory: cat } )   
 
     let sign;
     if (cat[0] === 0 ) {
       sign = prompt('Add new category');
     }
 
-    sign ? this.saveNewCategory(sign): console.log('No ma\'am!');
+    sign ? this.saveNewCategory(sign) : this.setState( { category: cat[0], selectedCategory: cat } );
 
   }
 
   saveNewCategory = async(title) => {
     const res = await TaskGetter.saveCategory(title);
-    console.log(res);
+    this.setState( { category: res, selectedCategory: [res, title] });
+    console.log(this.state.selectedCategory)
   }
 
   setDefaultCategoryForDropdown = async(id) => {
