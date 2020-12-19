@@ -151,6 +151,7 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
+          onClickDone={this.setDone}
           allTasks={this.state.allTasks}
         />
       );
@@ -202,6 +203,7 @@ class App extends React.Component {
           onClickAdd={this.changeViewToAdd}
           onClickCats={this.changeViewToCats}
           onClickTask={this.changeViewToModify}
+          onClickDone={this.setDone}
           onClickCat={this.changeViewToCat}
           currentCatID={this.state.currentCatID}
           onCatDelete={this.handleCatDelete}
