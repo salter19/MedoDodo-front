@@ -38,6 +38,7 @@ class TasksByCatTitle extends React.Component {
           id={e.id}
           priorityLevel={e.priority}
           onClickTask={this.props.onClickTask}
+          onClickDone={this.props.onClickDone}
         />
       );
     });

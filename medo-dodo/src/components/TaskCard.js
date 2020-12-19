@@ -16,7 +16,6 @@ const getFormattedDate = (date) => {
 const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [priority, setPriority] = useState(priorityLevel)
   const [checkbox, setCheckbox] = useState(0);
 
   useEffect(() => {
@@ -35,6 +34,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
   const setDone = () => {
     setCheckbox(1);
     console.log(`Task ${title} is done!`);
+    
     // this will eventually lead to changing appearance of task card
   };
 

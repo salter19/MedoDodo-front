@@ -22,7 +22,7 @@ class App extends React.Component {
       currentCatID: "",
       currentTaskID: null,
       allTasks: [],
-      isDone: false,
+      isDone: [],
     };
   }
 
@@ -35,9 +35,9 @@ class App extends React.Component {
     this.setState({ allTasks: tasks });
   }
 
-  setDone = () => {
-    const res = !this.state.isDone;
-    this.setState( { isDone: res } );
+  setDone = (taskID) => {
+    const arr = this.state.isDone;
+    arr.push(taskID);
   }
 
   changeViewToAdd = () => {
