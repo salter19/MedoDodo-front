@@ -26,8 +26,6 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory 
   useEffect(() => {
     const createTask = async () => {
       const data = await TaskGetter.byId(id);
-
-      console.log(data)
       
       if (data.length > 0) {
         const date = getFormattedDateForCard(data[0].due_date);
@@ -45,25 +43,22 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory 
 
     // default done === false;
     !done ? saveTaskState() : console.log('undone')
-
-    console.log(task)
     
-    // this will eventually lead to changing appearance of task card
+    // ToDo: modify the fucker. this here creates new task.
   };
 
   const saveTaskState = async() => {
 
-    getFormattedDateForSave(task.due_date);
+    const formattedDate = getFormattedDateForSave(task.due_date);
     const tmp = {
       title: task.title,
-      due_date: task.due_date,
+      due_date: formattedDate,
       description: task.description,
       priority: task.priority,
       category_id: task.category_id,
       is_done: done,
     };
-    console.log(tmp);
-
+    setTask(tmp)
     try {
       const saveUp = await TaskGetter.saveTask(tmp);
       alert(saveUp);
