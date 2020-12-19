@@ -41,11 +41,11 @@ class TaskView extends React.Component {
       due_date: this.state.due_date,
       description: this.state.description,
       priority: this.state.priority,
-      category_id: this.state.category
+      category_id: this.state.category,
+      category_title: this.state.selectedCategory[1]
     }
     
     try {
-      
       const saveUp = await TaskGetter.saveTask(task)
       alert(saveUp)
       this.props.onSave()
@@ -181,7 +181,7 @@ class TaskView extends React.Component {
   saveNewCategory = async(title) => {
     const res = await TaskGetter.saveCategory(title);
     this.setState( { category: res, selectedCategory: [res, title] });
-    console.log(this.state.selectedCategory)
+    
   }
 
   setDefaultCategoryForDropdown = async(id) => {
