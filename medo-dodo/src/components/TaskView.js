@@ -173,11 +173,8 @@ class TaskView extends React.Component {
       const newCat = prompt('Add new category');
       
       const exists = await this.checkIfCatExists(newCat);
-      console.log('uusi kissa: ' + newCat)
       exists ? await this.setToCorrespondingCategory(newCat) : this.saveNewCategory(newCat);
     } else {
-      console.log('old one')
-      console.log(cat[0] + ', ' + cat)
       this.useExistingCategory(cat);
     }
 
