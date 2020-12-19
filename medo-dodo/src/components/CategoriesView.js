@@ -41,21 +41,6 @@ class CategoriesView extends React.Component {
         );
       });
 
-      /*
-      const catIcons = catTitles.map((e) => {
-        const items = this.getTasksPerCategoryByTitle(e);
-        return (
-          <div key={i++} className="eight wide column">
-            <CategoryIcon
-              title={e}
-              data={items}
-              onClickCat={this.props.onClickCat}
-            />
-          </div>
-        );
-      });
-      */
-
       this.setState({ icons: catIcons });
     } catch (error) {
       alert(`Something went wrong with title and task retrieval.\n${error}`);
