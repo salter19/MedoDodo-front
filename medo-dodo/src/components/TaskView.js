@@ -175,8 +175,13 @@ class TaskView extends React.Component {
       sign = prompt('Add new category');
     }
 
-    sign ? console.log('here i am, rock you like a hurricane!') : console.log('No ma\'am!');
+    sign ? this.saveNewCategory(sign): console.log('No ma\'am!');
 
+  }
+
+  saveNewCategory = async(title) => {
+    const res = await TaskGetter.saveCategory(title);
+    console.log(res);
   }
 
   setDefaultCategoryForDropdown = async(id) => {

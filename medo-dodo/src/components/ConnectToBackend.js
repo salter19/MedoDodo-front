@@ -50,9 +50,9 @@ const saveTask = async({title, due_date, description, priority, category_id}) =>
   });
   return result.data;
 }
-const saveCategory = async(title)  => {
+const saveCategory = async(_title)  => {
   try {
-    const result = await axios.post(`${address}${options[1]}${title}`);
+    const result = await axios.post(`${address}${options[1]}`, {title: _title});
     return result.data;
   } catch (error) {
     alert(`Something went sour while saving new category. ${error}`)
