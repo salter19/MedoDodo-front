@@ -23,7 +23,9 @@ class MyButton extends React.Component {
     } else if (this.props.buttontype === buttontypes.addTask) {
       this.setState({ buttonText: ["ADD NEW", <br />, " TASK"] });
     } else if (this.props.buttontype === buttontypes.categories) {
-      this.setState({ buttonText: ["GO TO", <br />, "CATEGORIES"] });
+      this.setState({ buttonText: ["CATEGORIES", <br />, "VIEW"] });
+    } else if (this.props.buttontype === buttontypes.weekly) {
+      this.setState({ buttonText: ["WEEKLY", <br />, "VIEW"] });
     } else {
       this.setState({ buttonText: this.props.buttontype });
     }
