@@ -25,7 +25,7 @@ export default class Head extends React.Component {
         showArrowButtons: true,
         headerMessage:
           "Week " + this.props.showingWeek + " / " + this.props.showingYear,
-        currentWeekMsg: `Current week number is: ${this.props.weekNumber}`,
+        currentWeekMsg: `Current week number is: ${this.props.weekNumber} }`,
       });
     } else if (this.props.page === pagetypes.categories) {
       this.setState({
