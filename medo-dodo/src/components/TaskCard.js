@@ -7,9 +7,7 @@ import TaskGetter from "./ConnectToBackend";
 
 const getFormattedDate = (date) => {
   const arr = date.split(/[^0-9]/);
-
   const formatted = `${arr[2]}.${arr[1]}.${arr[0]} at ${arr[3]}.${arr[4]}`;
-
   return formatted;
 };
 
