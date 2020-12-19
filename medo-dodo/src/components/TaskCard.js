@@ -15,23 +15,28 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [checkbox, setCheckbox] = useState(0);
+  const [task, setTask] = useState('');
 
   useEffect(() => {
-    const task = async () => {
+    const createTask = async () => {
       const data = await TaskGetter.byId(id);
+      
       if (data.length > 0) {
         const date = getFormattedDate(data[0].due_date);
         setTitle(data[0].title);
         setDueDate(date);
+        setTask(data[0]);
       }
     };
 
-    task();
+    createTask();
   }, [id, levelTitle]);
 
   const setDone = () => {
     setCheckbox(1);
     console.log(`Task ${title} is done!`);
+
+    console.log(task)
     
     // this will eventually lead to changing appearance of task card
   };
