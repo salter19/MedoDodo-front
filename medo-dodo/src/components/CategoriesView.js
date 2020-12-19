@@ -15,7 +15,6 @@ class CategoriesView extends React.Component {
   createIcons = async () => {
     try {
       const catData = await TasksGetter.everyCategory();
-      console.log("categoryData:" + JSON.stringify(catData));
       const catTitles = await categoryTitles.validCatTitles();
       const taskObjs = await this.getTaskObjects(catTitles);
       const taskTitles = taskObjs.map((e) => this.getTaskTitles(e));
