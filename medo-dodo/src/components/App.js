@@ -47,13 +47,11 @@ class App extends React.Component {
   };
 
   changeViewToCat = (cat, id) => {
-    console.log("category is: " + cat);
     this.setState({
       currentPage: pagetypes.category,
       currentCategory: cat,
       currentCatID: id,
     });
-    console.log("category id is: " + id);
   };
 
   changeViewToWeekly = () => {
@@ -62,7 +60,6 @@ class App extends React.Component {
 
   handleCatDelete = () => {
     if (this.confirmDelete("category")) {
-      console.log("handling category delete now: " + this.state.currentCatID);
       TaskRemover.removeCatByID(this.state.currentCatID, this.changeViewToCats);
     } else {
       console.log(
@@ -77,7 +74,6 @@ class App extends React.Component {
         this.state.currentTaskID,
         this.removeFromAllTasks
       );
-      console.log("handling delete now: " + this.state.currentTaskID);
     } else {
       console.log(
         "didn't want to delete after all: " + this.state.currentTaskID
@@ -114,7 +110,6 @@ class App extends React.Component {
     } else {
       this.setState({ showingWeek: this.state.showingWeek + 1 });
     }
-    console.log(this.state.showingWeek + " " + this.state.showingYear);
   };
 
   handleLastWeek = () => {
@@ -192,7 +187,6 @@ class App extends React.Component {
         />
       );
     } else if (this.state.currentPage === pagetypes.category) {
-      // console.log("this is view for a single category");
       return (
         <CategoryView
           page={this.state.currentPage}
