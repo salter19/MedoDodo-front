@@ -47,10 +47,17 @@ const saveTask = async({title, due_date, description, priority, category_id}) =>
     description: description,
     priority: priority,
     category_id: category_id
-  })
-  return result.data
+  });
+  return result.data;
 }
-
+const saveCategory = async(title)  => {
+  try {
+    const result = await axios.post(`${address}${options[1]}${title}`);
+    return result.data;
+  } catch (error) {
+    alert(`Something went sour while saving new category. ${error}`)
+  }
+}
 const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, byCategoryId, everyCategory, saveTask };
 
 export default obj;
