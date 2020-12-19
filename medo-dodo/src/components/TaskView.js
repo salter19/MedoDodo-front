@@ -1,16 +1,15 @@
-import "./styles/TaskView.css";
+// import "./styles/TaskView.css";
 import React from "react";
 import ViewBase from "./ViewBase";
 import TextInputField from "./TextInputField";
 import PrioritySegment from "./PrioritySegment";
-import priorityLevels from './prioritylevels'
-import TaskGetter from './ConnectToBackend'
-import pagetypes from './pagetypes'
-import DatePicker from './DatePicker'
-import Dropdown from './DropdownSegment'
+import priorityLevels from "./prioritylevels";
+import TaskGetter from "./ConnectToBackend";
+import pagetypes from "./pagetypes";
+import DatePicker from "./DatePicker";
+import Dropdown from "./DropdownSegment";
 
 class TaskView extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,62 +21,61 @@ class TaskView extends React.Component {
       inputFields: [],
       priorityRow: [],
       dropdownOptions: [],
-      selectedCategory: []
-    }
+      selectedCategory: [],
+    };
   }
 
-  async componentDidMount() {    
+  async componentDidMount() {
     this.setDefaultsByPagetype();
     const dropdownOptions = await this.setDropdownOptions();
-    
+
     this.setState({
       dropdownOptions: dropdownOptions,
     });
   }
 
-  saveTask = async() => {
+  saveTask = async () => {
     const task = {
       title: this.state.task,
       due_date: this.state.due_date,
       description: this.state.description,
       priority: this.state.priority,
       category_id: this.state.category,
-      category_title: this.state.selectedCategory[1]
-    }
-    
+      category_title: this.state.selectedCategory[1],
+    };
+
     try {
-      const saveUp = await TaskGetter.saveTask(task)
-      alert(saveUp)
-      this.props.onSave()
+      const saveUp = await TaskGetter.saveTask(task);
+      alert(saveUp);
+      this.props.onSave();
     } catch (error) {
-      alert("Something went wrong with saving the task.")
+      alert("Something went wrong with saving the task.");
     }
-  }
-  
+  };
+
   componentDidUpdate() {
     //console.log(this.state)
   }
 
-  setDefaultsByPagetype = async() => {
+  setDefaultsByPagetype = async () => {
     if (this.props.page === pagetypes.modifyTask) {
-      const data = await this.setByTask(); 
+      const data = await this.setByTask();
       this.setTaskTitle(data.title);
       this.setDescription(data.description);
       this.setDueTime(data.due_date);
       this.setPriorityRow(data.priority);
       this.setCategory(data.category_id);
-      this.createTextInputFields(data.title, data.description);      
+      this.createTextInputFields(data.title, data.description);
       const defCat = await this.setDefaultCategoryForDropdown(data.category_id);
       this.setSelectedCategory(defCat);
-      
-    } else {      
-      const tmp = [this.props.placeholder, this.props.description]
+    } else {
+      const tmp = [this.props.placeholder, this.props.description];
       this.createTextInputFields(tmp[0], tmp[1]);
       const defCat = await this.setDefaultCategoryForDropdown(1);
       this.setPriorityRow(3);
       this.setSelectedCategory(defCat);
-    } 
-  }
+    }
+  };
 
   setByTask = async () => {
     try {
@@ -94,62 +92,62 @@ class TaskView extends React.Component {
   };
 
   setTaskTitle = (title) => {
-    this.setState({task: title});
-  }
+    this.setState({ task: title });
+  };
 
   setDescription = (text) => {
-    this.setState({description: text});
-  }
+    this.setState({ description: text });
+  };
 
   setDueTime = (time) => {
-    this.setState( { due_date: time } )
-  }
+    this.setState({ due_date: time });
+  };
 
   setNewPriority = (level) => {
-    this.setState( { priority: level } );
-  }
-  
+    this.setState({ priority: level });
+  };
+
   setPriorityRow = (taskPr) => {
     try {
       const br = (
-        <PrioritySegment 
-          labelAlign="center" 
-          priorityValue={taskPr} 
+        <PrioritySegment
+          labelAlign="center"
+          priorityValue={taskPr}
           onPriorityChange={this.setNewPriority}
-        />)
-      
-      this.setState( { priority: taskPr, priorityRow: br } )
-      
+        />
+      );
+
+      this.setState({ priority: taskPr, priorityRow: br });
     } catch (error) {
-      alert('something at loss in priority setting.')
+      alert("something at loss in priority setting.");
     }
-  }
+  };
 
   setCategory = (id) => {
-    this.setState( { category: id } )
-  }
+    this.setState({ category: id });
+  };
 
   createTextInputFields = (task, description) => {
     try {
       const taskField = (
         <TextInputField
           key={task}
-          onSubmit={e => this.setTaskTitle(e)}
+          onSubmit={(e) => this.setTaskTitle(e)}
           type="text"
           placeholder={task}
           labelName="Task"
-          onInputChange={e => this.setTaskTitle(e)}
+          onInputChange={(e) => this.setTaskTitle(e)}
         />
       );
 
       const descriptionField = (
         <TextInputField
           key={description}
-          onSubmit={e => this.setDescription(e)}
+          onSubmit={(e) => this.setDescription(e)}
           type="text"
           placeholder={description}
           labelName="Description"
-          onInputChange={e => this.setDescription(e)}
+          onInputChange={(e) => this.setDescription(e)}
         />
       );
 
@@ -159,52 +157,52 @@ class TaskView extends React.Component {
     }
   };
 
-  setDropdownOptions = async() => {
-    const ops = await TaskGetter.everyCategory()
-    let objs = ops.map(obj => {return [obj.id, obj.title]})
-    objs.push([0, 'Add new category']);
-    
+  setDropdownOptions = async () => {
+    const ops = await TaskGetter.everyCategory();
+    let objs = ops.map((obj) => {
+      return [obj.id, obj.title];
+    });
+    objs.push([0, "Add new category"]);
+
     return objs;
-  }
+  };
 
   setSelectedCategory = (cat) => {
-
     let sign;
-    if (cat[0] === 0 ) {
-      sign = prompt('Add new category');
+    if (cat[0] === 0) {
+      sign = prompt("Add new category");
     }
 
-    sign ? this.saveNewCategory(sign) : this.setState( { category: cat[0], selectedCategory: cat } );
+    sign
+      ? this.saveNewCategory(sign)
+      : this.setState({ category: cat[0], selectedCategory: cat });
+  };
 
-  }
-
-  saveNewCategory = async(title) => {
+  saveNewCategory = async (title) => {
     const res = await TaskGetter.saveCategory(title);
-    this.setState( { category: res, selectedCategory: [res, title] });
-    
-  }
+    this.setState({ category: res, selectedCategory: [res, title] });
+  };
 
-  setDefaultCategoryForDropdown = async(id) => {
-    
+  setDefaultCategoryForDropdown = async (id) => {
     const categories = await TaskGetter.everyCategory();
     let res = [];
-    categories.map((obj) => 
+    categories.map((obj) =>
       obj.id === id ? res.push(obj.id, obj.title) : null
     );
 
     return res;
-  }
+  };
 
   view = () => {
     return (
       <div className="content">
         {this.state.inputFields}
         {this.state.priorityRow}
-        <DatePicker onSelectedChange={this.setDueTime} now={new Date()}/>
-        <Dropdown 
-          options={this.state.dropdownOptions} 
-          header="Select category" 
-          selected={this.state.selectedCategory} 
+        <DatePicker onSelectedChange={this.setDueTime} now={new Date()} />
+        <Dropdown
+          options={this.state.dropdownOptions}
+          header="Select category"
+          selected={this.state.selectedCategory}
           onSelectedChange={this.setSelectedCategory}
         />
       </div>
