@@ -2,7 +2,7 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.local;
-const options = ["week/", "category/", "categorytitles/", "id/", 'categories/'];
+const options = ["week/", "category/", "categorytitles/", "id/", 'categories/', 'modify/'];
 
 const byWeek = async (week, year) => {
   const result = await axios.get(`${address}${options[0]}${week}/${year}`);
@@ -57,6 +57,10 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
   });
   
   return result.data;
+}
+
+const updateTask = async({id}) => {
+
 }
 
 const saveCategory = async(_title)  => {
