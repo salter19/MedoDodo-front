@@ -42,6 +42,8 @@ class TaskView extends React.Component {
       category_title: this.state.selectedCategory[1],
     };
 
+    console.log(task)
+
     try {
       const saveUp = await TaskGetter.saveTask(task);
       alert(saveUp);
