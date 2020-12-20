@@ -15,12 +15,16 @@ const getDoneBoolean = (num) => {
   return num === 0 ? false : true;
 }
 
+const getButtonText = (num) => {
+  return (num === 0 || !num ) ? ' ' : 'X';
+}
+
 const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [doneState, setDoneState] = useState('');
   const [task, setTask] = useState('');
-  const [checkbox, setCheckbox] = useState('');
+  const [buttonText, setButtonText] = useState('');
 
   useEffect(() => {
     const createTask = async () => {
@@ -30,11 +34,11 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
         setTask(data[0]);
         const date = getFormattedDateForCard(data[0].due_date);
         const doneOrNot = getDoneBoolean(task.is_done);
+        const button = getButtonText(task.is_done);
         setTitle(task.title);
         setDueDate(date);
         setDoneState(doneOrNot);
-        const box = createTaskLine();
-        setCheckbox(box);
+        setButtonText(button);
       }
     };
 
@@ -42,14 +46,10 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
     
   }, [id, levelTitle, doneState]);
 
-  console.log('task created, done state is: ' + doneState );
-
-  const onCheckboxClick = () => {
+  const onButtonDoneClick = () => {
     if (doneState === false) {
-      console.log(false + " change to " + true);
       updateTaskState(true);
     } else {
-      console.log(true + ' change to ' + false);
       updateTaskState(false);
     }
     
@@ -60,30 +60,12 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
     try {
       const updateTask = await TaskGetter.updateTask(id, 'is_done', value);
       setDoneState(value);
-      createTaskLine();
-      alert('Task updated to ' + value);
+      const button = getButtonText(value);
+      setButtonText(button);
 
     } catch (error) {
       alert("Something went wrong with saving the task.");
     }
-  }
-
-  const createTaskLine = () => {
-    let cbState;
-    if (doneState) {
-      cbState = <input className="box" type="checkbox" onClick={onCheckboxClick} checked />;
-    } else {
-      cbState = <input className="box" type="checkbox" onClick={onCheckboxClick} />;
-    }
-
-    return (
-      <div className="ui checkbox">
-          {cbState}
-          <label>
-            <h3>{title}</h3>
-          </label>
-        </div>
-    )
   }
 
   return (
@@ -92,14 +74,15 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
         <div className="ui two column centered grid">
           <div className="three column centered row">
             <div className="column">
-              <div className="ui checkbox">
-                <input className="box" type="checkbox" onClick={onCheckboxClick} />
+
+              <div className="button">
+                <input className="ui button" type="button" onClick={onButtonDoneClick} value={buttonText}/>
                 <label>
                   <h3>{title}</h3>
                 </label>
               </div>
 
-              {checkbox}
+
               <div className="date">{dueDate}</div>
 
               <div className="priority">
