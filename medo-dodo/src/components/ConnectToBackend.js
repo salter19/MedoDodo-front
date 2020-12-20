@@ -3,29 +3,37 @@ import Servers from "./Servers";
 
 const address = Servers.local;
 const options = ["week/", "category/", "categorytitles/", "id/", 'categories/', 'modify/'];
+const o = { 
+  week: 'week/',
+  category: 'category/',
+  categorytitles: 'categorytitles/',
+  id: 'id/',
+  categories: 'categories/',
+  modify: 'modify' 
+}
 
 const byWeek = async (week, year) => {
-  const result = await axios.get(`${address}${options[0]}${week}/${year}`);
+  const result = await axios.get(`${address}${o.week}${week}/${year}`);
   return result.data;
 };
 
 const byCategoryTitle = async (value) => {
-  const result = await axios.get(`${address}${options[1]}${value}`);
+  const result = await axios.get(`${address}${o.category}${value}`);
   return result.data;
 };
 
 const everyCatTitle = async () => {
-  const result = await axios.get(`${address}${options[2]}`);
+  const result = await axios.get(`${address}${o.categorytitles}`);
   return result.data;
 };
 
 const byCategoryId = async (value) => {
-  const result = await axios.get(`${address}${options[1]}${options[3]}${value}`);
+  const result = await axios.get(`${address}${o.category}${o.id}${value}`);
   return result.data;
 } 
 
 const everyCategory = async () => {
-  const result = await axios.get(`${address}${options[4]}`);
+  const result = await axios.get(`${address}${o.categories}`);
   return result.data;
 }
 
@@ -65,7 +73,7 @@ const updateTask = async({id}) => {
 
 const saveCategory = async(_title)  => {
   try {
-    const result = await axios.post(`${address}${options[1]}`, {title: _title});
+    const result = await axios.post(`${address}${o.category}`, {title: _title});
     return result.data;
   } catch (error) {
     alert(`Something went sour while saving new category. ${error}`)
