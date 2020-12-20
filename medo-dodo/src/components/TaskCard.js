@@ -32,6 +32,11 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory 
         setTitle(data[0].title);
         setDueDate(date);
         setTask(data[0]);
+
+        console.log(data[0].is_done)
+        if (data[0].is_done) {
+          console.log( data[0].title + ' is_done' )
+        }
       }
     };
 
