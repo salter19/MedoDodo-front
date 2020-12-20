@@ -33,7 +33,6 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory 
         setDueDate(date);
         setTask(data[0]);
 
-        console.log(data[0].is_done)
         if (data[0].is_done) {
           console.log( data[0].title + ' is_done' )
         }
@@ -65,8 +64,12 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory 
     };
     setTask(tmp)
     try {
-      const saveUp = await TaskGetter.saveTask(tmp);
-      alert(saveUp);
+      //const saveUp = await TaskGetter.saveTask(tmp);
+      //alert(saveUp);
+      const updateTask = await TaskGetter.updateTask(id)
+      if (updateTask) {
+        console.log('something went right!')
+      }
       this.props.onSave();
     } catch (error) {
       alert("Something went wrong with saving the task.");
