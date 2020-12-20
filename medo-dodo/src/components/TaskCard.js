@@ -51,8 +51,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
       updateTaskState(true);
     } else {
       updateTaskState(false);
-    }
-    
+    } 
   };
 
   const updateTaskState = async(value) => {
