@@ -8,7 +8,7 @@ const o = {
   categorytitles: 'categorytitles/',
   id: 'id/',
   categories: 'categories/',
-  modify: 'modify' 
+  modify: 'modify/' 
 }
 
 const byWeek = async (week, year) => {
@@ -49,6 +49,7 @@ const everyTask = async() => {
 const saveTask = async({title, due_date, description, priority, category_id, category_title, is_done}) => {
   // (title, due_date, description, priority, category_id, is_done) 
  
+  // check if is_done value is given and apply default if not
   let isD = false;
   if (is_done) {
     isD = true;
@@ -66,10 +67,10 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
   return result.data;
 }
 
-const updateTask = async({id}) => {
+const updateTask = async(id, key, value) => {
 
   try {
-    const result = await (axios.put(`${address}${o.modify}${id}`))
+    const result = await axios.put(`${address}${o.modify}${id}`, { key:key, value:value} );
     alert(result.data)
   } catch (error) {
     alert(`Something wrong with update:\n${error}`)

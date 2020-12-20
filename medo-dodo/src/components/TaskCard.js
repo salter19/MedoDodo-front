@@ -11,66 +11,56 @@ const getFormattedDateForCard = (date) => {
   return formatted;
 };
 
-const getFormattedDateForSave = (date) => {
-  const arr = date.split(/[^0-9]/);
-  const formatted = `${arr[0]}-${arr[1]}-${arr[2]} ${arr[3]}:${arr[4]}:${arr[5]}`;
-  return formatted;
+const getDoneBoolean = (num) => {
+  return num === 0 ? false : true;
 }
 
-const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask, currentCategory }) => {
+const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [done, setDone] = useState(false);
+  const [doneState, setDoneState] = useState('');
   const [task, setTask] = useState('');
 
   useEffect(() => {
     const createTask = async () => {
       const data = await TaskGetter.byId(id);
       
-      if (data.length > 0) {
+      if (data.length > 0) {        
+        setTask(data[0]);
         const date = getFormattedDateForCard(data[0].due_date);
+        const doneOrNot = getDoneBoolean(task.is_done);
         setTitle(data[0].title);
         setDueDate(date);
-        setTask(data[0]);
-
-        if (data[0].is_done) {
-          console.log( data[0].title + ' is_done' )
-        }
+        setDoneState(doneOrNot);
       }
     };
 
     createTask();
+    
+
   }, [id, levelTitle]);
 
-  const onCheckboxClick = () => {
-    setDone(!done);
+  console.log('task created, done state is: ' + doneState );
 
-    // default done === false;
-    !done ? saveTaskState() : console.log('undone')
+  const onCheckboxClick = () => {
+    if (doneState === false) {
+      console.log(false + " change to " + true);
+      updateTaskState(true);
+    } else {
+      console.log(true + ' change to ' + false);
+      updateTaskState(false);
+    }
     
-    // ToDo: modify the fucker. this here creates new task.
+    
   };
 
-  const saveTaskState = async() => {
+  const updateTaskState = async(value) => {
 
-    const formattedDate = getFormattedDateForSave(task.due_date);
-    const tmp = {
-      title: task.title,
-      due_date: formattedDate,
-      description: task.description,
-      priority: task.priority,
-      category_id: task.category_id,
-      is_done: done,
-    };
-    setTask(tmp)
     try {
-      //const saveUp = await TaskGetter.saveTask(tmp);
-      //alert(saveUp);
-      const updateTask = await TaskGetter.updateTask(id)
-      if (updateTask) {
-        console.log('something went right!')
-      }
-      this.props.onSave();
+      const updateTask = await TaskGetter.updateTask(id, 'is_done', value);
+      setDoneState(value);
+      
+
     } catch (error) {
       alert("Something went wrong with saving the task.");
     }
