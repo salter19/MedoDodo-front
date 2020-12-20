@@ -2,6 +2,7 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.remote;
+console.log(address);
 const o = { 
   week: 'week/',
   category: 'category/',
