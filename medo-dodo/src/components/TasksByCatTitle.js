@@ -50,15 +50,6 @@ class TasksByCatTitle extends React.Component {
     this.readTasks();
   }
 
-  /*
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.catTitle !== this.props.catTitle) {
-      this.readTasks();
-      this.createCards();
-    }
-  }
-  */
-
   showTasksIsEmpty() {
     if (this.state.taskCards.length === 0) {
       return (
