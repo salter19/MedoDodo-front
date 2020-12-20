@@ -68,6 +68,13 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
 
 const updateTask = async({id}) => {
 
+  try {
+    const result = await (axios.put(`${address}${o.modify}${id}`))
+    alert(result.data)
+  } catch (error) {
+    alert(`Something wrong with update:\n${error}`)
+  }
+  
 }
 
 const saveCategory = async(_title)  => {
