@@ -20,6 +20,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
   const [dueDate, setDueDate] = useState("");
   const [doneState, setDoneState] = useState('');
   const [task, setTask] = useState('');
+  const [checkbox, setCheckbox] = useState('');
 
   useEffect(() => {
     const createTask = async () => {
@@ -29,16 +30,17 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
         setTask(data[0]);
         const date = getFormattedDateForCard(data[0].due_date);
         const doneOrNot = getDoneBoolean(task.is_done);
-        setTitle(data[0].title);
+        setTitle(task.title);
         setDueDate(date);
         setDoneState(doneOrNot);
+        const box = createTaskLine();
+        setCheckbox(box);
       }
     };
 
     createTask();
     
-
-  }, [id, levelTitle]);
+  }, [id, levelTitle, doneState]);
 
   console.log('task created, done state is: ' + doneState );
 
@@ -51,7 +53,6 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
       updateTaskState(false);
     }
     
-    
   };
 
   const updateTaskState = async(value) => {
@@ -59,11 +60,30 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
     try {
       const updateTask = await TaskGetter.updateTask(id, 'is_done', value);
       setDoneState(value);
-      
+      createTaskLine();
+      alert('Task updated to ' + value);
 
     } catch (error) {
       alert("Something went wrong with saving the task.");
     }
+  }
+
+  const createTaskLine = () => {
+    let cbState;
+    if (doneState) {
+      cbState = <input className="box" type="checkbox" onClick={onCheckboxClick} checked />;
+    } else {
+      cbState = <input className="box" type="checkbox" onClick={onCheckboxClick} />;
+    }
+
+    return (
+      <div className="ui checkbox">
+          {cbState}
+          <label>
+            <h3>{title}</h3>
+          </label>
+        </div>
+    )
   }
 
   return (
@@ -79,6 +99,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
                 </label>
               </div>
 
+              {checkbox}
               <div className="date">{dueDate}</div>
 
               <div className="priority">
