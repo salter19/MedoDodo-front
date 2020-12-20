@@ -61,6 +61,7 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
     description: description,
     priority: priority,
     category_id: category_id,
+    category_title: category_title,
     is_done: isD
   });
   
