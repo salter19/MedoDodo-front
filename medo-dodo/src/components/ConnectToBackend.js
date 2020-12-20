@@ -85,6 +85,6 @@ const saveCategory = async(_title)  => {
     alert(`Something went sour while saving new category. ${error}`)
   }
 }
-const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, byCategoryId, everyCategory, saveTask, saveCategory };
+const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, byCategoryId, everyCategory, saveTask, saveCategory, updateTask };
 
 export default obj;
