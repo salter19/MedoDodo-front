@@ -6,7 +6,6 @@ import CategoriesView from "./CategoriesView";
 import CategoryView from "./CategoryView";
 import pagetypes from "./pagetypes";
 import TaskGetter from "./ConnectToBackend";
-import TaskRemover from "./TasksRemover";
 import currentWeekNumber from "current-week-number";
 
 class App extends React.Component {
