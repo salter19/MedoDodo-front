@@ -2,7 +2,6 @@ import axios from "axios";
 import Servers from "./Servers";
 
 const address = Servers.local;
-const options = ["week/", "category/", "categorytitles/", "id/", 'categories/', 'modify/'];
 const o = { 
   week: 'week/',
   category: 'category/',
