@@ -175,11 +175,17 @@ class TaskView extends React.Component {
   }
 
   setToCorrespondingCategory = async(newCat) => {
-    this.state.dropdownOptions.map((e) => {    
-      if (e[1] === newCat) {
-        this.useExistingCategory(e);
+    let res;
+    for ( let i of this.state.dropdownOptions) {
+      if (i[1] ===  newCat) {
+        res = i;
       }
-    });
+    }
+
+    if (res) {
+      this.useExistingCategory(res);
+    }
+    
   }
   useExistingCategory = (cat) => {
     this.setState( { category: cat[0], selectedCategory: cat } )
