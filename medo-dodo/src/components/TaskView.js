@@ -12,7 +12,6 @@ import Dropdown from "./DropdownSegment";
 class TaskView extends React.Component {
   constructor(props) {
     super(props);
-    if (this.props.page !== pagetypes.modifyTask) {
       this.state = {
         task: "",
         description: "",
@@ -24,7 +23,7 @@ class TaskView extends React.Component {
         dropdownOptions: [],
         selectedCategory: [],
       };
-    }
+    
     
   }
 
