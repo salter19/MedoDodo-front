@@ -80,6 +80,7 @@ class App extends React.Component {
         this.state.currentTaskID,
         this.removeFromAllTasks
       );
+      this.changeViewToWeekly()
     } else {
       console.log(
         "didn't want to delete after all: " + this.state.currentTaskID
