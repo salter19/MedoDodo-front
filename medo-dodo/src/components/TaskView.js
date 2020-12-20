@@ -12,18 +12,17 @@ import Dropdown from "./DropdownSegment";
 class TaskView extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {
-        task: "",
-        description: "",
-        due_date: "",
-        priority: priorityLevels[priorityLevels.length - 1],
-        category: 1,
-        inputFields: [],
-        priorityRow: [],
-        dropdownOptions: [],
-        selectedCategory: [],
-      };
-    
+    this.state = {
+      task: "",
+      description: "",
+      due_date: "",
+      priority: priorityLevels[priorityLevels.length - 1],
+      category: 1,
+      inputFields: [],
+      priorityRow: [],
+      dropdownOptions: [],
+      selectedCategory: [],
+    };
     
   }
 
@@ -218,7 +217,7 @@ class TaskView extends React.Component {
     if (this.props.page === pagetypes.modifyTask) {
       return (
         <div className="empty content">
-          Inside delete
+          <p>Sorry, no modify here, only delete is real.</p>
         </div>
       )
     } else {
