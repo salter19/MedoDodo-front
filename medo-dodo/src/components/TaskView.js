@@ -40,8 +40,7 @@ class TaskView extends React.Component {
     };
 
     try {
-      const saveUp = await TaskGetter.saveTask(task);
-      alert(saveUp);
+      await TaskGetter.saveTask(task);
       this.props.onSave();
     } catch (error) {
       alert("Something went wrong with saving the task.");

@@ -71,8 +71,8 @@ const saveTask = async({title, due_date, description, priority, category_id, cat
 const updateTask = async(id, key, value) => {
 
   try {
-    const result = await axios.put(`${address}${o.modify}${id}`, { key:key, value:value} );
-    alert(result.data)
+    await axios.put(`${address}${o.modify}${id}`, { key:key, value:value} );
+    
   } catch (error) {
     alert(`Something wrong with update:\n${error}`)
   }
