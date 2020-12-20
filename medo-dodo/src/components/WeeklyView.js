@@ -10,14 +10,6 @@ export default class WeeklyView extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.showingWeek !== this.props.showingWeek) {
-     
-    }
-  }
-
   render() {
     return (
       <div>
