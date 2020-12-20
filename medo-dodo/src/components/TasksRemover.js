@@ -1,7 +1,7 @@
 import axios from "axios";
 import Servers from "./Servers";
 
-const address = Servers.local;
+const address = Servers.remote;
 
 const removeByTaskID = async (taskID, callback) => {
   await axios.delete(`${address}${taskID}`).then(

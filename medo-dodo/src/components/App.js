@@ -66,7 +66,7 @@ class App extends React.Component {
 
   handleCatDelete = () => {
     if (this.confirmDelete("category")) {
-      TaskRemover.removeCatByID(this.state.currentCatID, this.changeViewToCats);
+      TaskGetter.removeCatByID(this.state.currentCatID, this.changeViewToCats);
     } else {
       console.log(
         "didn't want to delete after all: " + this.state.currentCatID
@@ -76,7 +76,7 @@ class App extends React.Component {
 
   handleDelete = () => {
     if (this.confirmDelete("task")) {
-      TaskRemover.removeByTaskID(
+      TaskGetter.removeByTaskID(
         this.state.currentTaskID,
         this.removeFromAllTasks
       );

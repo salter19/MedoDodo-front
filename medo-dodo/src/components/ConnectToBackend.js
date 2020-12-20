@@ -87,6 +87,30 @@ const saveCategory = async(_title)  => {
     alert(`Something went sour while saving new category. ${error}`)
   }
 }
-const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, byCategoryId, everyCategory, saveTask, saveCategory, updateTask };
+
+const removeByTaskID = async (taskID, callback) => {
+  await axios.delete(`${address}${taskID}`).then(
+    (resp) => {
+      callback();
+    },
+    (e) => {
+      alert(`Something went wrong with delete\n${e}`)
+    }
+  );
+};
+
+const removeCatByID = async (catID, callback) => {
+  await axios.delete(`${address}/category/${catID}`).then(
+    (resp) => {
+      callback();
+    },
+    (e) => {
+      alert(`Something went wrong with delete\n${e}`)
+    }
+  );
+};
+const obj = { byWeek, byCategoryTitle, everyCatTitle, byId, everyTask, 
+              byCategoryId, everyCategory, saveTask, saveCategory, updateTask,
+              removeByTaskID, removeCatByID };
 
 export default obj;
