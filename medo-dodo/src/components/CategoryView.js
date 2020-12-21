@@ -16,7 +16,7 @@ class CategoryView extends React.Component {
           catID={this.props.catID}
           currentCatID={this.props.currentCatID}
           onCatDelete={this.props.onCatDelete}
-          allTasks={this.state.allTasks}
+          allTasks={this.props.allTasks}
           view={
             <TasksByCatTitle
               catTitle={this.props.currentCategory}
@@ -25,7 +25,7 @@ class CategoryView extends React.Component {
               onClickDone={this.props.onClickDone}
               currentCatID={this.props.currentCatID}
               onCatDelete={this.props.onCatDelete}
-              allTasks={this.state.allTasks}
+              allTasks={this.props.allTasks}
             />
           }
         />
