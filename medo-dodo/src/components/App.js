@@ -17,6 +17,7 @@ class App extends React.Component {
       currentWeek: currentWeekNumber(new Date()),
       showingWeek: currentWeekNumber(new Date()),
       currentPage: pagetypes.weekly,
+      formerPage: pagetypes.weekly,
       currentCategory: "",
       currentCatID: "",
       currentTaskID: null,
@@ -48,17 +49,19 @@ class App extends React.Component {
       /*currentPage: pagetypes.modifyTask,*/
       currentTaskID: taskID,
     });
-    console.log("state of currentTaskID:" + this.state.currentTaskID);
-    console.log("id of this task is: " + taskID);
     this.handleDelete(taskID);
   };
 
   changeViewToCats = () => {
-    this.setState({ currentPage: pagetypes.categories });
+    this.setState({
+      formerPage: pagetypes.categories,
+      currentPage: pagetypes.categories,
+    });
   };
 
   changeViewToCat = (cat, id) => {
     this.setState({
+      formerPage: pagetypes.category,
       currentPage: pagetypes.category,
       currentCategory: cat,
       currentCatID: id,
@@ -66,7 +69,15 @@ class App extends React.Component {
   };
 
   changeViewToWeekly = () => {
-    this.setState({ currentPage: pagetypes.weekly });
+    this.setState({
+      formerPage: pagetypes.weekly,
+      currentPage: pagetypes.weekly,
+    });
+  };
+
+  goBack = () => {
+    console.log("we are going back to " + this.state.formerPage);
+    this.setState({ currentPage: this.state.formerPage });
   };
 
   handleCatDelete = () => {
@@ -158,6 +169,7 @@ class App extends React.Component {
           onClickDone={this.setDone}
           currentCategory={this.state.currentCategory}
           allTasks={this.state.allTasks}
+          goBack={this.goBack}
         />
       );
     } else if (this.state.currentPage === pagetypes.addTask) {
@@ -170,6 +182,7 @@ class App extends React.Component {
           description={"Elaborate..."}
           onSave={this.changeViewToWeekly}
           onSaveC={this.changeViewToCats}
+          goBack={this.goBack}
         />
       );
     } else if (this.state.currentPage === pagetypes.modifyTask) {
@@ -185,6 +198,7 @@ class App extends React.Component {
           allTasks={this.state.allTasks}
           currentTaskID={this.state.currentTaskID}
           onDelete={this.handleDelete}
+          goBack={this.goBack}
         />
       );
     } else if (this.state.currentPage === pagetypes.categories) {
@@ -196,6 +210,7 @@ class App extends React.Component {
           onClickWeeks={this.changeViewToWeekly}
           onClickTask={this.changeViewToModify}
           onClickCat={this.changeViewToCat}
+          goBack={this.goBack}
         />
       );
     } else if (this.state.currentPage === pagetypes.category) {
@@ -213,6 +228,7 @@ class App extends React.Component {
           currentCatID={this.state.currentCatID}
           onCatDelete={this.handleCatDelete}
           allTasks={this.state.allTasks}
+          goBack={this.goBack}
         />
       );
     } else {
