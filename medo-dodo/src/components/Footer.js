@@ -66,12 +66,12 @@ export default class Footer extends React.Component {
           <MyButton
             buttontype={buttontypes.return}
             page={this.props.page}
-            onSave={this.props.onSave}
+            goBack={this.props.goBack}
           />
           <MyButton
             buttontype={buttontypes.save}
             page={this.props.page}
-            goBack={this.props.goBack}
+            onSave={this.props.onSave}
           />
         </div>
       );
