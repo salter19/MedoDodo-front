@@ -47,7 +47,8 @@ class MyButton extends React.Component {
   };
 
   changePage = () => {
-    this.props.page === pagetypes.addTask ||
+    (this.props.page === pagetypes.addTask &&
+      this.props.buttontype !== buttontypes.return) ||
     this.props.page === pagetypes.modifyTask
       ? this.props.onSave()
       : this.errorHandler();
@@ -61,7 +62,7 @@ class MyButton extends React.Component {
       : this.errorHandler();
 
     this.props.buttontype === buttontypes.return
-      ? this.props.goBack(this.props.formerView)
+      ? this.props.goBack()
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.category
