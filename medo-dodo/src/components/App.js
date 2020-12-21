@@ -37,14 +37,19 @@ class App extends React.Component {
   setDone = (taskID) => {
     const arr = this.state.isDone;
     arr.push(taskID);
-  }
+  };
 
   changeViewToAdd = () => {
     this.setState({ currentPage: pagetypes.addTask });
   };
 
   changeViewToModify = (taskID) => {
-    this.setState({ currentPage: pagetypes.modifyTask, currentTaskID: taskID });
+    this.setState({
+      /*currentPage: pagetypes.modifyTask,*/
+      currentTaskID: taskID,
+    });
+    console.log("id of this task is: " + taskID);
+    this.handleDelete(taskID);
   };
 
   changeViewToCats = () => {
@@ -73,16 +78,17 @@ class App extends React.Component {
     }
   };
 
-  handleDelete = () => {
+  handleDelete = (taskID) => {
     if (this.confirmDelete("task")) {
+      console.log("now deleting task with id:" + taskID);
       TaskGetter.removeByTaskID(
         this.state.currentTaskID,
         this.removeFromAllTasks
       );
-      this.changeViewToWeekly()
+      // this.changeViewToWeekly();
     } else {
       console.log(
-        "didn't want to delete after all: " + this.state.currentTaskID
+        "didn't want to delete after all: " + taskID // this.state.currentTaskID
       );
     }
   };
@@ -221,8 +227,11 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.currentPage !== this.state.currentPage) {
-      // this.checkView();
+    if (
+      prevState.currentPage !== this.state.currentPage ||
+      prevState.allTasks.length !== this.state.allTasks.length
+    ) {
+      this.checkView();
     }
   }
 
