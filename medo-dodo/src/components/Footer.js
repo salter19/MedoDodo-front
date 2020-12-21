@@ -62,16 +62,22 @@ export default class Footer extends React.Component {
       );
     } else if (this.props.page === pagetypes.addTask) {
       return (
-        <MyButton
-          buttontype={buttontypes.save}
-          page={this.props.page}
-          onSave={this.props.onSave}
-        />
+        <div className="flex container">
+          <MyButton
+            buttontype={buttontypes.return}
+            page={this.props.page}
+            goBack={this.props.goBack}
+          />
+          <MyButton
+            buttontype={buttontypes.save}
+            page={this.props.page}
+            onSave={this.props.onSave}
+          />
+        </div>
       );
     } else if (this.props.page === pagetypes.modifyTask) {
       return (
         <div className="flex container">
-          
           <MyButton
             buttontype={buttontypes.delete}
             page={this.props.page}

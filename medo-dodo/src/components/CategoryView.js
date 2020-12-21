@@ -3,7 +3,6 @@ import ViewBase from "./ViewBase";
 import TasksByCatTitle from "./TasksByCatTitle";
 
 class CategoryView extends React.Component {
-  
   render() {
     return (
       <div className="cat-view">
@@ -17,6 +16,8 @@ class CategoryView extends React.Component {
           catID={this.props.catID}
           currentCatID={this.props.currentCatID}
           onCatDelete={this.props.onCatDelete}
+          allTasks={this.props.allTasks}
+          goBack={this.props.goBack}
           view={
             <TasksByCatTitle
               catTitle={this.props.currentCategory}
@@ -25,6 +26,8 @@ class CategoryView extends React.Component {
               onClickDone={this.props.onClickDone}
               currentCatID={this.props.currentCatID}
               onCatDelete={this.props.onCatDelete}
+              allTasks={this.props.allTasks}
+              goBack={this.props.goBack}
             />
           }
         />

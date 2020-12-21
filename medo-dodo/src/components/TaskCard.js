@@ -13,24 +13,24 @@ const getFormattedDateForCard = (date) => {
 
 const getDoneBoolean = (num) => {
   return num === 0 ? false : true;
-}
+};
 
 const getButtonText = (num) => {
-  return (num === 0 || !num ) ? ' ' : 'X';
-}
+  return num === 0 || !num ? " " : "X";
+};
 
-const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
+const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [doneState, setDoneState] = useState('');
-  const [task, setTask] = useState('');
-  const [buttonText, setButtonText] = useState('');
+  const [doneState, setDoneState] = useState("");
+  const [task, setTask] = useState("");
+  const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
     const createTask = async () => {
       const data = await TaskGetter.byId(id);
-      
-      if (data.length > 0) {        
+
+      if (data.length > 0) {
         setTask(data[0]);
         const date = getFormattedDateForCard(data[0].due_date);
         const doneOrNot = getDoneBoolean(task.is_done);
@@ -43,7 +43,6 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
     };
 
     createTask();
-    
   }, [id, levelTitle, doneState]);
 
   const onButtonDoneClick = () => {
@@ -51,21 +50,19 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
       updateTaskState(true);
     } else {
       updateTaskState(false);
-    } 
+    }
   };
 
-  const updateTaskState = async(value) => {
-
+  const updateTaskState = async (value) => {
     try {
-      const updateTask = await TaskGetter.updateTask(id, 'is_done', value);
+      const updateTask = await TaskGetter.updateTask(id, "is_done", value);
       setDoneState(value);
       const button = getButtonText(value);
       setButtonText(button);
-
     } catch (error) {
       alert("Something went wrong with saving the task.");
     }
-  }
+  };
 
   return (
     <div className="task-card">
@@ -73,19 +70,22 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
         <div className="ui two column centered grid">
           <div className="three column centered row">
             <div className="column">
-
               <div className="button">
-                <input className="ui button" type="button" onClick={onButtonDoneClick} value={buttonText}/>
+                <input
+                  className="ui button"
+                  type="button"
+                  onClick={onButtonDoneClick}
+                  value={buttonText}
+                />
                 <label>
                   <h3>{title}</h3>
                 </label>
               </div>
 
-
               <div className="date">{dueDate}</div>
 
               <div className="priority">
-                <PriorityTag priorityChosen={priorityLevel}/>
+                <PriorityTag priorityChosen={priorityLevel} />
               </div>
 
               <div className="priority">
@@ -96,7 +96,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask}) => {
             <div className="right floated column">
               <MyButton
                 buttontype={buttontypes.modify}
-                page={pagetypes.modifyTask}
+                //page={pagetypes.modifyTask}
                 onSave={onClickTask}
                 taskID={id}
                 onClickTask={onClickTask}

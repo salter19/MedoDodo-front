@@ -22,7 +22,6 @@ class TaskView extends React.Component {
       dropdownOptions: [],
       selectedCategory: [],
     };
-    
   }
 
   async componentDidMount() {
@@ -53,13 +52,12 @@ class TaskView extends React.Component {
 
   setDefaultsByPagetype = async () => {
     if (this.props.page !== pagetypes.modifyTask) {
-      
       const dropdownOptions = await this.setDropdownOptions();
-      
+
       this.setState({
         dropdownOptions: dropdownOptions,
       });
-    
+
       const tmp = [this.props.placeholder, this.props.description];
       this.createTextInputFields(tmp[0], tmp[1]);
       const defCat = await this.setDefaultCategoryForDropdown(1);
@@ -158,22 +156,23 @@ class TaskView extends React.Component {
     return objs;
   };
 
-  setSelectedCategory = async(cat) => {
-   
-    if (cat[0] === 0 ) {
-      const newCat = prompt('Add new category');
-      
+  setSelectedCategory = async (cat) => {
+    if (cat[0] === 0) {
+      const newCat = prompt("Add new category");
+
       const exists = await this.checkIfCatExists(newCat);
-      exists ? await this.setToCorrespondingCategory(newCat) : this.saveNewCategory(newCat);
+      exists
+        ? await this.setToCorrespondingCategory(newCat)
+        : this.saveNewCategory(newCat);
     } else {
       this.useExistingCategory(cat);
     }
-  }
+  };
 
-  setToCorrespondingCategory = async(newCat) => {
+  setToCorrespondingCategory = async (newCat) => {
     let res;
-    for ( let i of this.state.dropdownOptions) {
-      if (i[1] ===  newCat) {
+    for (let i of this.state.dropdownOptions) {
+      if (i[1] === newCat) {
         res = i;
       }
     }
@@ -181,31 +180,29 @@ class TaskView extends React.Component {
     if (res) {
       this.useExistingCategory(res);
     }
-    
-  }
+  };
   useExistingCategory = (cat) => {
-    this.setState( { category: cat[0], selectedCategory: cat } )
-  }
+    this.setState({ category: cat[0], selectedCategory: cat });
+  };
 
-  saveNewCategory = async(title) => {
+  saveNewCategory = async (title) => {
     const res = await TaskGetter.saveCategory(title);
-    this.setState( { category: res, selectedCategory: [res, title] });
-  }
+    this.setState({ category: res, selectedCategory: [res, title] });
+  };
 
-  checkIfCatExists = async(title) => {
+  checkIfCatExists = async (title) => {
     const allCats = await TaskGetter.everyCategory();
-    let res = false; 
-    allCats.forEach(e => {
+    let res = false;
+    allCats.forEach((e) => {
       if (e.title === title) {
         res = true;
         return;
       }
     });
     return res;
-  }
- 
-  setDefaultCategoryForDropdown = async(id) => {
-    
+  };
+
+  setDefaultCategoryForDropdown = async (id) => {
     const categories = await TaskGetter.everyCategory();
     let res = [];
     categories.map((obj) =>
@@ -221,7 +218,7 @@ class TaskView extends React.Component {
         <div className="empty content">
           <p>Sorry, no modify here, only delete is real.</p>
         </div>
-      )
+      );
     } else {
       return (
         <div className="content">
@@ -237,7 +234,6 @@ class TaskView extends React.Component {
         </div>
       );
     }
-   
   };
 
   render() {
@@ -249,6 +245,7 @@ class TaskView extends React.Component {
           onSave={this.saveTask}
           onSaveC={this.props.onSaveC}
           onDelete={this.props.onDelete}
+          goBack={this.props.goBack}
           view={this.view()}
         />
       </div>

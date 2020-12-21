@@ -34,6 +34,7 @@ export default class WeeklyView extends React.Component {
           page={this.props.page}
           onClickRight={this.props.onClickAdd}
           onClickLeft={this.props.onClickCats}
+          goBack={this.props.goBack}
         />
       </div>
     );
