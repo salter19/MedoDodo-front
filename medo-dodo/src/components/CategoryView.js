@@ -17,6 +17,7 @@ class CategoryView extends React.Component {
           currentCatID={this.props.currentCatID}
           onCatDelete={this.props.onCatDelete}
           allTasks={this.props.allTasks}
+          goBack={this.props.goBack}
           view={
             <TasksByCatTitle
               catTitle={this.props.currentCategory}
@@ -26,6 +27,7 @@ class CategoryView extends React.Component {
               currentCatID={this.props.currentCatID}
               onCatDelete={this.props.onCatDelete}
               allTasks={this.props.allTasks}
+              goBack={this.props.goBack}
             />
           }
         />
