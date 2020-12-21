@@ -54,7 +54,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
 
   const updateTaskState = async (value) => {
     try {
-      const updateTask = await TaskGetter.updateTask(id, "is_done", value);
+      await TaskGetter.updateTask(id, "is_done", value);
       setDoneState(value);
       const button = getButtonText(value);
       setButtonText(button);
