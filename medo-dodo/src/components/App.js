@@ -48,6 +48,7 @@ class App extends React.Component {
       /*currentPage: pagetypes.modifyTask,*/
       currentTaskID: taskID,
     });
+    console.log("state of currentTaskID:" + this.state.currentTaskID);
     console.log("id of this task is: " + taskID);
     this.handleDelete(taskID);
   };
@@ -81,10 +82,7 @@ class App extends React.Component {
   handleDelete = (taskID) => {
     if (this.confirmDelete("task")) {
       console.log("now deleting task with id:" + taskID);
-      TaskGetter.removeByTaskID(
-        this.state.currentTaskID,
-        this.removeFromAllTasks
-      );
+      TaskGetter.removeByTaskID(taskID, () => this.removeFromAllTasks(taskID));
       // this.changeViewToWeekly();
     } else {
       console.log(
@@ -104,10 +102,10 @@ class App extends React.Component {
     }
   }
 
-  removeFromAllTasks = () => {
+  removeFromAllTasks = (taskID) => {
     const list = [...this.state.allTasks];
     const updatedList = list.filter(
-      (task) => task.id !== this.state.currentTaskID
+      (task) => task.id !== taskID //this.state.currentTaskID
     );
     this.setState({ allTasks: updatedList });
   };
@@ -232,6 +230,7 @@ class App extends React.Component {
       prevState.allTasks.length !== this.state.allTasks.length
     ) {
       this.checkView();
+      this.upDateTaskList();
     }
   }
 
