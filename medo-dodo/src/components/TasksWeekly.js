@@ -1,7 +1,7 @@
 import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
-import TasksGetter from "./TasksGetter";
+import TasksGetter from "./ConnectToBackend";
 
 export default class TasksWeekly extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class TasksWeekly extends React.Component {
         <TaskCard
           key={e.id}
           id={e.id}
-          priority={e.priority}
+          priorityLevel={e.priority}
           onClickTask={this.props.onClickTask}
         />
       );
@@ -75,10 +75,9 @@ export default class TasksWeekly extends React.Component {
     return (
       <div className="tasklist">
         <h1>Here we have tasks dued:</h1>
-        <ul>
-          {this.state.taskCards}
-          {noTasks}
-        </ul>
+
+        {this.state.taskCards}
+        {noTasks}
       </div>
     );
   }

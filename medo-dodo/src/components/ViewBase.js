@@ -18,6 +18,7 @@ class ViewBase extends React.Component {
           onClickLeft={this.props.onClickLeft}
           onSave={this.props.onSave}
           onDelete={this.props.onDelete}
+          goBack={this.props.goBack}
         />
       </div>
     );

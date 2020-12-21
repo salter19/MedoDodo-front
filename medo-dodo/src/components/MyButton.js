@@ -8,6 +8,7 @@ class MyButton extends React.Component {
     buttontype: "",
     errormsg: "Where are we, asks button?",
     buttonText: "",
+    key: "",
   };
 
   componentDidMount() {
@@ -16,13 +17,38 @@ class MyButton extends React.Component {
   }
 
   setButtonText = () => {
-    this.props.buttontype === buttontypes.category
-      ? this.setState({ buttonText: this.props.category })
-      : this.setState({ buttonText: this.props.buttontype });
+    if (this.props.buttontype === buttontypes.category) {
+      this.setState({
+        buttonText: this.props.category,
+        key: this.props.category,
+      });
+    } else if (this.props.buttontype === buttontypes.modify) {
+      this.setState({
+        buttonText: ["DELETE", <br />, "TASK"],
+        key: this.props.taskID,
+      });
+    } else if (this.props.buttontype === buttontypes.addTask) {
+      this.setState({ buttonText: ["ADD NEW", <br />, "TASK"], key: "add" });
+    } else if (this.props.buttontype === buttontypes.categories) {
+      this.setState({
+        buttonText: ["CATEGORIES", <br />, "VIEW"],
+        key: "cats",
+      });
+    } else if (this.props.buttontype === buttontypes.return) {
+      this.setState({ buttonText: ["GO", <br />, "BACK"], key: "return" });
+    } else if (this.props.buttontype === buttontypes.weekly) {
+      this.setState({ buttonText: ["WEEKLY", <br />, "VIEW"], key: "weeks" });
+    } else {
+      this.setState({
+        buttonText: this.props.buttontype,
+        key: this.props.buttontype,
+      });
+    }
   };
 
   changePage = () => {
-    this.props.page === pagetypes.addTask ||
+    (this.props.page === pagetypes.addTask &&
+      this.props.buttontype !== buttontypes.return) ||
     this.props.page === pagetypes.modifyTask
       ? this.props.onSave()
       : this.errorHandler();
@@ -35,8 +61,12 @@ class MyButton extends React.Component {
       ? this.props.onClickWeeks()
       : this.errorHandler();
 
+    this.props.buttontype === buttontypes.return
+      ? this.props.goBack()
+      : this.errorHandler();
+
     this.state.buttontype === buttontypes.category
-      ? this.props.onClickCat(this.props.category)
+      ? this.props.onClickCat(this.props.category, this.props.catID)
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.modify
@@ -58,9 +88,13 @@ class MyButton extends React.Component {
 
   render() {
     return (
-      <div className="button">
-        <button className={this.state.buttontype} onClick={this.changePage}>
-          {this.state.buttonText}
+      <div key={this.state.key} className="button">
+        <button
+          key={this.state.key}
+          className={this.state.buttontype}
+          onClick={this.changePage}
+        >
+          <div key={this.state.key}>{this.state.buttonText}</div>
         </button>
       </div>
     );

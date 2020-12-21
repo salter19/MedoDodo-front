@@ -10,14 +10,6 @@ export default class WeeklyView extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.showingWeek !== this.props.showingWeek) {
-      console.log("showing different week now");
-    }
-  }
-
   render() {
     return (
       <div>
@@ -42,6 +34,7 @@ export default class WeeklyView extends React.Component {
           page={this.props.page}
           onClickRight={this.props.onClickAdd}
           onClickLeft={this.props.onClickCats}
+          goBack={this.props.goBack}
         />
       </div>
     );

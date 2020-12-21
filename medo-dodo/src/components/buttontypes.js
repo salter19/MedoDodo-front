@@ -4,10 +4,11 @@ const obj = {
   categories: pagetypes.categories,
   weekly: pagetypes.weekly,
   addTask: pagetypes.addTask,
-  save: "save",
+  save: ["SAVE", <br />, "THIS TASK"],
+  return: ["GO", <br />, "BACK"],
   modify: pagetypes.modifyTask,
-  delete: "Delete task",
-  deleteC: "Delete this category",
+  delete: ["DELETE", <br />, "THIS TASK"],
+  deleteC: ["DELETE", <br />, "THIS CATEGORY"],
   category: pagetypes.category,
 };
 

@@ -1,7 +1,7 @@
 import "./styles/TasksWeekly.css";
 import React from "react";
 import TaskCard from "./TaskCard";
-import TasksGetter from "./TasksGetter";
+import TasksGetter from "./ConnectToBackend";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
 
@@ -36,8 +36,10 @@ class TasksByCatTitle extends React.Component {
         <TaskCard
           key={e.id}
           id={e.id}
-          priority={e.priority}
+          priorityLevel={e.priority}
           onClickTask={this.props.onClickTask}
+          onClickDone={this.props.onClickDone}
+          currentCategory={this.props.catTitle}
         />
       );
     });
@@ -48,14 +50,11 @@ class TasksByCatTitle extends React.Component {
     this.readTasks();
   }
 
-  /*
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.catTitle !== this.props.catTitle) {
+    if (prevProps.allTasks.length !== this.props.allTasks.length) {
       this.readTasks();
-      this.createCards();
     }
   }
-  */
 
   showTasksIsEmpty() {
     if (this.state.taskCards.length === 0) {
@@ -71,6 +70,7 @@ class TasksByCatTitle extends React.Component {
                   // onSave={this.props.onSave}
                   currentCatID={this.props.currentCatID}
                   onCatDelete={this.props.onCatDelete}
+                  goBack={this.goBack}
                 />
               </div>
             </div>
@@ -85,8 +85,8 @@ class TasksByCatTitle extends React.Component {
     return (
       <div className="tasklist">
         <h1>{this.state.header}</h1>
-        <ul>{this.state.taskCards}</ul>
-        <ul>{noTasks}</ul>
+        {this.state.taskCards}
+        {noTasks}
       </div>
     );
   }

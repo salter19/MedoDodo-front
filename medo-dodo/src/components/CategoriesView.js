@@ -3,9 +3,10 @@ import React from "react";
 import ViewBase from "./ViewBase";
 import categoryTitles from "./validCategoryTitles";
 import CategoryIcon from "./CategoryIcon";
+import TasksGetter from "./ConnectToBackend";
 
 class CategoriesView extends React.Component {
-  state = { titles: [], tasks: [], icons: [] };
+  state = { categories: [], titles: [], tasks: [], icons: [] };
 
   componentDidMount() {
     this.createIcons();
@@ -13,19 +14,25 @@ class CategoriesView extends React.Component {
 
   createIcons = async () => {
     try {
+      const catData = await TasksGetter.everyCategory();
       const catTitles = await categoryTitles.validCatTitles();
       const taskObjs = await this.getTaskObjects(catTitles);
       const taskTitles = taskObjs.map((e) => this.getTaskTitles(e));
 
-      this.setState({ titles: catTitles, tasks: taskTitles });
+      this.setState({
+        categories: catData,
+        titles: catTitles,
+        tasks: taskTitles,
+      });
 
       let i = 0;
-      const catIcons = catTitles.map((e) => {
-        const items = this.getTasksPerCategoryByTitle(e);
+      const catIcons = catData.map((e) => {
+        const items = this.getTasksPerCategoryByTitle(e.title);
         return (
           <div key={i++} className="eight wide column">
             <CategoryIcon
-              title={e}
+              catID={e.id}
+              title={e.title}
               data={items}
               onClickCat={this.props.onClickCat}
             />
@@ -86,6 +93,7 @@ class CategoriesView extends React.Component {
           onClickLeft={this.props.onClickWeeks}
           currentCatID={this.props.currentCatID}
           onCatDelete={this.props.onCatDelete}
+          goBack={this.props.goBack}
           view={view}
         />
       </div>

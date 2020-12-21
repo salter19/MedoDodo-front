@@ -12,13 +12,22 @@ class CategoryView extends React.Component {
           onClickRight={this.props.onClickAdd}
           onClickLeft={this.props.onClickCats}
           onClickTask={this.props.onClickTask}
-          catTitle={this.props.title}
+          catTitle={this.props.currentCategory}
+          catID={this.props.catID}
+          currentCatID={this.props.currentCatID}
+          onCatDelete={this.props.onCatDelete}
+          allTasks={this.props.allTasks}
+          goBack={this.props.goBack}
           view={
             <TasksByCatTitle
-              catTitle={this.props.title}
+              catTitle={this.props.currentCategory}
+              catID={this.props.catID}
               onClickTask={this.props.onClickTask}
+              onClickDone={this.props.onClickDone}
               currentCatID={this.props.currentCatID}
               onCatDelete={this.props.onCatDelete}
+              allTasks={this.props.allTasks}
+              goBack={this.props.goBack}
             />
           }
         />

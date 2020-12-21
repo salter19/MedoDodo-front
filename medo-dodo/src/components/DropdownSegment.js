@@ -27,7 +27,7 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
         // this removes chosen option from the dropdown
         if (option[0] === selected[0]) {
             return null;
-        }      
+        } 
 
         return (
             <div 
@@ -64,6 +64,7 @@ const Dropdown = ( {options, header, selected, onSelectedChange } ) => {
 
                 </div>
             </div>
+
         </div>
     )
 }

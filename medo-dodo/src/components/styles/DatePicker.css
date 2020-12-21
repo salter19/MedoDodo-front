@@ -1,14 +1,8 @@
-.label {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.three.wide.row {
+    margin-left: 25%;
 }
 
 .ui.segment.top {
     text-align: left;
     margin-left: 25%;
-}
-
-.ui.segments > .ui.secondary.segment > .label {
-    text-align: left;
-    margin-left: -41%;
 }

@@ -111,10 +111,16 @@ export default class Head extends React.Component {
     return this.state.showArrowButtons ? (
       <div className="container">
         <div className="leftButton">
-          <button onClick={this.props.onClickLast}>
-            Last
+          <button
+            className="large ui inverted blue button"
+            onClick={this.props.onClickLast}
+          >
             <br />
-            Week
+            LAST
+            <br />
+            WEEK
+            <br />
+            <br />
           </button>
         </div>
         <div className="headerMessage">
@@ -123,10 +129,16 @@ export default class Head extends React.Component {
           Today is: {this.getFormattedDate(this.props.date)}
         </div>
         <div className="rightButton">
-          <button onClick={this.props.onClickNext}>
-            Next
+          <button
+            className="large ui inverted blue button"
+            onClick={this.props.onClickNext}
+          >
             <br />
-            Week
+            NEXT
+            <br />
+            WEEK
+            <br />
+            <br />
           </button>
         </div>
       </div>
