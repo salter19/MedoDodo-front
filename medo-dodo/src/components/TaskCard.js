@@ -42,7 +42,7 @@ const TaskCard = ({ id, priorityLevel, levelTitle, onClickTask }) => {
     };
 
     createTask();
-  }, [id, levelTitle, doneState]);
+  }, [id, levelTitle, doneState, task.is_done, task.title]);
 
   const onButtonDoneClick = () => {
     if (doneState === false) {
