@@ -182,7 +182,7 @@ class App extends React.Component {
           date={this.state.currentDate}
           placeholder={"What to do, Dodo?"}
           description={"Elaborate..."}
-          onSave={this.changeViewToWeekly}
+          onSave={this.goBack /*this.changeViewToWeekly*/}
           onSaveC={this.changeViewToCats}
           goBack={this.goBack}
         />
