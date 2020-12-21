@@ -2,37 +2,29 @@ import "./styles/DatePicker.css";
 import React, { useState, useEffect } from "react";
 import DateTimeSetter from "react-datetime-picker";
 
+const formatDate = (value) => {
+  // 2020-11-25 21:00:00
+  const day = addZeroFront(value.getDate());
+  const month = addZeroFront(value.getMonth() + 1);
+  const hour = addZeroFront(value.getHours());
+  const minutes = addZeroFront(value.getMinutes());
+  const seconds = addZeroFront(value.getSeconds());
+  const formated = `${value.getFullYear()}-${month}-${day} ${hour}:${minutes}:${seconds}`;
+  return formated;
+};
+
+const addZeroFront = (num) => {
+  return num < 10 ? "0" + num : num;
+};
+
 const DatePicker = ({ onSelectedChange }) => {
   const [value, setValue] = useState(new Date());
+  const [date, setDate] = useState("");
 
   useEffect(() => {
-    const time = {
-      day: value.getDate(),
-      month: value.getMonth() + 1,
-      year: value.getFullYear(),
-      hour: value.getHours(),
-      minutes: value.getMinutes(),
-      seconds: value.getSeconds(),
-    };
-    const formated = formatDate(time);
-    onSelectedChange(formated);
-  }, [value, onSelectedChange]);
-
-  const formatDate = ({ day, month, year, hour, minutes, seconds }) => {
-    // 2020-11-25 21:00:00
-
-    day = addZeroFront(day);
-    month = addZeroFront(month);
-    hour = addZeroFront(hour);
-    minutes = addZeroFront(minutes);
-    seconds = addZeroFront(seconds);
-    const formated = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
-    return formated;
-  };
-
-  const addZeroFront = (num) => {
-    return num < 10 ? "0" + num : num;
-  };
+    setDate(formatDate(value));
+    onSelectedChange(date);
+  }, [value, onSelectedChange, date]);
 
   return (
     <div className="date-picker">
