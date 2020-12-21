@@ -212,6 +212,7 @@ class App extends React.Component {
           onClickCat={this.changeViewToCat}
           currentCatID={this.state.currentCatID}
           onCatDelete={this.handleCatDelete}
+          allTasks={this.state.allTasks}
         />
       );
     } else {
