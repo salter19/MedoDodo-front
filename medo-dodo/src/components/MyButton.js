@@ -28,12 +28,14 @@ class MyButton extends React.Component {
         key: this.props.taskID,
       });
     } else if (this.props.buttontype === buttontypes.addTask) {
-      this.setState({ buttonText: ["ADD NEW", <br />, " TASK"], key: "add" });
+      this.setState({ buttonText: ["ADD NEW", <br />, "TASK"], key: "add" });
     } else if (this.props.buttontype === buttontypes.categories) {
       this.setState({
         buttonText: ["CATEGORIES", <br />, "VIEW"],
         key: "cats",
       });
+    } else if (this.props.buttontype === buttontypes.return) {
+      this.setState({ buttonText: ["GO", <br />, "BACK"], key: "return" });
     } else if (this.props.buttontype === buttontypes.weekly) {
       this.setState({ buttonText: ["WEEKLY", <br />, "VIEW"], key: "weeks" });
     } else {
@@ -53,6 +55,10 @@ class MyButton extends React.Component {
 
     this.props.page === pagetypes.weekly
       ? this.props.onClickWeeks()
+      : this.errorHandler();
+
+    this.props.buttontype === buttontypes.return
+      ? this.props.goBack(this.props.formerView)
       : this.errorHandler();
 
     this.state.buttontype === buttontypes.category
