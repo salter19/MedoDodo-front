@@ -39,7 +39,10 @@ class MyButton extends React.Component {
     } else if (this.props.buttontype === buttontypes.weekly) {
       this.setState({ buttonText: ["WEEKLY", <br />, "VIEW"], key: "weeks" });
     } else {
-      this.setState({ buttonText: this.props.buttontype });
+      this.setState({
+        buttonText: this.props.buttontype,
+        key: this.props.buttontype,
+      });
     }
   };
 
