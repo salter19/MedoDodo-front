@@ -93,7 +93,6 @@ class App extends React.Component {
 
   handleDelete = (taskID) => {
     if (this.confirmDelete("task")) {
-      console.log("now deleting task with id:" + taskID);
       TaskGetter.removeByTaskID(taskID, () => this.removeFromAllTasks(taskID));
     } else {
       /*
