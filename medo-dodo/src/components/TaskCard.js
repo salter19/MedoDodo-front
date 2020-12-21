@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import PriorityTag from "./PriorityTag";
 import MyButton from "./MyButton";
 import buttontypes from "./buttontypes";
-import pagetypes from "./pagetypes";
 import TaskGetter from "./ConnectToBackend";
 
 const getFormattedDateForCard = (date) => {
