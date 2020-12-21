@@ -76,7 +76,6 @@ class App extends React.Component {
   };
 
   goBack = () => {
-    console.log("we are going back to " + this.state.formerPage);
     this.setState({ currentPage: this.state.formerPage });
   };
 
@@ -84,9 +83,11 @@ class App extends React.Component {
     if (this.confirmDelete("category")) {
       TaskGetter.removeCatByID(this.state.currentCatID, this.changeViewToCats);
     } else {
+      /*
       console.log(
         "didn't want to delete after all: " + this.state.currentCatID
       );
+      */
     }
   };
 
@@ -94,11 +95,12 @@ class App extends React.Component {
     if (this.confirmDelete("task")) {
       console.log("now deleting task with id:" + taskID);
       TaskGetter.removeByTaskID(taskID, () => this.removeFromAllTasks(taskID));
-      // this.changeViewToWeekly();
     } else {
+      /*
       console.log(
         "didn't want to delete after all: " + taskID // this.state.currentTaskID
       );
+      */
     }
   };
 
