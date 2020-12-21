@@ -70,6 +70,7 @@ class TasksByCatTitle extends React.Component {
                   // onSave={this.props.onSave}
                   currentCatID={this.props.currentCatID}
                   onCatDelete={this.props.onCatDelete}
+                  goBack={this.goBack}
                 />
               </div>
             </div>
